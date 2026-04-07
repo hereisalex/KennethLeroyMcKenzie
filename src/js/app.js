@@ -2038,6 +2038,7 @@ function wireControlsUi() {
 
   const onActivity = () => showControls();
   document.addEventListener('mousemove', onActivity, { passive: true });
+  document.addEventListener('pointerdown', onActivity, { passive: true });
   document.addEventListener('touchstart', onActivity, { passive: true });
   document.addEventListener('touchmove', onActivity, { passive: true });
 }
