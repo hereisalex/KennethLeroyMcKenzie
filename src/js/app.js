@@ -1867,6 +1867,14 @@ function armHideChrome() {
   clearTimeout(controlsHideTimerId);
   if (isArchiveOpen() || isFeedbackOpen()) return;
   controlsHideTimerId = window.setTimeout(() => {
+    if (isCompactPortraitControls()) {
+      if (mobileControlsExpanded) {
+        setMobileControlsExpanded(false);
+      }
+      chromeDock?.classList.remove('chrome-dock--hidden');
+      document.body.classList.remove('body--chrome-hidden');
+      return;
+    }
     chromeDock?.classList.add('chrome-dock--hidden');
     if (!isStartOverlayVisible()) {
       document.body.classList.add('body--chrome-hidden');
