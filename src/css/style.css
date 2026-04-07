@@ -619,6 +619,40 @@ body.body--chrome-hidden {
     gap: 0.3rem;
   }
 
+  .controls__btn--more {
+    display: inline-flex;
+  }
+
+  .controls__group--timing,
+  .controls__group--tracks,
+  .controls__group--volume,
+  #ctrl-archive,
+  #ctrl-fullscreen,
+  #ctrl-share-slide,
+  #ctrl-photo-feedback {
+    display: none;
+  }
+
+  #app.mobile-controls-expanded .controls__group--timing {
+    display: grid;
+  }
+
+  #app.mobile-controls-expanded .controls__group--tracks,
+  #app.mobile-controls-expanded .controls__group--volume {
+    display: flex;
+  }
+
+  #app.mobile-controls-expanded #ctrl-archive,
+  #app.mobile-controls-expanded #ctrl-fullscreen,
+  #app.mobile-controls-expanded #ctrl-share-slide,
+  #app.mobile-controls-expanded #ctrl-photo-feedback {
+    display: inline-flex;
+  }
+
+  #app.mobile-controls-expanded .controls__btn--more {
+    background: rgba(90, 90, 96, 0.6);
+  }
+
   .controls__group--timing {
     grid-column: 1 / -1;
     display: grid;
@@ -884,6 +918,10 @@ body.body--chrome-hidden {
 .controls__btn--primary svg {
   width: 1.35rem;
   height: 1.35rem;
+}
+
+.controls__btn--more {
+  display: none;
 }
 
 #ctrl-play-pause .icon-play {

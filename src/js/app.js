@@ -106,6 +106,7 @@ const ctrlArchive = document.querySelector('#ctrl-archive');
 const ctrlSlideSec = document.querySelector('#ctrl-slide-sec');
 const ctrlSlideSecVal = document.querySelector('#ctrl-slide-sec-val');
 const ctrlFitFull = document.querySelector('#ctrl-fit-full');
+const ctrlMore = document.querySelector('#ctrl-more');
 const focalEditorRoot = document.getElementById('focal-editor-root');
 const focalEditorToggle = document.getElementById('focal-editor-toggle');
 const focalEditorPanel = document.getElementById('focal-editor-panel');
@@ -163,6 +164,7 @@ let focusTrapCleanup = null;
 let lastFocusBeforeModal = null;
 /** Focal preview dot (created when Director tools first used). */
 let focalEditorDot = null;
+let mobileControlsExpanded = false;
 
 function clamp(n, min, max) {
   return Math.min(max, Math.max(min, n));
@@ -1879,6 +1881,29 @@ function showControls() {
   armHideChrome();
 }
 
+function isCompactPortraitControls() {
+  return Boolean(window.matchMedia?.('(max-width: 900px) and (orientation: portrait)').matches);
+}
+
+function setMobileControlsExpanded(open) {
+  mobileControlsExpanded = Boolean(open);
+  const expanded = isCompactPortraitControls() ? mobileControlsExpanded : true;
+  appRoot?.classList.toggle('mobile-controls-expanded', expanded);
+  if (ctrlMore) {
+    ctrlMore.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    ctrlMore.setAttribute('aria-label', expanded ? 'Hide extra controls' : 'Show more controls');
+    ctrlMore.title = expanded ? 'Hide extra controls' : 'More controls';
+  }
+}
+
+function syncMobileControlsMode() {
+  if (!isCompactPortraitControls()) {
+    setMobileControlsExpanded(true);
+    return;
+  }
+  setMobileControlsExpanded(mobileControlsExpanded);
+}
+
 function ytPreviousTrack() {
   if (!ytPlayerAvailable) {
     showStatusBanner('Music controls are unavailable right now.');
@@ -1956,6 +1981,7 @@ function wireBrowsingUi() {
 }
 
 function wireControlsUi() {
+  syncMobileControlsMode();
   ctrlSlidePrev?.addEventListener('click', () => manualStep(-1));
   ctrlSlideNext?.addEventListener('click', () => manualStep(1));
   ctrlShareSlide?.addEventListener('click', () => {
@@ -1976,6 +2002,10 @@ function wireControlsUi() {
   });
   ctrlFullscreen?.addEventListener('click', () => {
     void toggleFullscreen();
+  });
+  ctrlMore?.addEventListener('click', () => {
+    setMobileControlsExpanded(!mobileControlsExpanded);
+    showControls();
   });
 
   ctrlVolume?.addEventListener('input', () => {
@@ -2022,6 +2052,7 @@ function wireViewportResize() {
   window.addEventListener(
     'resize',
     () => {
+      syncMobileControlsMode();
       if (images.length === 0) return;
       refreshAllSlidePresentStyles();
     },
