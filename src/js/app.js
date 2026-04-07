@@ -10,6 +10,8 @@ const KEN_BURNS_MAX_SCALE = 1.15;
 const KEN_PAN_HEADROOM = 1.22;
 const GRAB_RUBBER_SOFT_PX = 72;
 const GRAB_RUBBER_HARD_PX = 140;
+const GESTURE_MIN_SCALE = 0.5;
+const GESTURE_MAX_SCALE = 4;
 const SNAP_BACK_MS = 550;
 const SNAP_BACK_EASE = 'cubic-bezier(0.175, 0.885, 0.32, 1.275)';
 const PRELOAD_AHEAD_COUNT = 3;
@@ -122,7 +124,7 @@ let archiveGridBuilt = false;
 let ytPlayerAvailable = false;
 let lastYtVideoId = '';
 /** Seconds per slide (slider + localStorage). */
-let manualSlideSeconds = 15;
+let manualSlideSeconds = 5;
 /** Letterbox full image; disables Ken Burns and elastic drag on the stage. */
 let fitContainMode = false;
 /**
@@ -131,13 +133,20 @@ let fitContainMode = false;
  * @type {Record<string, { myReactions: string[]; reactionCounts: Record<string, number> | null; comments: Array<{ id: string; text: string; at: string }> }>}
  */
 let feedbackStoreCache = {};
-/** True from grab pointerdown until snap-back transition finishes (or no-op release). */
+/** True from stage pointerdown until snap-back transition finishes (or no-op release). */
 let grabInteractionActive = false;
-let grabPointerId = null;
-let grabStartClientX = 0;
-let grabStartClientY = 0;
-let grabBaseTx = 0;
-let grabBaseTy = 0;
+/** Active pointers on the stage (multitouch zoom / pan / rotate). */
+const touchPointers = new Map();
+let gestureMode = 'none';
+/** @type {{ sx: number; sy: number; tx0: number; ty0: number } | null} */
+let panStart = null;
+/** @type {{ dist0: number; ang0: number; midX0: number; midY0: number; tx0: number; ty0: number; s0: number; r0: number } | null} */
+let pinchStart = null;
+let panCapturePointerId = null;
+let userTx = 0;
+let userTy = 0;
+let userScale = 1;
+let userDeg = 0;
 let focusTrapCleanup = null;
 let lastFocusBeforeModal = null;
 
@@ -162,14 +171,11 @@ function prettyFilename(src) {
   return withSpaces.charAt(0).toUpperCase() + withSpaces.slice(1);
 }
 
-function metadataTitle(entry, i = index) {
-  if (entry && typeof entry === 'object') {
-    const candidates = [entry.title, entry.memory_title, entry.label];
-    for (const c of candidates) {
-      if (typeof c === 'string' && c.trim()) return c.trim();
-    }
-  }
-  return prettyFilename(imageUrl(entry)) || `Photo ${i + 1}`;
+/** User-facing label without filenames (used for thumbs, aria, alt). */
+function slideOrdinalLabel(i) {
+  const n = images.length;
+  if (n <= 0) return 'Memorial photo';
+  return `Photo ${i + 1} of ${n}`;
 }
 
 function metadataDetail(entry) {
@@ -197,20 +203,19 @@ function metadataCaption(entry) {
 }
 
 function buildImageAlt(entry, i = index) {
-  const title = metadataTitle(entry, i);
   const detail = metadataDetail(entry);
   const caption = metadataCaption(entry);
-  const parts = [title, detail, caption].filter(Boolean);
-  return parts.join('. ');
+  const parts = [caption, detail].filter(Boolean);
+  if (parts.length) return parts.join('. ');
+  return slideOrdinalLabel(i);
 }
 
 function updateSlideMeta(entry, i = index) {
   if (!slideMetaTitle || !slideMetaDetail || !slideMetaCaption) return;
-  const title = metadataTitle(entry, i);
+  slideMetaTitle.textContent = '';
+  slideMetaTitle.hidden = true;
   const detail = metadataDetail(entry);
   const caption = metadataCaption(entry);
-  slideMetaTitle.textContent = title;
-  slideMetaTitle.hidden = title.length === 0;
   slideMetaDetail.textContent = detail;
   slideMetaDetail.hidden = detail.length === 0;
   slideMetaCaption.textContent = caption;
@@ -762,7 +767,15 @@ function syncSlideChromeButtons() {
 }
 
 function resetSlideWrapTransforms() {
-  grabPointerId = null;
+  touchPointers.clear();
+  gestureMode = 'none';
+  panStart = null;
+  pinchStart = null;
+  panCapturePointerId = null;
+  userTx = 0;
+  userTy = 0;
+  userScale = 1;
+  userDeg = 0;
   grabInteractionActive = false;
   stageEl?.classList.remove('is-grabbing');
   for (const w of [wrapA, wrapB]) {
@@ -772,13 +785,9 @@ function resetSlideWrapTransforms() {
   }
 }
 
-function parseTranslatePxFromTransform(transform) {
-  if (!transform || transform === 'none') return { x: 0, y: 0 };
-  const m3 = transform.match(/translate3d\(([-\d.eE+]+)px,\s*([-\d.eE+]+)px/);
-  if (m3) return { x: parseFloat(m3[1]), y: parseFloat(m3[2]) };
-  const m2 = transform.match(/translate\(([-\d.eE+]+)px,\s*([-\d.eE+]+)px\)/);
-  if (m2) return { x: parseFloat(m2[1]), y: parseFloat(m2[2]) };
-  return { x: 0, y: 0 };
+function applyUserTransformToWrap(wrap) {
+  if (!wrap) return;
+  wrap.style.transform = `translate3d(${userTx}px, ${userTy}px, 0) rotate(${userDeg}deg) scale(${userScale})`;
 }
 
 function resistPanAxis(value) {
@@ -791,9 +800,15 @@ function resistPanAxis(value) {
 }
 
 function finishGrabSpringBack(wrap) {
-  const tStr = wrap.style.transform;
-  const prev = parseTranslatePxFromTransform(tStr);
-  if (Math.hypot(prev.x, prev.y) < 0.5) {
+  const near =
+    Math.hypot(userTx, userTy) < 0.5 &&
+    Math.abs(userScale - 1) < 0.02 &&
+    Math.abs(userDeg) < 0.6;
+  if (near) {
+    userTx = 0;
+    userTy = 0;
+    userScale = 1;
+    userDeg = 0;
     wrap.style.transition = '';
     wrap.style.transform = '';
     grabInteractionActive = false;
@@ -805,13 +820,17 @@ function finishGrabSpringBack(wrap) {
     wrap.removeEventListener('transitionend', onEnd);
     wrap.style.transition = '';
     wrap.style.transform = '';
+    userTx = 0;
+    userTy = 0;
+    userScale = 1;
+    userDeg = 0;
     grabInteractionActive = false;
     if (!slideshowPaused) scheduleSlideshowTick();
   };
   wrap.addEventListener('transitionend', onEnd);
   requestAnimationFrame(() => {
     wrap.style.transition = `transform ${SNAP_BACK_MS}ms ${SNAP_BACK_EASE}`;
-    wrap.style.transform = 'translate3d(0, 0, 0)';
+    wrap.style.transform = 'translate3d(0, 0, 0) rotate(0deg) scale(1)';
   });
 }
 
@@ -821,6 +840,39 @@ function wireStageGrab() {
   // Native <img> drag uses a “not allowed” cursor and steals the gesture from pointer pan.
   stageEl.addEventListener('dragstart', (e) => e.preventDefault(), { capture: true });
 
+  function getTwoPointerSnapshot() {
+    const ids = [...touchPointers.keys()];
+    if (ids.length < 2) return null;
+    const a = touchPointers.get(ids[0]);
+    const b = touchPointers.get(ids[1]);
+    if (!a || !b) return null;
+    return { p0: a, p1: b };
+  }
+
+  function dist2(a, b) {
+    return Math.hypot(b.x - a.x, b.y - a.y);
+  }
+
+  function angle2(a, b) {
+    return Math.atan2(b.y - a.y, b.x - a.x);
+  }
+
+  function beginPinchGesture() {
+    const snap = getTwoPointerSnapshot();
+    if (!snap) return;
+    const d0 = Math.max(dist2(snap.p0, snap.p1), 8);
+    pinchStart = {
+      dist0: d0,
+      ang0: angle2(snap.p0, snap.p1),
+      midX0: (snap.p0.x + snap.p1.x) / 2,
+      midY0: (snap.p0.y + snap.p1.y) / 2,
+      tx0: userTx,
+      ty0: userTy,
+      s0: userScale,
+      r0: userDeg,
+    };
+  }
+
   stageEl.addEventListener('pointerdown', (e) => {
     if (fitContainMode) return;
     if (e.button !== 0) return;
@@ -829,49 +881,107 @@ function wireStageGrab() {
     if (!(t instanceof Element) || !t.closest('.buffer.is-active')) return;
 
     e.preventDefault();
-    grabInteractionActive = true;
-    grabPointerId = e.pointerId;
-    grabStartClientX = e.clientX;
-    grabStartClientY = e.clientY;
-    const w = activeWrap;
-    const cur = parseTranslatePxFromTransform(w.style.transform);
-    grabBaseTx = cur.x;
-    grabBaseTy = cur.y;
+    touchPointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
     clearSlideshowTimer();
     stageEl.classList.add('is-grabbing');
-    w.style.transition = 'none';
-    try {
-      stageEl.setPointerCapture(e.pointerId);
-    } catch {
-      /* ignore */
+    grabInteractionActive = true;
+    activeWrap.style.transition = 'none';
+
+    if (touchPointers.size === 1) {
+      gestureMode = 'pan';
+      panStart = { sx: e.clientX, sy: e.clientY, tx0: userTx, ty0: userTy };
+      try {
+        stageEl.setPointerCapture(e.pointerId);
+        panCapturePointerId = e.pointerId;
+      } catch {
+        /* ignore */
+      }
+    } else if (touchPointers.size === 2) {
+      if (panCapturePointerId != null) {
+        try {
+          stageEl.releasePointerCapture(panCapturePointerId);
+        } catch {
+          /* ignore */
+        }
+        panCapturePointerId = null;
+      }
+      gestureMode = 'pinch';
+      beginPinchGesture();
     }
   });
 
   stageEl.addEventListener('pointermove', (e) => {
-    if (e.pointerId !== grabPointerId) return;
-    const dx = e.clientX - grabStartClientX;
-    const dy = e.clientY - grabStartClientY;
-    const tx = resistPanAxis(grabBaseTx + dx);
-    const ty = resistPanAxis(grabBaseTy + dy);
-    activeWrap.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+    if (!touchPointers.has(e.pointerId)) return;
+    touchPointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (gestureMode === 'pan' && touchPointers.size === 1 && panStart) {
+      const dx = e.clientX - panStart.sx;
+      const dy = e.clientY - panStart.sy;
+      userTx = resistPanAxis(panStart.tx0 + dx);
+      userTy = resistPanAxis(panStart.ty0 + dy);
+      applyUserTransformToWrap(activeWrap);
+      return;
+    }
+    if (gestureMode === 'pinch' && touchPointers.size >= 2 && pinchStart) {
+      const snap = getTwoPointerSnapshot();
+      if (!snap) return;
+      const d = Math.max(dist2(snap.p0, snap.p1), 8);
+      const ang = angle2(snap.p0, snap.p1);
+      const midX = (snap.p0.x + snap.p1.x) / 2;
+      const midY = (snap.p0.y + snap.p1.y) / 2;
+      const ps = pinchStart;
+      userScale = clamp(ps.s0 * (d / ps.dist0), GESTURE_MIN_SCALE, GESTURE_MAX_SCALE);
+      userDeg = ps.r0 + ((ang - ps.ang0) * 180) / Math.PI;
+      userTx = ps.tx0 + (midX - ps.midX0);
+      userTy = ps.ty0 + (midY - ps.midY0);
+      applyUserTransformToWrap(activeWrap);
+    }
   });
 
-  const onPointerUp = (e) => {
-    if (e.pointerId !== grabPointerId) return;
-    grabPointerId = null;
-    stageEl.classList.remove('is-grabbing');
+  function endPointer(e) {
+    if (!touchPointers.has(e.pointerId)) return;
+    touchPointers.delete(e.pointerId);
     try {
-      stageEl.releasePointerCapture(e.pointerId);
+      if (panCapturePointerId === e.pointerId) {
+        stageEl.releasePointerCapture(e.pointerId);
+        panCapturePointerId = null;
+      }
     } catch {
       /* ignore */
     }
-    const wrap = activeWrap;
-    wrap.style.transition = '';
-    finishGrabSpringBack(wrap);
-  };
 
-  stageEl.addEventListener('pointerup', onPointerUp);
-  stageEl.addEventListener('pointercancel', onPointerUp);
+    if (touchPointers.size === 0) {
+      gestureMode = 'none';
+      panStart = null;
+      pinchStart = null;
+      stageEl.classList.remove('is-grabbing');
+      const wrap = activeWrap;
+      wrap.style.transition = '';
+      finishGrabSpringBack(wrap);
+      return;
+    }
+
+    if (touchPointers.size === 1) {
+      gestureMode = 'pan';
+      pinchStart = null;
+      const remainingId = [...touchPointers.keys()][0];
+      const p = touchPointers.get(remainingId);
+      if (p) {
+        panStart = { sx: p.x, sy: p.y, tx0: userTx, ty0: userTy };
+      }
+      try {
+        stageEl.setPointerCapture(remainingId);
+        panCapturePointerId = remainingId;
+      } catch {
+        /* ignore */
+      }
+    } else {
+      gestureMode = 'pinch';
+      beginPinchGesture();
+    }
+  }
+
+  stageEl.addEventListener('pointerup', endPointer);
+  stageEl.addEventListener('pointercancel', endPointer);
 }
 
 function applySlideIndex(rawIndex) {
@@ -973,13 +1083,13 @@ function renderFilmstrip() {
     btn.className = 'filmstrip__btn thumb-nav';
     btn.dataset.slideIndex = String(i);
     if (i === index) btn.classList.add('is-active');
-    btn.setAttribute('aria-label', `Photo ${i + 1}: ${metadataTitle(images[i], i)}`);
+    btn.setAttribute('aria-label', slideOrdinalLabel(i));
     btn.setAttribute('aria-current', i === index ? 'true' : 'false');
     const img = document.createElement('img');
     img.loading = 'lazy';
     img.decoding = 'async';
     img.src = resolveThumbUrl(images[i]);
-    img.alt = metadataTitle(images[i], i);
+    img.alt = slideOrdinalLabel(i);
     btn.appendChild(img);
     frag.appendChild(btn);
   }
@@ -1175,8 +1285,7 @@ async function refreshCurrentPhotoFeedbackFromApi() {
 function renderPhotoFeedbackPanel() {
   const key = photoFeedbackKeyFromIndex(index);
   if (feedbackPhotoLabel) {
-    const leaf = key.includes('/') ? key.split('/').pop() : key;
-    feedbackPhotoLabel.textContent = leaf ? `Photo ${index + 1} · ${leaf}` : `Photo ${index + 1}`;
+    feedbackPhotoLabel.textContent = slideOrdinalLabel(index);
   }
   const entry = ensurePhotoFeedbackEntry(key);
   const mine = entry?.myReactions ?? [];
@@ -1567,7 +1676,7 @@ function wireControlsUi() {
   });
 
   ctrlSlideSec?.addEventListener('input', () => {
-    manualSlideSeconds = clamp(parseFloat(ctrlSlideSec.value) || 15, 3, 120);
+    manualSlideSeconds = clamp(parseFloat(ctrlSlideSec.value) || 5, 3, 120);
     syncSlideTimingUi();
     saveSlideTimingPrefs();
     const ms = getSlideDurationMs();

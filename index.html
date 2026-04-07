@@ -25,7 +25,7 @@
         </div>
       </div>
       <div id="slide-meta" class="slide-meta" aria-live="polite">
-        <p id="slide-meta-title" class="slide-meta__title"></p>
+        <p id="slide-meta-title" class="slide-meta__title" hidden></p>
         <p id="slide-meta-detail" class="slide-meta__detail"></p>
         <p id="slide-meta-caption" class="slide-meta__caption"></p>
       </div>
@@ -56,8 +56,8 @@
           <div class="controls__group controls__group--timing" role="group" aria-label="Slide timing">
             <label class="controls__timing" for="ctrl-slide-sec">
               <span class="controls__timing-label">Sec / slide</span>
-              <input type="range" class="controls__timing-range" id="ctrl-slide-sec" min="3" max="120" step="0.5" value="15" aria-valuemin="3" aria-valuemax="120" aria-label="Seconds per slide" />
-              <span class="controls__timing-val" id="ctrl-slide-sec-val" aria-hidden="true">15s</span>
+              <input type="range" class="controls__timing-range" id="ctrl-slide-sec" min="3" max="120" step="0.5" value="5" aria-valuemin="3" aria-valuemax="120" aria-label="Seconds per slide" />
+              <span class="controls__timing-val" id="ctrl-slide-sec-val" aria-hidden="true">5s</span>
             </label>
             <label class="controls__fit-full" for="ctrl-fit-full">
               <input type="checkbox" id="ctrl-fit-full" aria-label="Show full photo without cropping or Ken Burns motion" />
