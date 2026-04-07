@@ -750,6 +750,33 @@ body.body--chrome-hidden {
     width: 1.1rem;
     height: 1.1rem;
   }
+
+  /* Final override: compact portrait shows only transport row unless expanded. */
+  #app:not(.mobile-controls-expanded) .controls__group--timing,
+  #app:not(.mobile-controls-expanded) .controls__group--tracks,
+  #app:not(.mobile-controls-expanded) .controls__group--volume,
+  #app:not(.mobile-controls-expanded) #ctrl-archive,
+  #app:not(.mobile-controls-expanded) #ctrl-fullscreen,
+  #app:not(.mobile-controls-expanded) #ctrl-share-slide,
+  #app:not(.mobile-controls-expanded) #ctrl-photo-feedback {
+    display: none !important;
+  }
+
+  #app.mobile-controls-expanded .controls__group--timing {
+    display: grid !important;
+  }
+
+  #app.mobile-controls-expanded .controls__group--tracks,
+  #app.mobile-controls-expanded .controls__group--volume {
+    display: flex !important;
+  }
+
+  #app.mobile-controls-expanded #ctrl-archive,
+  #app.mobile-controls-expanded #ctrl-fullscreen,
+  #app.mobile-controls-expanded #ctrl-share-slide,
+  #app.mobile-controls-expanded #ctrl-photo-feedback {
+    display: inline-flex !important;
+  }
 }
 
 .controls__divider {
