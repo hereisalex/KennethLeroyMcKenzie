@@ -26,6 +26,8 @@ const FILMSTRIP_HALF = 4;
 /** Default playlist ID; override with <div id="app" data-youtube-playlist="PL…"> */
 const DEFAULT_PLAYLIST_ID = 'PLN-SBKLnxgwvH4TKfsWG6YMYLPzg5aGXp';
 const VISITOR_ID_KEY = 'klm-memorial-visitor-id';
+/** Session flag after unlocking Director tools with #focal=&lt;secret&gt;. */
+const FOCAL_SESSION_KEY = 'klm-focal-unlocked';
 
 const appRoot = document.getElementById('app');
 const statusBanner = document.getElementById('status-banner');
@@ -104,6 +106,12 @@ const ctrlArchive = document.querySelector('#ctrl-archive');
 const ctrlSlideSec = document.querySelector('#ctrl-slide-sec');
 const ctrlSlideSecVal = document.querySelector('#ctrl-slide-sec-val');
 const ctrlFitFull = document.querySelector('#ctrl-fit-full');
+const focalEditorRoot = document.getElementById('focal-editor-root');
+const focalEditorToggle = document.getElementById('focal-editor-toggle');
+const focalEditorPanel = document.getElementById('focal-editor-panel');
+const focalEditorVals = document.getElementById('focal-editor-vals');
+const focalEditorCopy = document.getElementById('focal-editor-copy');
+const focalEditorLock = document.getElementById('focal-editor-lock');
 
 let activeEl = bufferA;
 let inactiveEl = bufferB;
@@ -153,6 +161,8 @@ let userScale = 1;
 let userDeg = 0;
 let focusTrapCleanup = null;
 let lastFocusBeforeModal = null;
+/** Focal preview dot (created when Director tools first used). */
+let focalEditorDot = null;
 
 function clamp(n, min, max) {
   return Math.min(max, Math.max(min, n));
@@ -557,6 +567,7 @@ function restartKenBurns(img, entry) {
 
 function clearKenBurnsInline(img) {
   if (!img) return;
+  clearColorRevealClasses(img);
   img.classList.remove('ken-burns');
   img.style.removeProperty('transform-origin');
   img.style.removeProperty('object-position');
@@ -650,6 +661,240 @@ function imageUrl(entry) {
   if (typeof entry === 'string') return entry;
   if (typeof entry === 'object' && typeof entry.src === 'string') return entry.src;
   return '';
+}
+
+function imageLeaf(entry) {
+  const s = imageUrl(entry);
+  if (!s) return '';
+  return s.includes('/') ? (s.split('/').pop() ?? s) : s;
+}
+
+function stemFilename(leaf) {
+  return leaf.replace(/\.[^.]+$/i, '');
+}
+
+function isColorizedLeaf(leaf) {
+  return /colorized/i.test(leaf);
+}
+
+/**
+ * True when advancing from a B&W file to its paired colorized file (e.g. 1_Goat.png → 1_GoatColorized.png).
+ */
+function isBwToColorizedTransition(prevEntry, nextEntry) {
+  const pl = imageLeaf(prevEntry);
+  const nl = imageLeaf(nextEntry);
+  if (!pl || !nl || isColorizedLeaf(pl) || !isColorizedLeaf(nl)) return false;
+  const ps = stemFilename(pl).toLowerCase();
+  const ns = stemFilename(nl).toLowerCase();
+  if (!ns.startsWith(ps) || ns === ps) return false;
+  const rest = ns.slice(ps.length);
+  return /^[_-]?colorized/i.test(rest);
+}
+
+function whenImgLoaded(img, fn) {
+  if (!img) return;
+  if (img.complete && img.naturalWidth > 0) {
+    fn();
+    return;
+  }
+  img.addEventListener('load', fn, { once: true });
+}
+
+function clearColorRevealClasses(img) {
+  if (!img) return;
+  img.classList.remove('slide-img--color-reveal', 'slide-img--color-reveal-on');
+}
+
+function getConfiguredFocalEditorSecret() {
+  const raw = appRoot?.dataset?.focalEditorSecret;
+  if (raw == null) return '';
+  return String(raw).trim();
+}
+
+function showFocalEditorChrome(visible) {
+  if (!focalEditorRoot) return;
+  focalEditorRoot.hidden = !visible;
+}
+
+function tryUnlockFocalEditorFromHash() {
+  const secret = getConfiguredFocalEditorSecret();
+  if (!secret) {
+    try {
+      sessionStorage.removeItem(FOCAL_SESSION_KEY);
+    } catch {
+      /* ignore */
+    }
+    showFocalEditorChrome(false);
+    return false;
+  }
+  try {
+    if (sessionStorage.getItem(FOCAL_SESSION_KEY) === '1') {
+      showFocalEditorChrome(true);
+      return true;
+    }
+  } catch {
+    /* ignore */
+  }
+  const raw = location.hash;
+  const m = /^#focal=(.+)$/.exec(raw);
+  if (!m) {
+    showFocalEditorChrome(false);
+    return false;
+  }
+  let candidate = m[1];
+  try {
+    candidate = decodeURIComponent(candidate);
+  } catch {
+    /* keep raw */
+  }
+  if (candidate !== secret) {
+    showFocalEditorChrome(false);
+    return false;
+  }
+  try {
+    sessionStorage.setItem(FOCAL_SESSION_KEY, '1');
+  } catch {
+    /* ignore */
+  }
+  try {
+    history.replaceState(null, '', `${location.pathname}${location.search}`);
+  } catch {
+    /* ignore */
+  }
+  showFocalEditorChrome(true);
+  return true;
+}
+
+function clientToFocalNormalized(imgEl, clientX, clientY) {
+  const rect = imgEl.getBoundingClientRect();
+  const nw = imgEl.naturalWidth;
+  const nh = imgEl.naturalHeight;
+  if (nw < 2 || nh < 2) return { x: 0.5, y: 0.5 };
+  const rw = rect.width;
+  const rh = rect.height;
+  const scale = Math.min(rw / nw, rh / nh);
+  const dispW = nw * scale;
+  const dispH = nh * scale;
+  const ox = rect.left + (rw - dispW) / 2;
+  const oy = rect.top + (rh - dispH) / 2;
+  const x = (clientX - ox) / dispW;
+  const y = (clientY - oy) / dispH;
+  return { x: clamp(x, 0, 1), y: clamp(y, 0, 1) };
+}
+
+function ensureFocalEditorDot() {
+  if (focalEditorDot) return focalEditorDot;
+  const el = document.createElement('div');
+  el.className = 'focal-editor-dot';
+  el.setAttribute('aria-hidden', 'true');
+  focalEditorDot = el;
+  return el;
+}
+
+function syncFocalEditorDotPosition() {
+  if (!focalEditorDot || !activeImg || !activeWrap || !images.length) return;
+  const fp = getFocalPoint(images[index]);
+  focalEditorDot.style.left = `${fp.x * 100}%`;
+  focalEditorDot.style.top = `${fp.y * 100}%`;
+}
+
+function mountFocalEditorDot() {
+  if (!focalEditorPanel || focalEditorPanel.hidden || focalEditorRoot?.hidden) return;
+  const dot = ensureFocalEditorDot();
+  if (dot.parentNode !== activeWrap) {
+    activeWrap?.appendChild(dot);
+  }
+  dot.classList.add('is-visible');
+  syncFocalEditorDotPosition();
+}
+
+function updateFocalEditorValsText() {
+  if (!focalEditorVals || !images.length) return;
+  const fp = getFocalPoint(images[index]);
+  focalEditorVals.textContent = `x: ${fp.x.toFixed(3)} · y: ${fp.y.toFixed(3)}`;
+}
+
+function wireFocalEditor() {
+  if (!focalEditorRoot || !focalEditorToggle || !focalEditorPanel) return;
+
+  focalEditorToggle.addEventListener('click', () => {
+    if (focalEditorRoot.hidden) return;
+    const open = focalEditorPanel.hidden;
+    focalEditorPanel.hidden = !open;
+    focalEditorToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    appRoot?.classList.toggle('focal-editor-placing', open);
+    if (open) {
+      updateFocalEditorValsText();
+      mountFocalEditorDot();
+    } else {
+      appRoot?.classList.remove('focal-editor-placing');
+      if (focalEditorDot) {
+        focalEditorDot.classList.remove('is-visible');
+      }
+    }
+  });
+
+  focalEditorLock?.addEventListener('click', () => {
+    try {
+      sessionStorage.removeItem(FOCAL_SESSION_KEY);
+    } catch {
+      /* ignore */
+    }
+    focalEditorPanel.hidden = true;
+    focalEditorToggle.setAttribute('aria-expanded', 'false');
+    appRoot?.classList.remove('focal-editor-placing');
+    showFocalEditorChrome(false);
+    if (focalEditorDot) {
+      focalEditorDot.remove();
+      focalEditorDot = null;
+    }
+  });
+
+  focalEditorCopy?.addEventListener('click', async () => {
+    if (!images.length) return;
+    const entry = images[index];
+    const snippet = JSON.stringify(
+      {
+        src: imageUrl(entry),
+        focal_point: getFocalPoint(entry),
+        focal_source: 'manual',
+      },
+      null,
+      2,
+    );
+    try {
+      await navigator.clipboard.writeText(snippet);
+      showStatusBanner('Focal JSON copied — paste into manifest for this image.');
+    } catch {
+      showStatusBanner('Could not copy — select JSON from the console or try HTTPS.');
+    }
+  });
+
+  if (!stageEl) return;
+  stageEl.addEventListener(
+    'pointerdown',
+    (e) => {
+      if (!appRoot?.classList.contains('focal-editor-placing')) return;
+      if (e.button !== 0) return;
+      const t = e.target;
+      if (!(t instanceof Element) || !t.closest('.buffer.is-active')) return;
+      if (!t.closest('.slide-img-wrap')) return;
+      const img = activeImg;
+      if (!img) return;
+      e.preventDefault();
+      e.stopPropagation();
+      const fp = clientToFocalNormalized(img, e.clientX, e.clientY);
+      const entry = images[index];
+      if (entry && typeof entry === 'object') {
+        entry.focal_point = { x: fp.x, y: fp.y };
+        entry.focal_source = 'manual';
+      }
+      updateFocalEditorValsText();
+      syncFocalEditorDotPosition();
+      refreshAllSlidePresentStyles();
+    },
+    true,
+  );
 }
 
 function normalizeManifestEntry(entry) {
@@ -902,6 +1147,7 @@ function wireStageGrab() {
   }
 
   stageEl.addEventListener('pointerdown', (e) => {
+    if (appRoot?.classList.contains('focal-editor-placing')) return;
     if (fitContainMode) return;
     if (e.button !== 0) return;
     if (isStartOverlayVisible() || isArchiveOpen() || isFeedbackOpen()) return;
@@ -1020,10 +1266,36 @@ function applySlideIndex(rawIndex) {
   const i = ((rawIndex % n) + n) % n;
   index = i;
   const currentEntry = images[index];
+  const prevEntry = images[prevIndex];
   const url = resolveAssetUrl(currentEntry);
   setAmbientBackground(inactiveBg, currentEntry);
+
+  clearColorRevealClasses(inactiveImg);
+  const useColorBloom =
+    !fitContainMode && !prefersReducedMotion() && isBwToColorizedTransition(prevEntry, currentEntry);
+
   inactiveImg.src = url;
   inactiveImg.alt = buildImageAlt(currentEntry, index);
+
+  if (useColorBloom) {
+    inactiveImg.classList.add('slide-img--color-reveal');
+    whenImgLoaded(inactiveImg, () => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          inactiveImg.classList.add('slide-img--color-reveal-on');
+        });
+      });
+    });
+    inactiveImg.addEventListener(
+      'transitionend',
+      (e) => {
+        if (e.propertyName !== 'filter') return;
+        clearColorRevealClasses(inactiveImg);
+      },
+      { once: true },
+    );
+  }
+
   applySlidePresentStyle(inactiveImg, currentEntry);
 
   inactiveEl.classList.add('is-active');
@@ -1038,6 +1310,13 @@ function applySlideIndex(rawIndex) {
   scrollBrowseThumbnailsIntoView();
   syncSlideChromeButtons();
   syncPhotoFeedbackPanelIfOpen();
+  syncFocalEditorAfterSlideChange();
+}
+
+function syncFocalEditorAfterSlideChange() {
+  if (!focalEditorPanel || focalEditorPanel.hidden || focalEditorRoot?.hidden) return;
+  mountFocalEditorDot();
+  updateFocalEditorValsText();
 }
 
 function step(delta) {
@@ -1071,6 +1350,7 @@ function showInitial() {
   scrollBrowseThumbnailsIntoView();
   syncSlideChromeButtons();
   syncPhotoFeedbackPanelIfOpen();
+  syncFocalEditorAfterSlideChange();
 }
 
 function manualStep(delta) {
@@ -1892,6 +2172,7 @@ function onYtStateChange(event) {
 }
 
 async function main() {
+  tryUnlockFocalEditorFromHash();
   hideFatalOverlay();
   loadAudioPrefs();
   loadSlideTimingPrefs();
@@ -1914,6 +2195,7 @@ async function main() {
   wireKeyboard();
   wireMediaSession();
   updateFullscreenButton();
+  wireFocalEditor();
 
   try {
     await loadManifest();

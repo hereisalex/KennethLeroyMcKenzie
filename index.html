@@ -11,7 +11,8 @@
 </head>
 <body>
   <!-- Shared reactions/comments: deploy api/feedback to Vercel + Upstash Redis, then set data-feedback-api="/api/feedback" (same origin) or your full API URL (e.g. GitHub Pages → Vercel API). -->
-  <div id="app" data-youtube-playlist="PLN-SBKLnxgwvH4TKfsWG6YMYLPzg5aGXp">
+  <!-- Optional: set data-focal-editor-secret for family-only Director tools (#focal=&lt;secret&gt;). Leave empty to disable. -->
+  <div id="app" data-youtube-playlist="PLN-SBKLnxgwvH4TKfsWG6YMYLPzg5aGXp" data-focal-editor-secret="">
     <div id="status-banner" class="status-banner" role="status" aria-live="polite" hidden></div>
     <div id="stage" aria-hidden="true">
       <div id="buffer-a" class="buffer" data-buffer="a">
@@ -150,6 +151,18 @@
         <h2 id="fatal-title" class="fatal-overlay__title">Unable to load memorial</h2>
         <p id="fatal-message" class="fatal-overlay__message">Please refresh and try again.</p>
         <button type="button" id="fatal-retry" class="fatal-overlay__btn">Try again</button>
+      </div>
+    </div>
+    <!-- Director: unlocked only via #focal=secret matching data-focal-editor-secret (see app.js). Hidden from normal visitors. -->
+    <div id="focal-editor-root" class="focal-editor-root" hidden>
+      <button type="button" id="focal-editor-toggle" class="focal-editor-toggle" aria-expanded="false" aria-controls="focal-editor-panel">Director</button>
+      <div id="focal-editor-panel" class="focal-editor-panel" role="region" aria-label="Focal point tools" hidden>
+        <p class="focal-editor-panel__hint">Tap the photo to place the focal point.</p>
+        <p id="focal-editor-vals" class="focal-editor-panel__vals" aria-live="polite">x: 0.500 · y: 0.500</p>
+        <div class="focal-editor-panel__actions">
+          <button type="button" id="focal-editor-copy" class="focal-editor-btn">Copy JSON snippet</button>
+          <button type="button" id="focal-editor-lock" class="focal-editor-btn focal-editor-btn--ghost">Lock tools</button>
+        </div>
       </div>
     </div>
   </div>
