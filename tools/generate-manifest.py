@@ -20,11 +20,15 @@ import cv2
 ROOT = Path(__file__).resolve().parent.parent
 IMAGES_DIR = ROOT / "public" / "images"
 THUMB_DIR = ROOT / "public" / "thumbnails"
+AMBIENT_DIR = ROOT / "public" / "ambient"
 OUT = ROOT / "public" / "manifest.json"
 
 EXT = {".jpg", ".jpeg", ".png", ".gif", ".webp", ".avif", ".bmp"}
 THUMB_MAX_WIDTH = 320
 THUMB_JPEG_QUALITY = 82
+AMBIENT_MAX_WIDTH = 960
+AMBIENT_BLUR_SIGMA = 16
+AMBIENT_JPEG_QUALITY = 72
 
 def clamp01(v: float) -> float:
     return max(0.0, min(1.0, v))
@@ -60,6 +64,34 @@ def write_thumb_jpg(src_path: Path) -> str | None:
         [int(cv2.IMWRITE_JPEG_QUALITY), THUMB_JPEG_QUALITY],
     )
     return f"thumbnails/{out_name}"
+
+
+def write_ambient_jpg(src_path: Path) -> str | None:
+    """
+    Pre-render a lightweight ambient background.
+    We downscale first, then blur, then save JPEG for fast decode on mobile.
+    """
+    img = cv2.imread(str(src_path))
+    if img is None:
+        return None
+    h, w = img.shape[:2]
+    if w < 2 or h < 2:
+        return None
+    if w > AMBIENT_MAX_WIDTH:
+        scale = AMBIENT_MAX_WIDTH / float(w)
+        nh = max(1, int(round(h * scale)))
+        img = cv2.resize(img, (AMBIENT_MAX_WIDTH, nh), interpolation=cv2.INTER_AREA)
+    # Strong blur for soft ambient mood without expensive runtime CSS blur.
+    img = cv2.GaussianBlur(img, (0, 0), sigmaX=AMBIENT_BLUR_SIGMA, sigmaY=AMBIENT_BLUR_SIGMA)
+    AMBIENT_DIR.mkdir(parents=True, exist_ok=True)
+    out_name = f"{src_path.stem}.jpg"
+    out_path = AMBIENT_DIR / out_name
+    cv2.imwrite(
+        str(out_path),
+        img,
+        [int(cv2.IMWRITE_JPEG_QUALITY), AMBIENT_JPEG_QUALITY],
+    )
+    return f"ambient/{out_name}"
 
 
 def focal_mediapipe(
@@ -199,6 +231,9 @@ def main() -> int:
             thumb_rel = write_thumb_jpg(path)
             if thumb_rel:
                 entry["thumb"] = thumb_rel
+            ambient_rel = write_ambient_jpg(path)
+            if ambient_rel:
+                entry["ambient"] = ambient_rel
             images.append(entry)
             if (i + 1) % 50 == 0 or i == len(files) - 1:
                 print(f"Processed {i + 1}/{len(files)} …", flush=True)
@@ -216,7 +251,10 @@ def main() -> int:
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
-    print(f"Wrote {len(images)} entries + thumbnails to {THUMB_DIR} -> {OUT}", flush=True)
+    print(
+        f"Wrote {len(images)} entries + thumbnails ({THUMB_DIR}) + ambient ({AMBIENT_DIR}) -> {OUT}",
+        flush=True,
+    )
     return 0
 
 

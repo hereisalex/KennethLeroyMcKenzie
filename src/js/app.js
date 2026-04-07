@@ -6,8 +6,8 @@ const PUBLIC_BASE = new URL('../../public/', import.meta.url).href;
 const CONTROLS_HIDE_MS = 3_000;
 /** Max Ken Burns scale at image center; safe zoom raises min scale and tightens max near edges. */
 const KEN_BURNS_MAX_SCALE = 1.15;
-/** Extra scale on min/max so cover + user pan never exposes empty buffer (see .slide-img-wrap translate). */
-const KEN_PAN_HEADROOM = 1.22;
+/** Keep at least 80% of any image visible while Ken Burns runs. */
+const MIN_VISIBLE_IMAGE_FRACTION = 0.8;
 const GRAB_RUBBER_SOFT_PX = 72;
 const GRAB_RUBBER_HARD_PX = 140;
 const GESTURE_MIN_SCALE = 0.5;
@@ -67,6 +67,8 @@ function getOrCreateVisitorId() {
 const stageEl = document.querySelector('#stage');
 const bufferA = document.querySelector('#buffer-a');
 const bufferB = document.querySelector('#buffer-b');
+const bgA = bufferA?.querySelector('.slide-bg');
+const bgB = bufferB?.querySelector('.slide-bg');
 const wrapA = bufferA?.querySelector('.slide-img-wrap');
 const wrapB = bufferB?.querySelector('.slide-img-wrap');
 const imgA = bufferA?.querySelector('.slide-img');
@@ -105,6 +107,8 @@ const ctrlFitFull = document.querySelector('#ctrl-fit-full');
 
 let activeEl = bufferA;
 let inactiveEl = bufferB;
+let activeBg = bgA;
+let inactiveBg = bgB;
 let activeImg = imgA;
 let inactiveImg = imgB;
 let activeWrap = wrapA;
@@ -411,6 +415,7 @@ function syncVolumeUi() {
 
 function swapBuffers() {
   [activeEl, inactiveEl] = [inactiveEl, activeEl];
+  [activeBg, inactiveBg] = [inactiveBg, activeBg];
   [activeImg, inactiveImg] = [inactiveImg, activeImg];
   [activeWrap, inactiveWrap] = [inactiveWrap, activeWrap];
 }
@@ -470,21 +475,21 @@ function usesFaceFocalForKenBurns(entry) {
   return Math.hypot(x - 0.5, y - 0.5) > 0.04;
 }
 
-function computeKenDriftPercents(entry, useFaceFocal) {
+function computeKenDriftPercents(entry, useFaceFocal, driftLimitPct) {
   if (useFaceFocal) {
     const { x: fx, y: fy } = getFocalPoint(entry);
-    const ux = (fx - 0.5) * 7.5;
-    const uy = (fy - 0.5) * 7.5;
+    const ux = (fx - 0.5) * 2;
+    const uy = (fy - 0.5) * 2;
     return {
-      tx0: `${(-ux * 0.48).toFixed(2)}%`,
-      ty0: `${(-uy * 0.48).toFixed(2)}%`,
-      tx1: `${(ux * 0.44).toFixed(2)}%`,
-      ty1: `${(uy * 0.44).toFixed(2)}%`,
+      tx0: `${(-ux * driftLimitPct * 0.55).toFixed(2)}%`,
+      ty0: `${(-uy * driftLimitPct * 0.55).toFixed(2)}%`,
+      tx1: `${(ux * driftLimitPct * 0.65).toFixed(2)}%`,
+      ty1: `${(uy * driftLimitPct * 0.65).toFixed(2)}%`,
     };
   }
   const key = imageUrl(entry) || 'slide';
   const rnd = mulberry32(hashString32(`${key}|ken`));
-  const pick = () => (rnd() - 0.5) * 8.5;
+  const pick = () => (rnd() - 0.5) * 2 * driftLimitPct;
   return {
     tx0: `${pick().toFixed(2)}%`,
     ty0: `${pick().toFixed(2)}%`,
@@ -493,44 +498,46 @@ function computeKenDriftPercents(entry, useFaceFocal) {
   };
 }
 
-/**
- * Near edges, require a higher minimum scale so object-fit:cover stays full-bleed while zooming
- * from transform-origin at the focal point; max scale tightens so motion stays subtle.
- */
-function calculateSafeScale(fx, fy) {
-  const marginX = Math.min(fx, 1 - fx);
-  const marginY = Math.min(fy, 1 - fy);
-  const m = Math.min(marginX, marginY);
-  const t = clamp(m / 0.5, 0, 1);
-  const edge = 1 - t;
-  const minScale = 1 + edge * 0.12;
-  const span = t * (KEN_BURNS_MAX_SCALE - 1);
-  const maxScale = Math.max(minScale + Math.max(span, 0.025), minScale * 1.02);
+function maxScaleForVisibilityFloor(imgEl, viewEl) {
+  const vw = Math.max(2, viewEl?.clientWidth || window.innerWidth || 2);
+  const vh = Math.max(2, viewEl?.clientHeight || window.innerHeight || 2);
+  const iw = Math.max(2, imgEl?.naturalWidth || vw);
+  const ih = Math.max(2, imgEl?.naturalHeight || vh);
+  const imageAspect = iw / ih;
+  const viewportAspect = vw / vh;
+  const mismatchRatio =
+    imageAspect >= viewportAspect ? imageAspect / viewportAspect : viewportAspect / imageAspect;
+  const oneOverFloor = 1 / MIN_VISIBLE_IMAGE_FRACTION;
+  const byArea =
+    mismatchRatio >= oneOverFloor
+      ? oneOverFloor
+      : Math.sqrt(mismatchRatio / MIN_VISIBLE_IMAGE_FRACTION);
+  return clamp(byArea, 1.02, 1.35);
+}
+
+function calculateSafeScale(imgEl) {
+  const minScale = 1;
+  const visibilityBound = maxScaleForVisibilityFloor(imgEl, stageEl);
+  const maxScale = clamp(Math.min(KEN_BURNS_MAX_SCALE, visibilityBound), 1.02, KEN_BURNS_MAX_SCALE);
   return { minScale, maxScale };
 }
 
 function applyKenBurnsForEntry(img, entry) {
   const focal = getFocalPoint(entry);
   const useFaceFocal = usesFaceFocalForKenBurns(entry);
-  let ox = focal.x;
-  let oy = focal.y;
   let objX = focal.x;
   let objY = focal.y;
   if (!useFaceFocal) {
-    const rndO = mulberry32(hashString32(`${imageUrl(entry) || 'slide'}|origin`));
-    ox = 0.22 + rndO() * 0.56;
-    oy = 0.22 + rndO() * 0.56;
     objX = 0.5;
     objY = 0.5;
   }
-  const { minScale, maxScale } = calculateSafeScale(ox, oy);
-  const minS = minScale * KEN_PAN_HEADROOM;
-  const maxS = maxScale * KEN_PAN_HEADROOM;
-  const drift = computeKenDriftPercents(entry, useFaceFocal);
-  img.style.transformOrigin = `${ox * 100}% ${oy * 100}%`;
+  const { minScale, maxScale } = calculateSafeScale(img);
+  const driftLimitPct = clamp((maxScale - minScale) * 26, 1.25, 4.2);
+  const drift = computeKenDriftPercents(entry, useFaceFocal, driftLimitPct);
+  img.style.transformOrigin = `50% 50%`;
   img.style.objectPosition = `${objX * 100}% ${objY * 100}%`;
-  img.style.setProperty('--ken-min-scale', String(minS));
-  img.style.setProperty('--ken-max-scale', String(maxS));
+  img.style.setProperty('--ken-min-scale', String(minScale));
+  img.style.setProperty('--ken-max-scale', String(maxScale));
   img.style.setProperty('--ken-tx0', drift.tx0);
   img.style.setProperty('--ken-ty0', drift.ty0);
   img.style.setProperty('--ken-tx1', drift.tx1);
@@ -602,7 +609,7 @@ function setFitContainMode(enabled) {
 }
 
 function syncKenBurnsDurationCss(ms) {
-  const bounded = clamp(Math.round(ms), 4000, 120_000);
+  const bounded = clamp(Math.round(ms), 3000, 120_000);
   document.documentElement.style.setProperty('--slide-ms', `${bounded}ms`);
 }
 
@@ -653,6 +660,7 @@ function normalizeManifestEntry(entry) {
       title: prettyFilename(src) || src,
       focal_point: { x: 0.5, y: 0.5 },
       focal_source: 'fallback',
+      ambient: '',
     };
   }
   if (!entry || typeof entry !== 'object') return { src: '', title: '' };
@@ -668,6 +676,13 @@ function normalizeManifestEntry(entry) {
 
 function resolveAssetUrl(entry) {
   return PUBLIC_BASE + imageUrl(entry);
+}
+
+function resolveAmbientUrl(entry) {
+  if (entry && typeof entry === 'object' && typeof entry.ambient === 'string' && entry.ambient.trim()) {
+    return PUBLIC_BASE + entry.ambient.trim();
+  }
+  return resolveAssetUrl(entry);
 }
 
 /** Smaller JPEG in public/thumbnails/ when manifest includes `thumb` (from Python generator). */
@@ -686,7 +701,20 @@ function preloadAheadFrom(baseIndex) {
     const e = getManifestEntryAt(baseIndex + k);
     if (!e) continue;
     preload(resolveAssetUrl(e));
+    preload(resolveAmbientUrl(e));
   }
+}
+
+function setAmbientBackground(bgEl, entry) {
+  if (!bgEl) return;
+  const ambientUrl = resolveAmbientUrl(entry);
+  bgEl.src = ambientUrl;
+  const isFallback =
+    !entry ||
+    typeof entry !== 'object' ||
+    typeof entry.ambient !== 'string' ||
+    entry.ambient.trim().length === 0;
+  bgEl.classList.toggle('slide-bg--fallback', isFallback);
 }
 
 function suggestedDownloadFilename(entry) {
@@ -993,6 +1021,7 @@ function applySlideIndex(rawIndex) {
   index = i;
   const currentEntry = images[index];
   const url = resolveAssetUrl(currentEntry);
+  setAmbientBackground(inactiveBg, currentEntry);
   inactiveImg.src = url;
   inactiveImg.alt = buildImageAlt(currentEntry, index);
   applySlidePresentStyle(inactiveImg, currentEntry);
@@ -1025,6 +1054,8 @@ function showInitial() {
   resetSlideWrapTransforms();
   const firstEntry = images[0];
   const first = resolveAssetUrl(firstEntry);
+  setAmbientBackground(activeBg, firstEntry);
+  setAmbientBackground(inactiveBg, getManifestEntryAt(1) ?? firstEntry);
   activeImg.src = first;
   activeImg.alt = buildImageAlt(firstEntry, 0);
   applySlidePresentStyle(activeImg, firstEntry);
@@ -1518,8 +1549,13 @@ function syncMediaSessionPlaybackState() {
   }
 }
 
+function syncPausedStateClass() {
+  appRoot?.classList.toggle('slideshow-paused', slideshowPaused);
+}
+
 function pauseSlideshowAndMusic() {
   slideshowPaused = true;
+  syncPausedStateClass();
   clearSlideshowTimer();
   if (ytPlayerAvailable) ytPlayer?.pauseVideo?.();
   updatePlayPauseButton();
@@ -1528,6 +1564,7 @@ function pauseSlideshowAndMusic() {
 
 function resumeSlideshowAndMusic() {
   slideshowPaused = false;
+  syncPausedStateClass();
   scheduleSlideshowTick();
   if (ytPlayerAvailable) ytPlayer?.playVideo?.();
   updatePlayPauseButton();
@@ -1701,6 +1738,17 @@ function wireFullscreenEvents() {
   document.addEventListener('mozfullscreenchange', updateFullscreenButton);
 }
 
+function wireViewportResize() {
+  window.addEventListener(
+    'resize',
+    () => {
+      if (images.length === 0) return;
+      refreshAllSlidePresentStyles();
+    },
+    { passive: true },
+  );
+}
+
 function wireKeyboard() {
   document.addEventListener('keydown', (e) => {
     const t = e.target;
@@ -1848,6 +1896,7 @@ async function main() {
   loadAudioPrefs();
   loadSlideTimingPrefs();
   loadFitContainPrefs();
+  syncPausedStateClass();
   syncRootFitContainClass();
   syncFitContainUi();
   syncVolumeUi();
@@ -1861,6 +1910,7 @@ async function main() {
   wirePhotoFeedbackUi();
   wireControlsUi();
   wireFullscreenEvents();
+  wireViewportResize();
   wireKeyboard();
   wireMediaSession();
   updateFullscreenButton();

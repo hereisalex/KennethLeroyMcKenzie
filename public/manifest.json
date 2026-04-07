@@ -1,50 +1,82 @@
 {
-  "generatedAt": "2026-03-26T22:51:13.115Z",
+  "generatedAt": "2026-04-07T04:27:54.112038+00:00",
   "images": [
-    {
-      "src": "images/0_8mos.png",
-      "title": "0 8mos",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/0_8mosColorized.png",
-      "title": "0 8mos Colorized",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
     {
       "src": "images/0ToddlerPortrait.png",
       "title": "0 Toddler Portrait",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5818356722593307,
+        "y": 0.386057510972023
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/0ToddlerPortrait.jpg",
+      "ambient": "ambient/0ToddlerPortrait.jpg"
     },
     {
       "src": "images/0ToddlerPortraitColorizedv2.png",
       "title": "0 Toddler Portrait Colorizedv2",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5851288139820099,
+        "y": 0.38933688402175903
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/0ToddlerPortraitColorizedv2.jpg",
+      "ambient": "ambient/0ToddlerPortraitColorizedv2.jpg"
+    },
+    {
+      "src": "images/0_8mos.png",
+      "title": "0 8mos",
+      "focal_point": {
+        "x": 0.5523882210254669,
+        "y": 0.3277275413274765
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/0_8mos.jpg",
+      "ambient": "ambient/0_8mos.jpg"
+    },
+    {
+      "src": "images/0_8mosColorized.png",
+      "title": "0 8mos Colorized",
+      "focal_point": {
+        "x": 0.5528371036052704,
+        "y": 0.32714930176734924
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/0_8mosColorized.jpg",
+      "ambient": "ambient/0_8mosColorized.jpg"
+    },
+    {
+      "src": "images/1671054711924.jpg",
+      "title": "1671054711924",
+      "focal_point": {
+        "x": 0.9047143161296844,
+        "y": 0.3359861224889755
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/1671054711924.jpg",
+      "ambient": "ambient/1671054711924.jpg"
+    },
+    {
+      "src": "images/1966 Germany.jpg",
+      "title": "1966 Germany",
+      "focal_point": {
+        "x": 0.38024280965328217,
+        "y": 0.47485190629959106
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/1966 Germany.jpg",
+      "ambient": "ambient/1966 Germany.jpg"
     },
     {
       "src": "images/1_Goat.png",
       "title": "1 Goat",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.46135703918722787,
+        "y": 0.8785574092247301
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/1_Goat.jpg",
+      "ambient": "ambient/1_Goat.jpg"
     },
     {
       "src": "images/1_GoatColorized.png",
@@ -53,520 +85,438 @@
         "x": 0.5,
         "y": 0.5
       },
-      "focal_source": "fallback"
+      "focal_source": "fallback",
+      "thumb": "thumbnails/1_GoatColorized.jpg",
+      "ambient": "ambient/1_GoatColorized.jpg"
     },
     {
       "src": "images/1_GoatTwo.png",
       "title": "1 Goat Two",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4345868644067797,
+        "y": 0.6721246006389776
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/1_GoatTwo.jpg",
+      "ambient": "ambient/1_GoatTwo.jpg"
     },
     {
       "src": "images/1_GoatTwoColorized.png",
       "title": "1 Goat Two Colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5680614406779662,
+        "y": 0.7759584664536742
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/1_GoatTwoColorized.jpg",
+      "ambient": "ambient/1_GoatTwoColorized.jpg"
     },
     {
       "src": "images/1_Grass.png",
       "title": "1 Grass",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5694160759449005,
+        "y": 0.44009900093078613
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/1_Grass.jpg",
+      "ambient": "ambient/1_Grass.jpg"
     },
     {
       "src": "images/1_UniformYoung.png",
       "title": "1 Uniform Young",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5643849968910217,
+        "y": 0.3162611126899719
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/1_UniformYoung.jpg",
+      "ambient": "ambient/1_UniformYoung.jpg"
     },
     {
       "src": "images/1_UniformYoungColorized.png",
       "title": "1 Uniform Young Colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5615144670009613,
+        "y": 0.3186279237270355
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/1_UniformYoungColorized.jpg",
+      "ambient": "ambient/1_UniformYoungColorized.jpg"
     },
     {
       "src": "images/1_Young.png",
       "title": "1 Young",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.7060937285423279,
+        "y": 0.4099534749984741
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/1_Young.jpg",
+      "ambient": "ambient/1_Young.jpg"
     },
     {
       "src": "images/1_YoungColorized.png",
       "title": "1 Young Colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.707160234451294,
+        "y": 0.41733701527118683
       },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/1671054711924.jpg",
-      "title": "1671054711924",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/1966 Germany.jpg",
-      "title": "1966 Germany",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/2_AlaskaLauraShirt.png",
-      "title": "2 Alaska Laura Shirt",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/2_AlaskaLauraShirtColorized.png",
-      "title": "2 Alaska Laura Shirt Colorized",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/2_Clogs.png",
-      "title": "2 Clogs",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/2_ClogsColorized.png",
-      "title": "2 Clogs Colorized",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/2_Dental.png",
-      "title": "2 Dental",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/2_Forest.png",
-      "title": "2 Forest",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/2_ForestColorized.png",
-      "title": "2 Forest Colorized",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/2_FtRichardson.png",
-      "title": "2 Ft Richardson",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/2_GrandpaFolks.png",
-      "title": "2 Grandpa Folks",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/2_GrandpaFolksColorized.png",
-      "title": "2 Grandpa Folks Colorized",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/2_Horseshoeing.png",
-      "title": "2 Horseshoeing",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/2_HorseshoeingColorized.png",
-      "title": "2 Horseshoeing Colorized",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/2_Piglets.png",
-      "title": "2 Piglets",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/2_Snow.png",
-      "title": "2 Snow",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/2_SnowColorized.png",
-      "title": "2 Snow Colorized",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/2_TennesseeWalker.png",
-      "title": "2 Tennessee Walker",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/1_YoungColorized.jpg",
+      "ambient": "ambient/1_YoungColorized.jpg"
     },
     {
       "src": "images/20171121_213159.jpg",
       "title": "20171121 213159",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.39699074074074076,
+        "y": 0.537078373015873
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/20171121_213159.jpg",
+      "ambient": "ambient/20171121_213159.jpg"
     },
     {
       "src": "images/20171122_192256.jpg",
       "title": "20171122 192256",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.47328513860702515,
+        "y": 0.4056038558483124
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/20171122_192256.jpg",
+      "ambient": "ambient/20171122_192256.jpg"
     },
     {
       "src": "images/20200309_191838.jpg",
       "title": "20200309 191838",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.46000105142593384,
+        "y": 0.3188183903694153
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/20200309_191838.jpg",
+      "ambient": "ambient/20200309_191838.jpg"
     },
     {
       "src": "images/20200309_191842.jpg",
       "title": "20200309 191842",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.7227838039398193,
+        "y": 0.39112377166748047
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/20200309_191842.jpg",
+      "ambient": "ambient/20200309_191842.jpg"
     },
     {
       "src": "images/20210618_192505.jpg",
       "title": "20210618 192505",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.780211478471756,
+        "y": 0.38601386547088623
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/20210618_192505.jpg",
+      "ambient": "ambient/20210618_192505.jpg"
     },
     {
       "src": "images/20210618_201123.jpg",
       "title": "20210618 201123",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.460125,
+        "y": 0.36283333333333334
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/20210618_201123.jpg",
+      "ambient": "ambient/20210618_201123.jpg"
     },
     {
       "src": "images/20210618_201127.jpg",
       "title": "20210618 201127",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.7532792091369629,
+        "y": 0.22226408869028091
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/20210618_201127.jpg",
+      "ambient": "ambient/20210618_201127.jpg"
     },
     {
       "src": "images/20210618_205751.jpg",
       "title": "20210618 205751",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.40900175273418427,
+        "y": 0.33104416728019714
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/20210618_205751.jpg",
+      "ambient": "ambient/20210618_205751.jpg"
     },
     {
       "src": "images/20210618_205800.jpg",
       "title": "20210618 205800",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4026302695274353,
+        "y": 0.31310731172561646
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/20210618_205800.jpg",
+      "ambient": "ambient/20210618_205800.jpg"
     },
     {
       "src": "images/20210619_111623.jpg",
       "title": "20210619 111623",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.601625,
+        "y": 0.4681666666666667
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/20210619_111623.jpg",
+      "ambient": "ambient/20210619_111623.jpg"
     },
     {
       "src": "images/20210619_111624.jpg",
       "title": "20210619 111624",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6449010372161865,
+        "y": 0.612966924905777
       },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/20210619_111627_capture.jpg",
-      "title": "20210619 111627 capture",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/20210619_111624.jpg",
+      "ambient": "ambient/20210619_111624.jpg"
     },
     {
       "src": "images/20210619_111627.jpg",
       "title": "20210619 111627",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.678875,
+        "y": 0.5061666666666667
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/20210619_111627.jpg",
+      "ambient": "ambient/20210619_111627.jpg"
+    },
+    {
+      "src": "images/20210619_111627_capture.jpg",
+      "title": "20210619 111627 capture",
+      "focal_point": {
+        "x": 0.44166666666666665,
+        "y": 0.8564814814814815
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/20210619_111627_capture.jpg",
+      "ambient": "ambient/20210619_111627_capture.jpg"
     },
     {
       "src": "images/20210619_120156.jpg",
       "title": "20210619 120156",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4574013352394104,
+        "y": 0.3315981924533844
       },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/20210619_120158_capture.jpg",
-      "title": "20210619 120158 capture",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/20210619_120156.jpg",
+      "ambient": "ambient/20210619_120156.jpg"
     },
     {
       "src": "images/20210619_120158.jpg",
       "title": "20210619 120158",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.42690031230449677,
+        "y": 0.3097341060638428
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/20210619_120158.jpg",
+      "ambient": "ambient/20210619_120158.jpg"
+    },
+    {
+      "src": "images/20210619_120158_capture.jpg",
+      "title": "20210619 120158 capture",
+      "focal_point": {
+        "x": 0.43940529227256775,
+        "y": 0.31301504373550415
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/20210619_120158_capture.jpg",
+      "ambient": "ambient/20210619_120158_capture.jpg"
     },
     {
       "src": "images/20210619_120159.jpg",
       "title": "20210619 120159",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4198020398616791,
+        "y": 0.2999694049358368
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/20210619_120159.jpg",
+      "ambient": "ambient/20210619_120159.jpg"
     },
     {
       "src": "images/2A_ArmyBadge.png",
       "title": "2 A Army Badge",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.40132105350494385,
+        "y": 0.3788374662399292
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2A_ArmyBadge.jpg",
+      "ambient": "ambient/2A_ArmyBadge.jpg"
     },
     {
       "src": "images/2A_ArmyBadgeColorized.png",
       "title": "2 A Army Badge Colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4049890637397766,
+        "y": 0.37257903814315796
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2A_ArmyBadgeColorized.jpg",
+      "ambient": "ambient/2A_ArmyBadgeColorized.jpg"
     },
     {
       "src": "images/2A_ArmyCeremony.png",
       "title": "2 A Army Ceremony",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5870219469070435,
+        "y": 0.2335483804345131
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2A_ArmyCeremony.jpg",
+      "ambient": "ambient/2A_ArmyCeremony.jpg"
     },
     {
       "src": "images/2A_ArmyCeremonyColorized.png",
       "title": "2 A Army Ceremony Colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.587235152721405,
+        "y": 0.23526815325021744
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2A_ArmyCeremonyColorized.jpg",
+      "ambient": "ambient/2A_ArmyCeremonyColorized.jpg"
     },
     {
       "src": "images/2A_KenAndFriend.png",
       "title": "2 A Ken And Friend",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4227574750830565,
+        "y": 0.52
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2A_KenAndFriend.jpg",
+      "ambient": "ambient/2A_KenAndFriend.jpg"
     },
     {
       "src": "images/2A_KenAndFriendColorized.png",
       "title": "2 A Ken And Friend Colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.43203920125961304,
+        "y": 0.32282519340515137
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2A_KenAndFriendColorized.jpg",
+      "ambient": "ambient/2A_KenAndFriendColorized.jpg"
     },
     {
       "src": "images/2A_MP.png",
       "title": "2 A MP",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4713464081287384,
+        "y": 0.3664782643318176
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2A_MP.jpg",
+      "ambient": "ambient/2A_MP.jpg"
     },
     {
       "src": "images/2A_MPColorized.png",
       "title": "2 A MPColorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.47510379552841187,
+        "y": 0.3795681595802307
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2A_MPColorized.jpg",
+      "ambient": "ambient/2A_MPColorized.jpg"
     },
     {
       "src": "images/2F_CouchSnuggles.png",
       "title": "2 F Couch Snuggles",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.46027418971061707,
+        "y": 0.38032619655132294
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_CouchSnuggles.jpg",
+      "ambient": "ambient/2F_CouchSnuggles.jpg"
     },
     {
       "src": "images/2F_Gardner.png",
       "title": "2 F Gardner",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5234324187040329,
+        "y": 0.33765286207199097
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_Gardner.jpg",
+      "ambient": "ambient/2F_Gardner.jpg"
     },
     {
       "src": "images/2F_GardnerColorized.png",
       "title": "2 F Gardner Colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.437305212020874,
+        "y": 0.3535553812980652
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_GardnerColorized.jpg",
+      "ambient": "ambient/2F_GardnerColorized.jpg"
     },
     {
       "src": "images/2F_KenAndNancyChurch.png",
       "title": "2 F Ken And Nancy Church",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.38818897637795274,
+        "y": 0.3808437856328392
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_KenAndNancyChurch.jpg",
+      "ambient": "ambient/2F_KenAndNancyChurch.jpg"
     },
     {
       "src": "images/2F_KenAndNancyChurchColorized.png",
       "title": "2 F Ken And Nancy Church Colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.39799849689006805,
+        "y": 0.38551077246665955
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_KenAndNancyChurchColorized.jpg",
+      "ambient": "ambient/2F_KenAndNancyChurchColorized.jpg"
     },
     {
       "src": "images/2F_KenAndNancyCo.png",
       "title": "2 F Ken And Nancy Co",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.43491346877351394,
+        "y": 0.3625277161862528
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_KenAndNancyCo.jpg",
+      "ambient": "ambient/2F_KenAndNancyCo.jpg"
     },
     {
       "src": "images/2F_KenAndNancyColorized.png",
       "title": "2 F Ken And Nancy Colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4375734478235245,
+        "y": 0.19288642704486847
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_KenAndNancyColorized.jpg",
+      "ambient": "ambient/2F_KenAndNancyColorized.jpg"
     },
     {
       "src": "images/2F_KenLaura.png",
@@ -575,223 +525,504 @@
         "x": 0.5,
         "y": 0.5
       },
-      "focal_source": "fallback"
+      "focal_source": "fallback",
+      "thumb": "thumbnails/2F_KenLaura.jpg",
+      "ambient": "ambient/2F_KenLaura.jpg"
     },
     {
       "src": "images/2F_KenWithBaby.png",
       "title": "2 F Ken With Baby",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5595709383487701,
+        "y": 0.29649370163679123
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_KenWithBaby.jpg",
+      "ambient": "ambient/2F_KenWithBaby.jpg"
     },
     {
       "src": "images/2F_KenWithLaura.png",
       "title": "2 F Ken With Laura",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6107269823551178,
+        "y": 0.36157067120075226
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_KenWithLaura.jpg",
+      "ambient": "ambient/2F_KenWithLaura.jpg"
     },
     {
       "src": "images/2F_KenWithLauraColorized.png",
       "title": "2 F Ken With Laura Colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6113038063049316,
+        "y": 0.3621237576007843
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_KenWithLauraColorized.jpg",
+      "ambient": "ambient/2F_KenWithLauraColorized.jpg"
     },
     {
       "src": "images/2F_LauraFirstBirthday.png",
       "title": "2 F Laura First Birthday",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.48986512422561646,
+        "y": 0.3111792206764221
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_LauraFirstBirthday.jpg",
+      "ambient": "ambient/2F_LauraFirstBirthday.jpg"
     },
     {
       "src": "images/2F_LauraFirstBirthdayColorized.png",
       "title": "2 F Laura First Birthday Colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.503930002450943,
+        "y": 0.29146983474493027
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_LauraFirstBirthdayColorized.jpg",
+      "ambient": "ambient/2F_LauraFirstBirthdayColorized.jpg"
     },
     {
       "src": "images/2F_Lucille.png",
       "title": "2 F Lucille",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6317804722399489,
+        "y": 0.30786516853932583
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_Lucille.jpg",
+      "ambient": "ambient/2F_Lucille.jpg"
     },
     {
       "src": "images/2F_LucilleColorized.png",
       "title": "2 F Lucille Colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6312088072299957,
+        "y": 0.29328277707099915
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_LucilleColorized.jpg",
+      "ambient": "ambient/2F_LucilleColorized.jpg"
     },
     {
       "src": "images/2F_NancyAndBaby.png",
       "title": "2 F Nancy And Baby",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.42022016644477844,
+        "y": 0.18686649948358536
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_NancyAndBaby.jpg",
+      "ambient": "ambient/2F_NancyAndBaby.jpg"
     },
     {
       "src": "images/2F_NancyAndBabyColorized.png",
       "title": "2 F Nancy And Baby Colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4145326018333435,
+        "y": 0.17965038120746613
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_NancyAndBabyColorized.jpg",
+      "ambient": "ambient/2F_NancyAndBabyColorized.jpg"
     },
     {
       "src": "images/2F_NancyAndBabyLaura.png",
       "title": "2 F Nancy And Baby Laura",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.44099073112010956,
+        "y": 0.35688695311546326
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_NancyAndBabyLaura.jpg",
+      "ambient": "ambient/2F_NancyAndBabyLaura.jpg"
     },
     {
       "src": "images/2F_NancyAndBabyLauraColorized.png",
       "title": "2 F Nancy And Baby Laura Colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6508591771125793,
+        "y": 0.5199652463197708
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_NancyAndBabyLauraColorized.jpg",
+      "ambient": "ambient/2F_NancyAndBabyLauraColorized.jpg"
     },
     {
       "src": "images/2F_NancyInKensLap.png",
       "title": "2 F Nancy In Kens Lap",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5733380615711212,
+        "y": 0.4748711436986923
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_NancyInKensLap.jpg",
+      "ambient": "ambient/2F_NancyInKensLap.jpg"
     },
     {
       "src": "images/2F_NancyLaura.png",
       "title": "2 F Nancy Laura",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.7001246882793017,
+        "y": 0.3277988614800759
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_NancyLaura.jpg",
+      "ambient": "ambient/2F_NancyLaura.jpg"
     },
     {
       "src": "images/2F_NancyLauraColorized.png",
       "title": "2 F Nancy Laura Colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5656340718269348,
+        "y": 0.2254679799079895
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_NancyLauraColorized.jpg",
+      "ambient": "ambient/2F_NancyLauraColorized.jpg"
     },
     {
       "src": "images/2F_NancyLauraSnow.png",
       "title": "2 F Nancy Laura Snow",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.3713646532438479,
+        "y": 0.3111111111111111
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_NancyLauraSnow.jpg",
+      "ambient": "ambient/2F_NancyLauraSnow.jpg"
     },
     {
       "src": "images/2F_NancyLauraSnowColorized.png",
       "title": "2 F Nancy Laura Snow Colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.39569443464279175,
+        "y": 0.23113258928060532
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_NancyLauraSnowColorized.jpg",
+      "ambient": "ambient/2F_NancyLauraSnowColorized.jpg"
     },
     {
       "src": "images/2F_WeddingCake.png",
       "title": "2 F Wedding Cake",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5644963979721069,
+        "y": 0.3511614501476288
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_WeddingCake.jpg",
+      "ambient": "ambient/2F_WeddingCake.jpg"
     },
     {
       "src": "images/2F_WeddingDress.png",
       "title": "2 F Wedding Dress",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.21623155505107833,
+        "y": 0.23184357541899442
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_WeddingDress.jpg",
+      "ambient": "ambient/2F_WeddingDress.jpg"
     },
     {
       "src": "images/2F_WeddingFolks.png",
       "title": "2 F Wedding Folks",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6065300703048706,
+        "y": 0.38008901476860046
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_WeddingFolks.jpg",
+      "ambient": "ambient/2F_WeddingFolks.jpg"
     },
     {
       "src": "images/2F_WeddingFolks2.png",
       "title": "2 F Wedding Folks2",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4430426359176636,
+        "y": 0.3040766716003418
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/2F_WeddingFolks2.jpg",
+      "ambient": "ambient/2F_WeddingFolks2.jpg"
+    },
+    {
+      "src": "images/2_AlaskaLauraShirt.png",
+      "title": "2 Alaska Laura Shirt",
+      "focal_point": {
+        "x": 0.5389109551906586,
+        "y": 0.11155558004975319
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/2_AlaskaLauraShirt.jpg",
+      "ambient": "ambient/2_AlaskaLauraShirt.jpg"
+    },
+    {
+      "src": "images/2_AlaskaLauraShirtColorized.png",
+      "title": "2 Alaska Laura Shirt Colorized",
+      "focal_point": {
+        "x": 0.5425370037555695,
+        "y": 0.11817808076739311
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/2_AlaskaLauraShirtColorized.jpg",
+      "ambient": "ambient/2_AlaskaLauraShirtColorized.jpg"
+    },
+    {
+      "src": "images/2_Clogs.png",
+      "title": "2 Clogs",
+      "focal_point": {
+        "x": 0.45818527042865753,
+        "y": 0.19464534521102905
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/2_Clogs.jpg",
+      "ambient": "ambient/2_Clogs.jpg"
+    },
+    {
+      "src": "images/2_ClogsColorized.png",
+      "title": "2 Clogs Colorized",
+      "focal_point": {
+        "x": 0.4588918536901474,
+        "y": 0.19691063463687897
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/2_ClogsColorized.jpg",
+      "ambient": "ambient/2_ClogsColorized.jpg"
+    },
+    {
+      "src": "images/2_Dental.png",
+      "title": "2 Dental",
+      "focal_point": {
+        "x": 0.4042291194200516,
+        "y": 0.24199485778808594
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/2_Dental.jpg",
+      "ambient": "ambient/2_Dental.jpg"
+    },
+    {
+      "src": "images/2_Forest.png",
+      "title": "2 Forest",
+      "focal_point": {
+        "x": 0.5315321087837219,
+        "y": 0.11840895935893059
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/2_Forest.jpg",
+      "ambient": "ambient/2_Forest.jpg"
+    },
+    {
+      "src": "images/2_ForestColorized.png",
+      "title": "2 Forest Colorized",
+      "focal_point": {
+        "x": 0.5330730676651001,
+        "y": 0.11846454814076424
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/2_ForestColorized.jpg",
+      "ambient": "ambient/2_ForestColorized.jpg"
+    },
+    {
+      "src": "images/2_FtRichardson.png",
+      "title": "2 Ft Richardson",
+      "focal_point": {
+        "x": 0.4216320216655731,
+        "y": 0.4689360558986664
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/2_FtRichardson.jpg",
+      "ambient": "ambient/2_FtRichardson.jpg"
+    },
+    {
+      "src": "images/2_GrandpaFolks.png",
+      "title": "2 Grandpa Folks",
+      "focal_point": {
+        "x": 0.55704270235819,
+        "y": 0.4059734513274336
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/2_GrandpaFolks.jpg",
+      "ambient": "ambient/2_GrandpaFolks.jpg"
+    },
+    {
+      "src": "images/2_GrandpaFolksColorized.png",
+      "title": "2 Grandpa Folks Colorized",
+      "focal_point": {
+        "x": 0.55704270235819,
+        "y": 0.4059734513274336
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/2_GrandpaFolksColorized.jpg",
+      "ambient": "ambient/2_GrandpaFolksColorized.jpg"
+    },
+    {
+      "src": "images/2_Horseshoeing.png",
+      "title": "2 Horseshoeing",
+      "focal_point": {
+        "x": 0.23066852241754532,
+        "y": 0.2900191396474838
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/2_Horseshoeing.jpg",
+      "ambient": "ambient/2_Horseshoeing.jpg"
+    },
+    {
+      "src": "images/2_HorseshoeingColorized.png",
+      "title": "2 Horseshoeing Colorized",
+      "focal_point": {
+        "x": 0.45584701001644135,
+        "y": 0.3384145200252533
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/2_HorseshoeingColorized.jpg",
+      "ambient": "ambient/2_HorseshoeingColorized.jpg"
+    },
+    {
+      "src": "images/2_Piglets.png",
+      "title": "2 Piglets",
+      "focal_point": {
+        "x": 0.26678043230944254,
+        "y": 0.5667644900953779
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/2_Piglets.jpg",
+      "ambient": "ambient/2_Piglets.jpg"
+    },
+    {
+      "src": "images/2_Snow.png",
+      "title": "2 Snow",
+      "focal_point": {
+        "x": 0.5395730137825012,
+        "y": 0.2918480187654495
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/2_Snow.jpg",
+      "ambient": "ambient/2_Snow.jpg"
+    },
+    {
+      "src": "images/2_SnowColorized.png",
+      "title": "2 Snow Colorized",
+      "focal_point": {
+        "x": 0.533612459897995,
+        "y": 0.28925131261348724
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/2_SnowColorized.jpg",
+      "ambient": "ambient/2_SnowColorized.jpg"
+    },
+    {
+      "src": "images/2_TennesseeWalker.png",
+      "title": "2 Tennessee Walker",
+      "focal_point": {
+        "x": 0.6257478296756744,
+        "y": 0.14654675871133804
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/2_TennesseeWalker.jpg",
+      "ambient": "ambient/2_TennesseeWalker.jpg"
+    },
+    {
+      "src": "images/3A_Army.png",
+      "title": "3 A Army",
+      "focal_point": {
+        "x": 0.5606726408004761,
+        "y": 0.13976940885186195
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/3A_Army.jpg",
+      "ambient": "ambient/3A_Army.jpg"
+    },
+    {
+      "src": "images/3A_ArmyColorized.png",
+      "title": "3 A Army Colorized",
+      "focal_point": {
+        "x": 0.5601665377616882,
+        "y": 0.1420287936925888
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/3A_ArmyColorized.jpg",
+      "ambient": "ambient/3A_ArmyColorized.jpg"
+    },
+    {
+      "src": "images/3A_ArmyGrad.png",
+      "title": "3 A Army Grad",
+      "focal_point": {
+        "x": 0.4531743247983164,
+        "y": 0.4938428874734607
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/3A_ArmyGrad.jpg",
+      "ambient": "ambient/3A_ArmyGrad.jpg"
+    },
+    {
+      "src": "images/3A_ArmyGradCircled.png",
+      "title": "3 A Army Grad Circled",
+      "focal_point": {
+        "x": 0.4531743247983164,
+        "y": 0.4938428874734607
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/3A_ArmyGradCircled.jpg",
+      "ambient": "ambient/3A_ArmyGradCircled.jpg"
+    },
+    {
+      "src": "images/3A_ArmyGradColorized.png",
+      "title": "3 A Army Grad Colorized",
+      "focal_point": {
+        "x": 0.5290697664022446,
+        "y": 0.3156326413154602
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/3A_ArmyGradColorized.jpg",
+      "ambient": "ambient/3A_ArmyGradColorized.jpg"
     },
     {
       "src": "images/3_FamilyStairs.png",
       "title": "3 Family Stairs",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5280149281024933,
+        "y": 0.29235705733299255
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/3_FamilyStairs.jpg",
+      "ambient": "ambient/3_FamilyStairs.jpg"
     },
     {
       "src": "images/3_FamilyStairsColorized.png",
       "title": "3 Family Stairs Colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5006712973117828,
+        "y": 0.38883623480796814
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/3_FamilyStairsColorized.jpg",
+      "ambient": "ambient/3_FamilyStairsColorized.jpg"
     },
     {
       "src": "images/3_FountainBabies.png",
       "title": "3 Fountain Babies",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4519553072625698,
+        "y": 0.5211038961038961
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/3_FountainBabies.jpg",
+      "ambient": "ambient/3_FountainBabies.jpg"
     },
     {
       "src": "images/3_FountainBabiesColorized.png",
       "title": "3 Fountain Babies Colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.32653579115867615,
+        "y": 0.2742398753762245
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/3_FountainBabiesColorized.jpg",
+      "ambient": "ambient/3_FountainBabiesColorized.jpg"
     },
     {
       "src": "images/3_Ken72.png",
@@ -800,187 +1031,174 @@
         "x": 0.5,
         "y": 0.5
       },
-      "focal_source": "fallback"
+      "focal_source": "fallback",
+      "thumb": "thumbnails/3_Ken72.jpg",
+      "ambient": "ambient/3_Ken72.jpg"
     },
     {
       "src": "images/3_KenAndKatie.png",
       "title": "3 Ken And Katie",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4295125164690382,
+        "y": 0.28292046936114734
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/3_KenAndKatie.jpg",
+      "ambient": "ambient/3_KenAndKatie.jpg"
     },
     {
       "src": "images/3_KenAndKatie1970Colorized.png",
       "title": "3 Ken And Katie1970 Colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4295125164690382,
+        "y": 0.28292046936114734
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/3_KenAndKatie1970Colorized.jpg",
+      "ambient": "ambient/3_KenAndKatie1970Colorized.jpg"
     },
     {
       "src": "images/3_MilitaryUniform.png",
       "title": "3 Military Uniform",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.46788716316223145,
+        "y": 0.1841227039694786
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/3_MilitaryUniform.jpg",
+      "ambient": "ambient/3_MilitaryUniform.jpg"
     },
     {
       "src": "images/3_MilitaryUniform2.png",
       "title": "3 Military Uniform2",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4907093346118927,
+        "y": 0.1661514788866043
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/3_MilitaryUniform2.jpg",
+      "ambient": "ambient/3_MilitaryUniform2.jpg"
     },
     {
       "src": "images/3_MilitaryUniform2Colorized.png",
       "title": "3 Military Uniform2 Colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.48854225873947144,
+        "y": 0.1648353450000286
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/3_MilitaryUniform2Colorized.jpg",
+      "ambient": "ambient/3_MilitaryUniform2Colorized.jpg"
     },
     {
       "src": "images/3_MilitaryUniformColorized.png",
       "title": "3 Military Uniform Colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4677608013153076,
+        "y": 0.18569697439670563
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/3_MilitaryUniformColorized.jpg",
+      "ambient": "ambient/3_MilitaryUniformColorized.jpg"
     },
     {
       "src": "images/3_Passport.png",
       "title": "3 Passport",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.3597475439310074,
+        "y": 0.7348143458366394
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/3_Passport.jpg",
+      "ambient": "ambient/3_Passport.jpg"
     },
     {
       "src": "images/3_Portrait.png",
       "title": "3 Portrait",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5276048481464386,
+        "y": 0.534307062625885
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/3_Portrait.jpg",
+      "ambient": "ambient/3_Portrait.jpg"
     },
     {
       "src": "images/3_PortraitColorized.png",
       "title": "3 Portrait Colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5259226262569427,
+        "y": 0.5238814055919647
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/3_PortraitColorized.jpg",
+      "ambient": "ambient/3_PortraitColorized.jpg"
     },
     {
       "src": "images/3_SuitAndTie.png",
       "title": "3 Suit And Tie",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5242184549570084,
+        "y": 0.3737945854663849
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/3_SuitAndTie.jpg",
+      "ambient": "ambient/3_SuitAndTie.jpg"
     },
     {
       "src": "images/3_Undies.png",
       "title": "3 Undies",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5041463077068329,
+        "y": 0.5868278741836548
       },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/3A_Army.png",
-      "title": "3 A Army",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/3A_ArmyColorized.png",
-      "title": "3 A Army Colorized",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/3A_ArmyGrad.png",
-      "title": "3 A Army Grad",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/3A_ArmyGradCircled.png",
-      "title": "3 A Army Grad Circled",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/3A_ArmyGradColorized.png",
-      "title": "3 A Army Grad Colorized",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/3_Undies.jpg",
+      "ambient": "ambient/3_Undies.jpg"
     },
     {
       "src": "images/4_Birthday.png",
       "title": "4 Birthday",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4397192448377609,
+        "y": 0.3133324980735779
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/4_Birthday.jpg",
+      "ambient": "ambient/4_Birthday.jpg"
     },
     {
       "src": "images/4_Buffet.png",
       "title": "4 Buffet",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.7076090574264526,
+        "y": 0.23237967491149902
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/4_Buffet.jpg",
+      "ambient": "ambient/4_Buffet.jpg"
     },
     {
       "src": "images/4_Christmas.png",
       "title": "4 Christmas",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.39968347549438477,
+        "y": 0.2571667581796646
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/4_Christmas.jpg",
+      "ambient": "ambient/4_Christmas.jpg"
     },
     {
       "src": "images/4_Christmas2.png",
       "title": "4 Christmas2",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.20288194715976715,
+        "y": 0.26261693984270096
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/4_Christmas2.jpg",
+      "ambient": "ambient/4_Christmas2.jpg"
     },
     {
       "src": "images/4_Christmas3.png",
@@ -989,1213 +1207,1494 @@
         "x": 0.5,
         "y": 0.5
       },
-      "focal_source": "fallback"
+      "focal_source": "fallback",
+      "thumb": "thumbnails/4_Christmas3.jpg",
+      "ambient": "ambient/4_Christmas3.jpg"
     },
     {
       "src": "images/4_Christmas78.png",
       "title": "4 Christmas78",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.24499796330928802,
+        "y": 0.42897313833236694
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/4_Christmas78.jpg",
+      "ambient": "ambient/4_Christmas78.jpg"
     },
     {
       "src": "images/4_Couch.png",
       "title": "4 Couch",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4506456106901169,
+        "y": 0.3264037221670151
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/4_Couch.jpg",
+      "ambient": "ambient/4_Couch.jpg"
     },
     {
       "src": "images/4_FeedingCake.png",
       "title": "4 Feeding Cake",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4392533153295517,
+        "y": 0.43961015343666077
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/4_FeedingCake.jpg",
+      "ambient": "ambient/4_FeedingCake.jpg"
     },
     {
       "src": "images/4_Fireplace.png",
       "title": "4 Fireplace",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5496001094579697,
+        "y": 0.5674821436405182
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/4_Fireplace.jpg",
+      "ambient": "ambient/4_Fireplace.jpg"
     },
     {
       "src": "images/4_SocketWrench.png",
       "title": "4 Socket Wrench",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6327348351478577,
+        "y": 0.1891738921403885
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/4_SocketWrench.jpg",
+      "ambient": "ambient/4_SocketWrench.jpg"
     },
     {
       "src": "images/4_Wrestling.jpg",
       "title": "4 Wrestling",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.594893604516983,
+        "y": 0.4455392360687256
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/4_Wrestling.jpg",
+      "ambient": "ambient/4_Wrestling.jpg"
     },
     {
       "src": "images/4_Wrestling.png",
       "title": "4 Wrestling",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5950125455856323,
+        "y": 0.44522249698638916
       },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/5_Buffet87.png",
-      "title": "5 Buffet87",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/5_FishingBronson.png",
-      "title": "5 Fishing Bronson",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/5_KatieGermanyNewRedShirt.png",
-      "title": "5 Katie Germany New Red Shirt",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/5_KatieGermanyNewRedShirtColorized.png",
-      "title": "5 Katie Germany New Red Shirt Colorized",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/5_KenAndNancy2.png",
-      "title": "5 Ken And Nancy2",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/5_KenAndNancy4.png",
-      "title": "5 Ken And Nancy4",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/5_KenAndNancyBed.png",
-      "title": "5 Ken And Nancy Bed",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/5_KenAndNancyBirthday.png",
-      "title": "5 Ken And Nancy Birthday",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/5_KenBruceKatie.png",
-      "title": "5 Ken Bruce Katie",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/5_Summer 2003 second pic.jpg",
-      "title": "5 Summer 2003 second pic",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/5_Summer 2003 third.jpg",
-      "title": "5 Summer 2003 third",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/5_Summer 2003.jpg",
-      "title": "5 Summer 2003",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/4_Wrestling.jpg",
+      "ambient": "ambient/4_Wrestling.jpg"
     },
     {
       "src": "images/504226102.995570.jpg",
       "title": "504226102.995570",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.3982643187046051,
+        "y": 0.3153100609779358
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504226102.995570.jpg",
+      "ambient": "ambient/504226102.995570.jpg"
     },
     {
       "src": "images/504226522.427282.jpg",
       "title": "504226522.427282",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.39675338566303253,
+        "y": 0.41921666264533997
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504226522.427282.jpg",
+      "ambient": "ambient/504226522.427282.jpg"
     },
     {
       "src": "images/504227293.286266.jpg",
       "title": "504227293.286266",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5550538003444672,
+        "y": 0.234267957508564
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504227293.286266.jpg",
+      "ambient": "ambient/504227293.286266.jpg"
     },
     {
       "src": "images/504227485.269461.jpg",
       "title": "504227485.269461",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4829074293375015,
+        "y": 0.3758327066898346
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504227485.269461.jpg",
+      "ambient": "ambient/504227485.269461.jpg"
     },
     {
       "src": "images/504227515.431583.jpg",
       "title": "504227515.431583",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5258523225784302,
+        "y": 0.10557479038834572
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504227515.431583.jpg",
+      "ambient": "ambient/504227515.431583.jpg"
     },
     {
       "src": "images/504227515.431583~2.jpg",
       "title": "504227515.431583~2",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5487279891967773,
+        "y": 0.09758951514959335
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504227515.431583~2.jpg",
+      "ambient": "ambient/504227515.431583~2.jpg"
     },
     {
       "src": "images/504228514.066629.jpg",
       "title": "504228514.066629",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.44796890020370483,
+        "y": 0.48663824796676636
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504228514.066629.jpg",
+      "ambient": "ambient/504228514.066629.jpg"
     },
     {
       "src": "images/504228555.467917.jpg",
       "title": "504228555.467917",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4392170310020447,
+        "y": 0.5054180324077606
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504228555.467917.jpg",
+      "ambient": "ambient/504228555.467917.jpg"
     },
     {
       "src": "images/504228587.110371.jpg",
       "title": "504228587.110371",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4365,
+        "y": 0.49266666666666664
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504228587.110371.jpg",
+      "ambient": "ambient/504228587.110371.jpg"
     },
     {
       "src": "images/504229831.624597.jpg",
       "title": "504229831.624597",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5537459403276443,
+        "y": 0.3560664653778076
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504229831.624597.jpg",
+      "ambient": "ambient/504229831.624597.jpg"
     },
     {
       "src": "images/504229870.112508.jpg",
       "title": "504229870.112508",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6392114162445068,
+        "y": 0.1653842255473137
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504229870.112508.jpg",
+      "ambient": "ambient/504229870.112508.jpg"
     },
     {
       "src": "images/504230041.844528.jpg",
       "title": "504230041.844528",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4211666666666667,
+        "y": 0.7345782626940831
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504230041.844528.jpg",
+      "ambient": "ambient/504230041.844528.jpg"
     },
     {
       "src": "images/504230291.026064.jpg",
       "title": "504230291.026064",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.44738511741161346,
+        "y": 0.3150554597377777
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504230291.026064.jpg",
+      "ambient": "ambient/504230291.026064.jpg"
     },
     {
       "src": "images/504230397.098789.jpg",
       "title": "504230397.098789",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5106395334005356,
+        "y": 0.18380193412303925
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504230397.098789.jpg",
+      "ambient": "ambient/504230397.098789.jpg"
     },
     {
       "src": "images/504230580.753482.jpg",
       "title": "504230580.753482",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.44033944606781006,
+        "y": 0.2736782431602478
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504230580.753482.jpg",
+      "ambient": "ambient/504230580.753482.jpg"
     },
     {
       "src": "images/504230594.045147.jpg",
       "title": "504230594.045147",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.49274662137031555,
+        "y": 0.28012195229530334
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504230594.045147.jpg",
+      "ambient": "ambient/504230594.045147.jpg"
     },
     {
       "src": "images/504231167.086724.jpg",
       "title": "504231167.086724",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5018667727708817,
+        "y": 0.18664337694644928
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504231167.086724.jpg",
+      "ambient": "ambient/504231167.086724.jpg"
     },
     {
       "src": "images/504231179.115858.jpg",
       "title": "504231179.115858",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.21483333333333332,
+        "y": 0.85325
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504231179.115858.jpg",
+      "ambient": "ambient/504231179.115858.jpg"
     },
     {
       "src": "images/504231632.681480.jpg",
       "title": "504231632.681480",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.23946966975927353,
+        "y": 0.4117172062397003
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504231632.681480.jpg",
+      "ambient": "ambient/504231632.681480.jpg"
     },
     {
       "src": "images/504231661.718510.jpg",
       "title": "504231661.718510",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5036171078681946,
+        "y": 0.631308525800705
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504231661.718510.jpg",
+      "ambient": "ambient/504231661.718510.jpg"
     },
     {
       "src": "images/504232364.798563.jpg",
       "title": "504232364.798563",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5686666666666667,
+        "y": 0.5575
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504232364.798563.jpg",
+      "ambient": "ambient/504232364.798563.jpg"
     },
     {
       "src": "images/504232440.598698.jpg",
       "title": "504232440.598698",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4495,
+        "y": 0.40244444444444444
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504232440.598698.jpg",
+      "ambient": "ambient/504232440.598698.jpg"
     },
     {
       "src": "images/504232473.442461.jpg",
       "title": "504232473.442461",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4409092962741852,
+        "y": 0.47365646064281464
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504232473.442461.jpg",
+      "ambient": "ambient/504232473.442461.jpg"
     },
     {
       "src": "images/504232638.158977.jpg",
       "title": "504232638.158977",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.7222605049610138,
+        "y": 0.3850713074207306
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504232638.158977.jpg",
+      "ambient": "ambient/504232638.158977.jpg"
     },
     {
       "src": "images/504232780.571980.jpg",
       "title": "504232780.571980",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.3611666666666667,
+        "y": 0.15125
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504232780.571980.jpg",
+      "ambient": "ambient/504232780.571980.jpg"
     },
     {
       "src": "images/504236714.311416.jpg",
       "title": "504236714.311416",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.45389072597026825,
+        "y": 0.25330862402915955
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504236714.311416.jpg",
+      "ambient": "ambient/504236714.311416.jpg"
     },
     {
       "src": "images/504237079.657089.jpg",
       "title": "504237079.657089",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5423333333333333,
+        "y": 0.4435
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504237079.657089.jpg",
+      "ambient": "ambient/504237079.657089.jpg"
     },
     {
       "src": "images/504238033.692527.jpg",
       "title": "504238033.692527",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5993530452251434,
+        "y": 0.3113846033811569
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504238033.692527.jpg",
+      "ambient": "ambient/504238033.692527.jpg"
     },
     {
       "src": "images/504239428.336073.jpg",
       "title": "504239428.336073",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6567898690700531,
+        "y": 0.5374584496021271
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504239428.336073.jpg",
+      "ambient": "ambient/504239428.336073.jpg"
     },
     {
       "src": "images/504239473.979175.jpg",
       "title": "504239473.979175",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.41621197760105133,
+        "y": 0.4663134217262268
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504239473.979175.jpg",
+      "ambient": "ambient/504239473.979175.jpg"
     },
     {
       "src": "images/504239490.097482.jpg",
       "title": "504239490.097482",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5001719892024994,
+        "y": 0.47029122710227966
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504239490.097482.jpg",
+      "ambient": "ambient/504239490.097482.jpg"
     },
     {
       "src": "images/504239550.152365.jpg",
       "title": "504239550.152365",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5265747904777527,
+        "y": 0.4124232828617096
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504239550.152365.jpg",
+      "ambient": "ambient/504239550.152365.jpg"
     },
     {
       "src": "images/504239608.511365.jpg",
       "title": "504239608.511365",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.33209601044654846,
+        "y": 0.3384797275066376
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504239608.511365.jpg",
+      "ambient": "ambient/504239608.511365.jpg"
     },
     {
       "src": "images/504239677.747068.jpg",
       "title": "504239677.747068",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.627311646938324,
+        "y": 0.39683012664318085
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504239677.747068.jpg",
+      "ambient": "ambient/504239677.747068.jpg"
     },
     {
       "src": "images/504239706.846101.jpg",
       "title": "504239706.846101",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5677236318588257,
+        "y": 0.47882528603076935
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504239706.846101.jpg",
+      "ambient": "ambient/504239706.846101.jpg"
     },
     {
       "src": "images/504239757.633804.jpg",
       "title": "504239757.633804",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.52975,
+        "y": 0.32916666666666666
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504239757.633804.jpg",
+      "ambient": "ambient/504239757.633804.jpg"
     },
     {
       "src": "images/504239892.317222.jpg",
       "title": "504239892.317222",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5598204135894775,
+        "y": 0.23843224346637726
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504239892.317222.jpg",
+      "ambient": "ambient/504239892.317222.jpg"
     },
     {
       "src": "images/504239986.948080.jpg",
       "title": "504239986.948080",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.3251482993364334,
+        "y": 0.43929311633110046
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504239986.948080.jpg",
+      "ambient": "ambient/504239986.948080.jpg"
     },
     {
       "src": "images/504240019.995410.jpg",
       "title": "504240019.995410",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.3817985951900482,
+        "y": 0.4773609936237335
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504240019.995410.jpg",
+      "ambient": "ambient/504240019.995410.jpg"
     },
     {
       "src": "images/504240043.844793.jpg",
       "title": "504240043.844793",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5915,
+        "y": 0.6263333333333333
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504240043.844793.jpg",
+      "ambient": "ambient/504240043.844793.jpg"
     },
     {
       "src": "images/504240064.558059.jpg",
       "title": "504240064.558059",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4206332266330719,
+        "y": 0.3383290320634842
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504240064.558059.jpg",
+      "ambient": "ambient/504240064.558059.jpg"
     },
     {
       "src": "images/504240510.588598.jpg",
       "title": "504240510.588598",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.2985,
+        "y": 0.93275
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504240510.588598.jpg",
+      "ambient": "ambient/504240510.588598.jpg"
     },
     {
       "src": "images/504240522.787594.jpg",
       "title": "504240522.787594",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4597966969013214,
+        "y": 0.3199020177125931
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504240522.787594.jpg",
+      "ambient": "ambient/504240522.787594.jpg"
     },
     {
       "src": "images/504240580.065611.jpg",
       "title": "504240580.065611",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6467700004577637,
+        "y": 0.36719202995300293
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504240580.065611.jpg",
+      "ambient": "ambient/504240580.065611.jpg"
     },
     {
       "src": "images/504240673.375208.jpg",
       "title": "504240673.375208",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5213131457567215,
+        "y": 0.20048047602176666
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504240673.375208.jpg",
+      "ambient": "ambient/504240673.375208.jpg"
     },
     {
       "src": "images/504240687.720041.jpg",
       "title": "504240687.720041",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5163333333333333,
+        "y": 0.42007591733445804
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504240687.720041.jpg",
+      "ambient": "ambient/504240687.720041.jpg"
     },
     {
       "src": "images/504240716.217593.jpg",
       "title": "504240716.217593",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.49966666666666665,
+        "y": 0.4555
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504240716.217593.jpg",
+      "ambient": "ambient/504240716.217593.jpg"
     },
     {
       "src": "images/504240757.632791.jpg",
       "title": "504240757.632791",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6783860921859741,
+        "y": 0.16866879165172577
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504240757.632791.jpg",
+      "ambient": "ambient/504240757.632791.jpg"
     },
     {
       "src": "images/504240821.712650.jpg",
       "title": "504240821.712650",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.43591827154159546,
+        "y": 0.3088623434305191
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504240821.712650.jpg",
+      "ambient": "ambient/504240821.712650.jpg"
     },
     {
       "src": "images/504288284.117277.jpg",
       "title": "504288284.117277",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.39433251321315765,
+        "y": 0.23704399168491364
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504288284.117277.jpg",
+      "ambient": "ambient/504288284.117277.jpg"
     },
     {
       "src": "images/504288303.011686.jpg",
       "title": "504288303.011686",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5395810008049011,
+        "y": 0.41558972001075745
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504288303.011686.jpg",
+      "ambient": "ambient/504288303.011686.jpg"
     },
     {
       "src": "images/504288355.166229.jpg",
       "title": "504288355.166229",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.44005951285362244,
+        "y": 0.4914229214191437
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504288355.166229.jpg",
+      "ambient": "ambient/504288355.166229.jpg"
     },
     {
       "src": "images/504288367.759474.jpg",
       "title": "504288367.759474",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.3581467270851135,
+        "y": 0.4033113121986389
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504288367.759474.jpg",
+      "ambient": "ambient/504288367.759474.jpg"
     },
     {
       "src": "images/504288958.052828.jpg",
       "title": "504288958.052828",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5836666666666667,
+        "y": 0.451
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504288958.052828.jpg",
+      "ambient": "ambient/504288958.052828.jpg"
     },
     {
       "src": "images/504288997.115440.jpg",
       "title": "504288997.115440",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.1985,
+        "y": 0.27666666666666667
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504288997.115440.jpg",
+      "ambient": "ambient/504288997.115440.jpg"
     },
     {
       "src": "images/504289175.008974.jpg",
       "title": "504289175.008974",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4816666666666667,
+        "y": 0.529
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504289175.008974.jpg",
+      "ambient": "ambient/504289175.008974.jpg"
     },
     {
       "src": "images/504289489.866419.jpg",
       "title": "504289489.866419",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6590944230556488,
+        "y": 0.2861613482236862
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504289489.866419.jpg",
+      "ambient": "ambient/504289489.866419.jpg"
     },
     {
       "src": "images/504289759.374061.jpg",
       "title": "504289759.374061",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4186666666666667,
+        "y": 0.32701421800947866
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504289759.374061.jpg",
+      "ambient": "ambient/504289759.374061.jpg"
     },
     {
       "src": "images/504292020.862371.jpg",
       "title": "504292020.862371",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.39640630781650543,
+        "y": 0.40754207968711853
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504292020.862371.jpg",
+      "ambient": "ambient/504292020.862371.jpg"
     },
     {
       "src": "images/504292047.791114.jpg",
       "title": "504292047.791114",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.3964258134365082,
+        "y": 0.34954363107681274
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504292047.791114.jpg",
+      "ambient": "ambient/504292047.791114.jpg"
     },
     {
       "src": "images/504292385.213538.jpg",
       "title": "504292385.213538",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5859444588422775,
+        "y": 0.4288223534822464
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504292385.213538.jpg",
+      "ambient": "ambient/504292385.213538.jpg"
     },
     {
       "src": "images/504292976.446433.jpg",
       "title": "504292976.446433",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5030239075422287,
+        "y": 0.5829570889472961
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504292976.446433.jpg",
+      "ambient": "ambient/504292976.446433.jpg"
     },
     {
       "src": "images/504292992.781115.jpg",
       "title": "504292992.781115",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.3385864645242691,
+        "y": 0.6018598079681396
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504292992.781115.jpg",
+      "ambient": "ambient/504292992.781115.jpg"
     },
     {
       "src": "images/504293009.648805.jpg",
       "title": "504293009.648805",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5691083669662476,
+        "y": 0.5543727278709412
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504293009.648805.jpg",
+      "ambient": "ambient/504293009.648805.jpg"
     },
     {
       "src": "images/504294109.485407.jpg",
       "title": "504294109.485407",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4625,
+        "y": 0.57225
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504294109.485407.jpg",
+      "ambient": "ambient/504294109.485407.jpg"
     },
     {
       "src": "images/504294149.494461.jpg",
       "title": "504294149.494461",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4751666666666667,
+        "y": 0.59525
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504294149.494461.jpg",
+      "ambient": "ambient/504294149.494461.jpg"
     },
     {
       "src": "images/504294291.294335.jpg",
       "title": "504294291.294335",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.49083333333333334,
+        "y": 0.34925
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504294291.294335.jpg",
+      "ambient": "ambient/504294291.294335.jpg"
     },
     {
       "src": "images/504294302.531405.jpg",
       "title": "504294302.531405",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.7000441253185272,
+        "y": 0.22008520364761353
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504294302.531405.jpg",
+      "ambient": "ambient/504294302.531405.jpg"
     },
     {
       "src": "images/504294804.092250.jpg",
       "title": "504294804.092250",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5339615195989609,
+        "y": 0.5313716232776642
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504294804.092250.jpg",
+      "ambient": "ambient/504294804.092250.jpg"
     },
     {
       "src": "images/504295492.108213.jpg",
       "title": "504295492.108213",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.581506609916687,
+        "y": 0.37383803725242615
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504295492.108213.jpg",
+      "ambient": "ambient/504295492.108213.jpg"
     },
     {
       "src": "images/504295556.506120.jpg",
       "title": "504295556.506120",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.43996480107307434,
+        "y": 0.27142298221588135
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504295556.506120.jpg",
+      "ambient": "ambient/504295556.506120.jpg"
     },
     {
       "src": "images/504295572.952460.jpg",
       "title": "504295572.952460",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.3337058275938034,
+        "y": 0.2687329724431038
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504295572.952460.jpg",
+      "ambient": "ambient/504295572.952460.jpg"
     },
     {
       "src": "images/504295633.726283.jpg",
       "title": "504295633.726283",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.3096212297677994,
+        "y": 0.24329832196235657
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504295633.726283.jpg",
+      "ambient": "ambient/504295633.726283.jpg"
     },
     {
       "src": "images/504296020.116991.jpg",
       "title": "504296020.116991",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5640648603439331,
+        "y": 0.5101943910121918
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504296020.116991.jpg",
+      "ambient": "ambient/504296020.116991.jpg"
     },
     {
       "src": "images/504296276.311143.jpg",
       "title": "504296276.311143",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.588016927242279,
+        "y": 0.5065501034259796
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504296276.311143.jpg",
+      "ambient": "ambient/504296276.311143.jpg"
     },
     {
       "src": "images/504296446.601523.jpg",
       "title": "504296446.601523",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5210205167531967,
+        "y": 0.4144069254398346
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504296446.601523.jpg",
+      "ambient": "ambient/504296446.601523.jpg"
     },
     {
       "src": "images/504296581.347823.jpg",
       "title": "504296581.347823",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5653333333333334,
+        "y": 0.6706031210459722
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504296581.347823.jpg",
+      "ambient": "ambient/504296581.347823.jpg"
     },
     {
       "src": "images/504296728.318873.jpg",
       "title": "504296728.318873",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4325019121170044,
+        "y": 0.13267004489898682
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/504296728.318873.jpg",
+      "ambient": "ambient/504296728.318873.jpg"
     },
     {
       "src": "images/56882909204__866BFF4C-50F8-4B12-B9DB-181F32E2D1FC.JPG",
       "title": "56882909204 866 BFF4 C 50 F8 4 B12 B9 DB 181 F32 E2 D1 FC",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4031084656084656,
+        "y": 0.3854166666666667
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/56882909204__866BFF4C-50F8-4B12-B9DB-181F32E2D1FC.jpg",
+      "ambient": "ambient/56882909204__866BFF4C-50F8-4B12-B9DB-181F32E2D1FC.jpg"
+    },
+    {
+      "src": "images/5_Buffet87.png",
+      "title": "5 Buffet87",
+      "focal_point": {
+        "x": 0.4283479303121567,
+        "y": 0.15380684286355972
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/5_Buffet87.jpg",
+      "ambient": "ambient/5_Buffet87.jpg"
+    },
+    {
+      "src": "images/5_FishingBronson.png",
+      "title": "5 Fishing Bronson",
+      "focal_point": {
+        "x": 0.13261296660117877,
+        "y": 0.6822863027806385
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/5_FishingBronson.jpg",
+      "ambient": "ambient/5_FishingBronson.jpg"
+    },
+    {
+      "src": "images/5_KatieGermanyNewRedShirt.png",
+      "title": "5 Katie Germany New Red Shirt",
+      "focal_point": {
+        "x": 0.39063906390639064,
+        "y": 0.4372037914691943
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/5_KatieGermanyNewRedShirt.jpg",
+      "ambient": "ambient/5_KatieGermanyNewRedShirt.jpg"
+    },
+    {
+      "src": "images/5_KatieGermanyNewRedShirtColorized.png",
+      "title": "5 Katie Germany New Red Shirt Colorized",
+      "focal_point": {
+        "x": 0.3969164937734604,
+        "y": 0.43864545226097107
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/5_KatieGermanyNewRedShirtColorized.jpg",
+      "ambient": "ambient/5_KatieGermanyNewRedShirtColorized.jpg"
+    },
+    {
+      "src": "images/5_KenAndNancy2.png",
+      "title": "5 Ken And Nancy2",
+      "focal_point": {
+        "x": 0.4466768354177475,
+        "y": 0.31381767988204956
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/5_KenAndNancy2.jpg",
+      "ambient": "ambient/5_KenAndNancy2.jpg"
+    },
+    {
+      "src": "images/5_KenAndNancy4.png",
+      "title": "5 Ken And Nancy4",
+      "focal_point": {
+        "x": 0.5751550793647766,
+        "y": 0.42377910017967224
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/5_KenAndNancy4.jpg",
+      "ambient": "ambient/5_KenAndNancy4.jpg"
+    },
+    {
+      "src": "images/5_KenAndNancyBed.png",
+      "title": "5 Ken And Nancy Bed",
+      "focal_point": {
+        "x": 0.2941288352012634,
+        "y": 0.2382197231054306
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/5_KenAndNancyBed.jpg",
+      "ambient": "ambient/5_KenAndNancyBed.jpg"
+    },
+    {
+      "src": "images/5_KenAndNancyBirthday.png",
+      "title": "5 Ken And Nancy Birthday",
+      "focal_point": {
+        "x": 0.3512774854898453,
+        "y": 0.2436760812997818
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/5_KenAndNancyBirthday.jpg",
+      "ambient": "ambient/5_KenAndNancyBirthday.jpg"
+    },
+    {
+      "src": "images/5_KenBruceKatie.png",
+      "title": "5 Ken Bruce Katie",
+      "focal_point": {
+        "x": 0.2754646840148699,
+        "y": 0.09570815450643777
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/5_KenBruceKatie.jpg",
+      "ambient": "ambient/5_KenBruceKatie.jpg"
+    },
+    {
+      "src": "images/5_Summer 2003 second pic.jpg",
+      "title": "5 Summer 2003 second pic",
+      "focal_point": {
+        "x": 0.4077324867248535,
+        "y": 0.44341978430747986
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/5_Summer 2003 second pic.jpg",
+      "ambient": "ambient/5_Summer 2003 second pic.jpg"
+    },
+    {
+      "src": "images/5_Summer 2003 third.jpg",
+      "title": "5 Summer 2003 third",
+      "focal_point": {
+        "x": 0.6663171052932739,
+        "y": 0.4974716603755951
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/5_Summer 2003 third.jpg",
+      "ambient": "ambient/5_Summer 2003 third.jpg"
+    },
+    {
+      "src": "images/5_Summer 2003.jpg",
+      "title": "5 Summer 2003",
+      "focal_point": {
+        "x": 0.3922824263572693,
+        "y": 0.4203581213951111
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/5_Summer 2003.jpg",
+      "ambient": "ambient/5_Summer 2003.jpg"
     },
     {
       "src": "images/6_9KenNancyBalloon.png",
       "title": "6 9 Ken Nancy Balloon",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6670226156711578,
+        "y": 0.34082867205142975
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_9KenNancyBalloon.jpg",
+      "ambient": "ambient/6_9KenNancyBalloon.jpg"
     },
     {
       "src": "images/6_Aunts.png",
       "title": "6 Aunts",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5861058235168457,
+        "y": 0.35174646973609924
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_Aunts.jpg",
+      "ambient": "ambient/6_Aunts.jpg"
     },
     {
       "src": "images/6_Candle.png",
       "title": "6 Candle",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.802649930264993,
+        "y": 0.4817813765182186
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_Candle.jpg",
+      "ambient": "ambient/6_Candle.jpg"
     },
     {
       "src": "images/6_ComputerTime.png",
       "title": "6 Computer Time",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.389854371547699,
+        "y": 0.3361666798591614
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_ComputerTime.jpg",
+      "ambient": "ambient/6_ComputerTime.jpg"
     },
     {
       "src": "images/6_Family.png",
       "title": "6 Family",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.43940672278404236,
+        "y": 0.38023151457309723
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_Family.jpg",
+      "ambient": "ambient/6_Family.jpg"
     },
     {
       "src": "images/6_Family2.png",
       "title": "6 Family2",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5216512978076935,
+        "y": 0.26599425077438354
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_Family2.jpg",
+      "ambient": "ambient/6_Family2.jpg"
     },
     {
       "src": "images/6_FarmFamily.png",
       "title": "6 Farm Family",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4641512334346771,
+        "y": 0.3331686854362488
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_FarmFamily.jpg",
+      "ambient": "ambient/6_FarmFamily.jpg"
     },
     {
       "src": "images/6_Gift2.png",
       "title": "6 Gift2",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5298835635185242,
+        "y": 0.21603406220674515
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_Gift2.jpg",
+      "ambient": "ambient/6_Gift2.jpg"
     },
     {
       "src": "images/6_GrandpaAndBoys.png",
       "title": "6 Grandpa And Boys",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5115754902362823,
+        "y": 0.25348131358623505
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_GrandpaAndBoys.jpg",
+      "ambient": "ambient/6_GrandpaAndBoys.jpg"
     },
     {
       "src": "images/6_HelenNeilAlexKatieNancyKen.png",
       "title": "6 Helen Neil Alex Katie Nancy Ken",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.514677107334137,
+        "y": 0.34838414192199707
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_HelenNeilAlexKatieNancyKen.jpg",
+      "ambient": "ambient/6_HelenNeilAlexKatieNancyKen.jpg"
     },
     {
       "src": "images/6_JoeKenDavid.png",
       "title": "6 Joe Ken David",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4482465833425522,
+        "y": 0.2552315443754196
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_JoeKenDavid.jpg",
+      "ambient": "ambient/6_JoeKenDavid.jpg"
     },
     {
       "src": "images/6_KenAlexHorse.png",
       "title": "6 Ken Alex Horse",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4195382595062256,
+        "y": 0.49234482645988464
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_KenAlexHorse.jpg",
+      "ambient": "ambient/6_KenAlexHorse.jpg"
     },
     {
       "src": "images/6_KenAndAlex.png",
       "title": "6 Ken And Alex",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6066191792488098,
+        "y": 0.46809932589530945
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_KenAndAlex.jpg",
+      "ambient": "ambient/6_KenAndAlex.jpg"
     },
     {
       "src": "images/6_KenAndDog.png",
       "title": "6 Ken And Dog",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5785443186759949,
+        "y": 0.35440900921821594
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_KenAndDog.jpg",
+      "ambient": "ambient/6_KenAndDog.jpg"
     },
     {
       "src": "images/6_KenAndNancy3.png",
       "title": "6 Ken And Nancy3",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6304093897342682,
+        "y": 0.3839944005012512
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_KenAndNancy3.jpg",
+      "ambient": "ambient/6_KenAndNancy3.jpg"
     },
     {
       "src": "images/6_KenAndNeil.png",
       "title": "6 Ken And Neil",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5639886856079102,
+        "y": 0.38254836201667786
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_KenAndNeil.jpg",
+      "ambient": "ambient/6_KenAndNeil.jpg"
     },
     {
       "src": "images/6_KenAndNeil2.png",
       "title": "6 Ken And Neil2",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.3498954772949219,
+        "y": 0.41152289509773254
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_KenAndNeil2.jpg",
+      "ambient": "ambient/6_KenAndNeil2.jpg"
     },
     {
       "src": "images/6_KenNeilKatie.png",
       "title": "6 Ken Neil Katie",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.19176112115383148,
+        "y": 0.3535895347595215
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_KenNeilKatie.jpg",
+      "ambient": "ambient/6_KenNeilKatie.jpg"
     },
     {
       "src": "images/6_Lombard.png",
       "title": "6 Lombard",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.26529334485530853,
+        "y": 0.2626260966062546
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_Lombard.jpg",
+      "ambient": "ambient/6_Lombard.jpg"
     },
     {
       "src": "images/6_Mom.png",
       "title": "6 Mom",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6172849237918854,
+        "y": 0.47573795914649963
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_Mom.jpg",
+      "ambient": "ambient/6_Mom.jpg"
     },
     {
       "src": "images/6_NancyAndKenChristmas.png",
       "title": "6 Nancy And Ken Christmas",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6483279466629028,
+        "y": 0.3820299506187439
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_NancyAndKenChristmas.jpg",
+      "ambient": "ambient/6_NancyAndKenChristmas.jpg"
     },
     {
       "src": "images/6_Rachel.png",
       "title": "6 Rachel",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6621635854244232,
+        "y": 0.24098865687847137
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_Rachel.jpg",
+      "ambient": "ambient/6_Rachel.jpg"
     },
     {
       "src": "images/6_ReadingMenu.png",
       "title": "6 Reading Menu",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5875213742256165,
+        "y": 0.5048758089542389
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_ReadingMenu.jpg",
+      "ambient": "ambient/6_ReadingMenu.jpg"
     },
     {
       "src": "images/6_Sarah.png",
       "title": "6 Sarah",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5851020812988281,
+        "y": 0.2548566833138466
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/6_Sarah.jpg",
+      "ambient": "ambient/6_Sarah.jpg"
+    },
+    {
+      "src": "images/7BE53763-B642-4891-8D03-E7918F23B4B1~2.JPG",
+      "title": "7 BE53763 B642 4891 8 D03 E7918 F23 B4 B1~2",
+      "focal_point": {
+        "x": 0.6486045122146606,
+        "y": 0.31332919001579285
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/7BE53763-B642-4891-8D03-E7918F23B4B1~2.jpg",
+      "ambient": "ambient/7BE53763-B642-4891-8D03-E7918F23B4B1~2.jpg"
     },
     {
       "src": "images/7_70thBirthday.png",
       "title": "7 70th Birthday",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.438918799161911,
+        "y": 0.5339573472738266
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_70thBirthday.jpg",
+      "ambient": "ambient/7_70thBirthday.jpg"
     },
     {
       "src": "images/7_Cars.png",
       "title": "7 Cars",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5035300105810165,
+        "y": 0.3155568540096283
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_Cars.jpg",
+      "ambient": "ambient/7_Cars.jpg"
     },
     {
       "src": "images/7_Cheesing.png",
       "title": "7 Cheesing",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.48211894929409027,
+        "y": 0.27211228013038635
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_Cheesing.jpg",
+      "ambient": "ambient/7_Cheesing.jpg"
     },
     {
       "src": "images/7_Deer.png",
       "title": "7 Deer",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5338541666666666,
+        "y": 0.6519230769230769
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_Deer.jpg",
+      "ambient": "ambient/7_Deer.jpg"
     },
     {
       "src": "images/7_EthelRachelRandyNancy.png",
       "title": "7 Ethel Rachel Randy Nancy",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5647003650665283,
+        "y": 0.4385282099246979
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_EthelRachelRandyNancy.jpg",
+      "ambient": "ambient/7_EthelRachelRandyNancy.jpg"
     },
     {
       "src": "images/7_Family3.png",
       "title": "7 Family3",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4573943018913269,
+        "y": 0.46962180733680725
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_Family3.jpg",
+      "ambient": "ambient/7_Family3.jpg"
     },
     {
       "src": "images/7_Family96.png",
       "title": "7 Family96",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5135996788740158,
+        "y": 0.49930399656295776
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_Family96.jpg",
+      "ambient": "ambient/7_Family96.jpg"
     },
     {
       "src": "images/7_GrandpaPresents.png",
       "title": "7 Grandpa Presents",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4992227852344513,
+        "y": 0.35282592475414276
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_GrandpaPresents.jpg",
+      "ambient": "ambient/7_GrandpaPresents.jpg"
     },
     {
       "src": "images/7_KelseyGrandmaATV.png",
       "title": "7 Kelsey Grandma ATV",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5228937864303589,
+        "y": 0.3035867512226105
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_KelseyGrandmaATV.jpg",
+      "ambient": "ambient/7_KelseyGrandmaATV.jpg"
     },
     {
       "src": "images/7_KelseyTractor.png",
       "title": "7 Kelsey Tractor",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.592687074829932,
+        "y": 0.4605263157894737
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_KelseyTractor.jpg",
+      "ambient": "ambient/7_KelseyTractor.jpg"
     },
     {
       "src": "images/7_KenAndEthel.png",
       "title": "7 Ken And Ethel",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5623087286949158,
+        "y": 0.3642013370990753
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_KenAndEthel.jpg",
+      "ambient": "ambient/7_KenAndEthel.jpg"
     },
     {
       "src": "images/7_KenAndHelen.png",
       "title": "7 Ken And Helen",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6343097686767578,
+        "y": 0.40539850294589996
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_KenAndHelen.jpg",
+      "ambient": "ambient/7_KenAndHelen.jpg"
     },
     {
       "src": "images/7_KenAndKelsey.png",
@@ -2204,187 +2703,218 @@
         "x": 0.5,
         "y": 0.5
       },
-      "focal_source": "fallback"
+      "focal_source": "fallback",
+      "thumb": "thumbnails/7_KenAndKelsey.jpg",
+      "ambient": "ambient/7_KenAndKelsey.jpg"
     },
     {
       "src": "images/7_KenAndNancy5.png",
       "title": "7 Ken And Nancy5",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4177745431661606,
+        "y": 0.15894795954227448
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_KenAndNancy5.jpg",
+      "ambient": "ambient/7_KenAndNancy5.jpg"
     },
     {
       "src": "images/7_KenAndNancyPortrait.png",
       "title": "7 Ken And Nancy Portrait",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6570250988006592,
+        "y": 0.3460560142993927
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_KenAndNancyPortrait.jpg",
+      "ambient": "ambient/7_KenAndNancyPortrait.jpg"
     },
     {
       "src": "images/7_KenAndNeil3.png",
       "title": "7 Ken And Neil3",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.2774442538593482,
+        "y": 0.8072325164375374
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_KenAndNeil3.jpg",
+      "ambient": "ambient/7_KenAndNeil3.jpg"
     },
     {
       "src": "images/7_KenAndSarah.png",
       "title": "7 Ken And Sarah",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6485602855682373,
+        "y": 0.7005250155925751
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_KenAndSarah.jpg",
+      "ambient": "ambient/7_KenAndSarah.jpg"
     },
     {
       "src": "images/7_KenBruceNancy.png",
       "title": "7 Ken Bruce Nancy",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.44807031750679016,
+        "y": 0.2767150104045868
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_KenBruceNancy.jpg",
+      "ambient": "ambient/7_KenBruceNancy.jpg"
     },
     {
       "src": "images/7_KenHelenNancy.png",
       "title": "7 Ken Helen Nancy",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4704025238752365,
+        "y": 0.2158653810620308
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_KenHelenNancy.jpg",
+      "ambient": "ambient/7_KenHelenNancy.jpg"
     },
     {
       "src": "images/7_KenJoeNeil.png",
       "title": "7 Ken Joe Neil",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.47173964977264404,
+        "y": 0.6247016191482544
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_KenJoeNeil.jpg",
+      "ambient": "ambient/7_KenJoeNeil.jpg"
     },
     {
       "src": "images/7_KenNancySarah.png",
       "title": "7 Ken Nancy Sarah",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5967106819152832,
+        "y": 0.32678037881851196
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_KenNancySarah.jpg",
+      "ambient": "ambient/7_KenNancySarah.jpg"
     },
     {
       "src": "images/7_KenNeilAlex.png",
       "title": "7 Ken Neil Alex",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.7055913805961609,
+        "y": 0.37992940843105316
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_KenNeilAlex.jpg",
+      "ambient": "ambient/7_KenNeilAlex.jpg"
     },
     {
       "src": "images/7_KenNeilAlex2.png",
       "title": "7 Ken Neil Alex2",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.3330800384283066,
+        "y": 0.5193502306938171
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_KenNeilAlex2.jpg",
+      "ambient": "ambient/7_KenNeilAlex2.jpg"
     },
     {
       "src": "images/7_KenNeilMikeAlex.png",
       "title": "7 Ken Neil Mike Alex",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4378405660390854,
+        "y": 0.4324605464935303
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_KenNeilMikeAlex.jpg",
+      "ambient": "ambient/7_KenNeilMikeAlex.jpg"
     },
     {
       "src": "images/7_KenNeilSarah.png",
       "title": "7 Ken Neil Sarah",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6320299208164215,
+        "y": 0.470066636800766
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_KenNeilSarah.jpg",
+      "ambient": "ambient/7_KenNeilSarah.jpg"
     },
     {
       "src": "images/7_KenRandyNickHalloween.png",
       "title": "7 Ken Randy Nick Halloween",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.37010224163532257,
+        "y": 0.28298792243003845
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_KenRandyNickHalloween.jpg",
+      "ambient": "ambient/7_KenRandyNickHalloween.jpg"
     },
     {
       "src": "images/7_NancyKatieRandy.png",
       "title": "7 Nancy Katie Randy",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.3264521658420563,
+        "y": 0.2930076792836189
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_NancyKatieRandy.jpg",
+      "ambient": "ambient/7_NancyKatieRandy.jpg"
     },
     {
       "src": "images/7_NeilEthelAlexLauraJoey.png",
       "title": "7 Neil Ethel Alex Laura Joey",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4916689395904541,
+        "y": 0.3180784285068512
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_NeilEthelAlexLauraJoey.jpg",
+      "ambient": "ambient/7_NeilEthelAlexLauraJoey.jpg"
     },
     {
       "src": "images/7_Nick.png",
       "title": "7 Nick",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6520741581916809,
+        "y": 0.4852573424577713
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_Nick.jpg",
+      "ambient": "ambient/7_Nick.jpg"
     },
     {
       "src": "images/7_NickRandy.png",
       "title": "7 Nick Randy",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.14762572944164276,
+        "y": 0.2967565208673477
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_NickRandy.jpg",
+      "ambient": "ambient/7_NickRandy.jpg"
     },
     {
       "src": "images/7_Randy.png",
       "title": "7 Randy",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5525857657194138,
+        "y": 0.2864488214254379
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_Randy.jpg",
+      "ambient": "ambient/7_Randy.jpg"
     },
     {
       "src": "images/7_SnowShoveling.png",
       "title": "7 Snow Shoveling",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4135531135531135,
+        "y": 0.20621181262729124
       },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/7BE53763-B642-4891-8D03-E7918F23B4B1~2.JPG",
-      "title": "7 BE53763 B642 4891 8 D03 E7918 F23 B4 B1~2",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/7_SnowShoveling.jpg",
+      "ambient": "ambient/7_SnowShoveling.jpg"
     },
     {
       "src": "images/8_DrinkInBW.png",
@@ -2393,232 +2923,284 @@
         "x": 0.5,
         "y": 0.5
       },
-      "focal_source": "fallback"
+      "focal_source": "fallback",
+      "thumb": "thumbnails/8_DrinkInBW.jpg",
+      "ambient": "ambient/8_DrinkInBW.jpg"
     },
     {
       "src": "images/8_FarmDiner.png",
       "title": "8 Farm Diner",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.587202380952381,
+        "y": 0.4409209383145091
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/8_FarmDiner.jpg",
+      "ambient": "ambient/8_FarmDiner.jpg"
     },
     {
       "src": "images/8_Gift.png",
       "title": "8 Gift",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.3471843749284744,
+        "y": 0.5065339356660843
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/8_Gift.jpg",
+      "ambient": "ambient/8_Gift.jpg"
     },
     {
       "src": "images/8_HeartMug.png",
       "title": "8 Heart Mug",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.3943719267845154,
+        "y": 0.25595541298389435
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/8_HeartMug.jpg",
+      "ambient": "ambient/8_HeartMug.jpg"
     },
     {
       "src": "images/8_Kelsey.png",
       "title": "8 Kelsey",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.31141871213912964,
+        "y": 0.4480000436306
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/8_Kelsey.jpg",
+      "ambient": "ambient/8_Kelsey.jpg"
     },
     {
       "src": "images/8_KenAndJoe.png",
       "title": "8 Ken And Joe",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5641618497109827,
+        "y": 0.5623885918003565
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/8_KenAndJoe.jpg",
+      "ambient": "ambient/8_KenAndJoe.jpg"
     },
     {
       "src": "images/8_KenAndKatieKitchen.png",
       "title": "8 Ken And Katie Kitchen",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.561521053314209,
+        "y": 0.35179564356803894
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/8_KenAndKatieKitchen.jpg",
+      "ambient": "ambient/8_KenAndKatieKitchen.jpg"
     },
     {
       "src": "images/August 1995 MS second.jpg",
       "title": "August 1995 MS second",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.37652549147605896,
+        "y": 0.20300141721963882
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/August 1995 MS second.jpg",
+      "ambient": "ambient/August 1995 MS second.jpg"
     },
     {
       "src": "images/August 1995 MS.jpg",
       "title": "August 1995 MS",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5697536766529083,
+        "y": 0.24916353821754456
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/August 1995 MS.jpg",
+      "ambient": "ambient/August 1995 MS.jpg"
     },
     {
       "src": "images/Bunny.png",
       "title": "Bunny",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.3514450867052023,
+        "y": 0.8380603842634949
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/Bunny.jpg",
+      "ambient": "ambient/Bunny.jpg"
     },
     {
       "src": "images/DSC00581.JPG",
       "title": "DSC00581",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5813784599304199,
+        "y": 0.30373287945985794
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/DSC00581.jpg",
+      "ambient": "ambient/DSC00581.jpg"
     },
     {
       "src": "images/DSC00660.JPG",
       "title": "DSC00660",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.19154502891765354,
+        "y": 0.2337495409474844
       },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/Farm.jpg",
-      "title": "Farm",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/DSC00660.jpg",
+      "ambient": "ambient/DSC00660.jpg"
     },
     {
       "src": "images/FB_IMG_1707587806372.jpg",
       "title": "FB IMG 1707587806372",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4836127460002899,
+        "y": 0.5153994560241699
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/FB_IMG_1707587806372.jpg",
+      "ambient": "ambient/FB_IMG_1707587806372.jpg"
+    },
+    {
+      "src": "images/Farm.jpg",
+      "title": "Farm",
+      "focal_point": {
+        "x": 0.39841003715991974,
+        "y": 0.2652277648448944
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/Farm.jpg",
+      "ambient": "ambient/Farm.jpg"
     },
     {
       "src": "images/Frankfurt zoo.jpg",
       "title": "Frankfurt zoo",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.35679978132247925,
+        "y": 0.37363825738430023
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/Frankfurt zoo.jpg",
+      "ambient": "ambient/Frankfurt zoo.jpg"
     },
     {
       "src": "images/Germany Sept 65.jpg",
       "title": "Germany Sept 65",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4611322283744812,
+        "y": 0.39889372885227203
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/Germany Sept 65.jpg",
+      "ambient": "ambient/Germany Sept 65.jpg"
     },
     {
       "src": "images/Germany.jpg",
       "title": "Germany",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.30605285592497866,
+        "y": 0.5010626992561105
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/Germany.jpg",
+      "ambient": "ambient/Germany.jpg"
     },
     {
       "src": "images/IMG_0157.JPG",
       "title": "IMG 0157",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.610260397195816,
+        "y": 0.4381108582019806
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_0157.jpg",
+      "ambient": "ambient/IMG_0157.jpg"
     },
     {
       "src": "images/IMG_0821.JPG",
       "title": "IMG 0821",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.19180267304182053,
+        "y": 0.3971480429172516
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_0821.jpg",
+      "ambient": "ambient/IMG_0821.jpg"
     },
     {
       "src": "images/IMG_0822.JPG",
       "title": "IMG 0822",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.8032765984535217,
+        "y": 0.2894282713532448
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_0822.jpg",
+      "ambient": "ambient/IMG_0822.jpg"
     },
     {
       "src": "images/IMG_0828.JPG",
       "title": "IMG 0828",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5258118063211441,
+        "y": 0.4782259464263916
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_0828.jpg",
+      "ambient": "ambient/IMG_0828.jpg"
     },
     {
       "src": "images/IMG_0829.JPG",
       "title": "IMG 0829",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5198560804128647,
+        "y": 0.4629649221897125
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_0829.jpg",
+      "ambient": "ambient/IMG_0829.jpg"
     },
     {
       "src": "images/IMG_0830.JPG",
       "title": "IMG 0830",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5227625221014023,
+        "y": 0.47380709648132324
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_0830.jpg",
+      "ambient": "ambient/IMG_0830.jpg"
     },
     {
       "src": "images/IMG_0958.JPG",
       "title": "IMG 0958",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.28856220841407776,
+        "y": 0.37397927045822144
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_0958.jpg",
+      "ambient": "ambient/IMG_0958.jpg"
     },
     {
       "src": "images/IMG_1918.JPG",
       "title": "IMG 1918",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5201127082109451,
+        "y": 0.282004177570343
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_1918.jpg",
+      "ambient": "ambient/IMG_1918.jpg"
     },
     {
       "src": "images/IMG_1920.JPG",
       "title": "IMG 1920",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5146768987178802,
+        "y": 0.3627948462963104
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_1920.jpg",
+      "ambient": "ambient/IMG_1920.jpg"
     },
     {
       "src": "images/IMG_2549.JPG",
@@ -2627,277 +3209,339 @@
         "x": 0.5,
         "y": 0.5
       },
-      "focal_source": "fallback"
+      "focal_source": "fallback",
+      "thumb": "thumbnails/IMG_2549.jpg",
+      "ambient": "ambient/IMG_2549.jpg"
     },
     {
       "src": "images/IMG_2550.JPG",
       "title": "IMG 2550",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5550553202629089,
+        "y": 0.16727197170257568
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_2550.jpg",
+      "ambient": "ambient/IMG_2550.jpg"
     },
     {
       "src": "images/IMG_2551.JPG",
       "title": "IMG 2551",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.7279521524906158,
+        "y": 0.23142927885055542
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_2551.jpg",
+      "ambient": "ambient/IMG_2551.jpg"
     },
     {
       "src": "images/IMG_2552.JPG",
       "title": "IMG 2552",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5622913837432861,
+        "y": 0.25142548978328705
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_2552.jpg",
+      "ambient": "ambient/IMG_2552.jpg"
     },
     {
       "src": "images/IMG_2724.JPG",
       "title": "IMG 2724",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.47400006651878357,
+        "y": 0.23611465841531754
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_2724.jpg",
+      "ambient": "ambient/IMG_2724.jpg"
     },
     {
       "src": "images/IMG_3658.JPG",
       "title": "IMG 3658",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.3858853578567505,
+        "y": 0.35556837916374207
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_3658.jpg",
+      "ambient": "ambient/IMG_3658.jpg"
     },
     {
       "src": "images/IMG_4150.JPG",
       "title": "IMG 4150",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.41726264357566833,
+        "y": 0.4811105877161026
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_4150.jpg",
+      "ambient": "ambient/IMG_4150.jpg"
     },
     {
       "src": "images/IMG_4184.JPG",
       "title": "IMG 4184",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.3819938898086548,
+        "y": 0.2598864510655403
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_4184.jpg",
+      "ambient": "ambient/IMG_4184.jpg"
     },
     {
       "src": "images/IMG_4195.JPG",
       "title": "IMG 4195",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5525807589292526,
+        "y": 0.42092423141002655
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_4195.jpg",
+      "ambient": "ambient/IMG_4195.jpg"
     },
     {
       "src": "images/IMG_4371.JPG",
       "title": "IMG 4371",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4197008013725281,
+        "y": 0.31881605088710785
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_4371.jpg",
+      "ambient": "ambient/IMG_4371.jpg"
     },
     {
       "src": "images/IMG_5064-COLLAGE.jpg",
       "title": "IMG 5064 COLLAGE",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5305319726467133,
+        "y": 0.4814661592245102
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5064-COLLAGE.jpg",
+      "ambient": "ambient/IMG_5064-COLLAGE.jpg"
     },
     {
       "src": "images/IMG_5068.JPG",
       "title": "IMG 5068",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.19537968933582306,
+        "y": 0.42144976556301117
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5068.jpg",
+      "ambient": "ambient/IMG_5068.jpg"
     },
     {
       "src": "images/IMG_5069.JPG",
       "title": "IMG 5069",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.46699070930480957,
+        "y": 0.5638669729232788
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5069.jpg",
+      "ambient": "ambient/IMG_5069.jpg"
     },
     {
       "src": "images/IMG_5079.JPG",
       "title": "IMG 5079",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5691924542188644,
+        "y": 0.42469923198223114
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5079.jpg",
+      "ambient": "ambient/IMG_5079.jpg"
     },
     {
       "src": "images/IMG_5080.JPG",
       "title": "IMG 5080",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5688169598579407,
+        "y": 0.4030544012784958
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5080.jpg",
+      "ambient": "ambient/IMG_5080.jpg"
     },
     {
       "src": "images/IMG_5081.JPG",
       "title": "IMG 5081",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5459814965724945,
+        "y": 0.3827509135007858
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5081.jpg",
+      "ambient": "ambient/IMG_5081.jpg"
     },
     {
       "src": "images/IMG_5089.JPG",
       "title": "IMG 5089",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6073911190032959,
+        "y": 0.47618368268013
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5089.jpg",
+      "ambient": "ambient/IMG_5089.jpg"
     },
     {
       "src": "images/IMG_5090.JPG",
       "title": "IMG 5090",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.16439837217330933,
+        "y": 0.3783407658338547
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5090.jpg",
+      "ambient": "ambient/IMG_5090.jpg"
     },
     {
       "src": "images/IMG_5091.JPG",
       "title": "IMG 5091",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.49495933949947357,
+        "y": 0.4085032045841217
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5091.jpg",
+      "ambient": "ambient/IMG_5091.jpg"
     },
     {
       "src": "images/IMG_5092.JPG",
       "title": "IMG 5092",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.475712314248085,
+        "y": 0.4269573986530304
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5092.jpg",
+      "ambient": "ambient/IMG_5092.jpg"
     },
     {
       "src": "images/IMG_5093.JPG",
       "title": "IMG 5093",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.41757912933826447,
+        "y": 0.5413360744714737
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5093.jpg",
+      "ambient": "ambient/IMG_5093.jpg"
     },
     {
       "src": "images/IMG_5129.JPG",
       "title": "IMG 5129",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.3199576288461685,
+        "y": 0.3294987380504608
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5129.jpg",
+      "ambient": "ambient/IMG_5129.jpg"
     },
     {
       "src": "images/IMG_5131.JPG",
       "title": "IMG 5131",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.646820068359375,
+        "y": 0.3355228900909424
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5131.jpg",
+      "ambient": "ambient/IMG_5131.jpg"
     },
     {
       "src": "images/IMG_5133.JPG",
       "title": "IMG 5133",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5452764183282852,
+        "y": 0.36027127504348755
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5133.jpg",
+      "ambient": "ambient/IMG_5133.jpg"
     },
     {
       "src": "images/IMG_5134.JPG",
       "title": "IMG 5134",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5502879768610001,
+        "y": 0.3436542898416519
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5134.jpg",
+      "ambient": "ambient/IMG_5134.jpg"
     },
     {
       "src": "images/IMG_5135.JPG",
       "title": "IMG 5135",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6675910949707031,
+        "y": 0.3463330715894699
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5135.jpg",
+      "ambient": "ambient/IMG_5135.jpg"
     },
     {
       "src": "images/IMG_5136.JPG",
       "title": "IMG 5136",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6684275269508362,
+        "y": 0.3892764300107956
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5136.jpg",
+      "ambient": "ambient/IMG_5136.jpg"
     },
     {
       "src": "images/IMG_5138.JPG",
       "title": "IMG 5138",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.3776503950357437,
+        "y": 0.38047656416893005
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5138.jpg",
+      "ambient": "ambient/IMG_5138.jpg"
     },
     {
       "src": "images/IMG_5139.JPG",
       "title": "IMG 5139",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4592013888888889,
+        "y": 0.5114087301587301
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5139.jpg",
+      "ambient": "ambient/IMG_5139.jpg"
     },
     {
       "src": "images/IMG_5141.JPG",
       "title": "IMG 5141",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5436507936507936,
+        "y": 0.605406746031746
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5141.jpg",
+      "ambient": "ambient/IMG_5141.jpg"
     },
     {
       "src": "images/IMG_5142.JPG",
       "title": "IMG 5142",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.19982917606830597,
+        "y": 0.5615288615226746
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5142.jpg",
+      "ambient": "ambient/IMG_5142.jpg"
     },
     {
       "src": "images/IMG_5143.JPG",
@@ -2906,34 +3550,42 @@
         "x": 0.5,
         "y": 0.5
       },
-      "focal_source": "fallback"
+      "focal_source": "fallback",
+      "thumb": "thumbnails/IMG_5143.jpg",
+      "ambient": "ambient/IMG_5143.jpg"
     },
     {
       "src": "images/IMG_5144.JPG",
       "title": "IMG 5144",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4748677248677249,
+        "y": 0.6247519841269841
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5144.jpg",
+      "ambient": "ambient/IMG_5144.jpg"
     },
     {
       "src": "images/IMG_5145.JPG",
       "title": "IMG 5145",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.46742724867724866,
+        "y": 0.6166914682539683
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5145.jpg",
+      "ambient": "ambient/IMG_5145.jpg"
     },
     {
       "src": "images/IMG_5146.JPG",
       "title": "IMG 5146",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.26851851851851855,
+        "y": 0.7780257936507936
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5146.jpg",
+      "ambient": "ambient/IMG_5146.jpg"
     },
     {
       "src": "images/IMG_5147.JPG",
@@ -2942,493 +3594,603 @@
         "x": 0.5,
         "y": 0.5
       },
-      "focal_source": "fallback"
+      "focal_source": "fallback",
+      "thumb": "thumbnails/IMG_5147.jpg",
+      "ambient": "ambient/IMG_5147.jpg"
     },
     {
       "src": "images/IMG_5148.JPG",
       "title": "IMG 5148",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.7008928571428571,
+        "y": 0.5569196428571429
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5148.jpg",
+      "ambient": "ambient/IMG_5148.jpg"
     },
     {
       "src": "images/IMG_5149.JPG",
       "title": "IMG 5149",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5391653627157211,
+        "y": 0.5756590962409973
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5149.jpg",
+      "ambient": "ambient/IMG_5149.jpg"
     },
     {
       "src": "images/IMG_5161.JPG",
       "title": "IMG 5161",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.44790519773960114,
+        "y": 0.17184733599424362
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5161.jpg",
+      "ambient": "ambient/IMG_5161.jpg"
     },
     {
       "src": "images/IMG_5164.JPG",
       "title": "IMG 5164",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6130106449127197,
+        "y": 0.563398540019989
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5164.jpg",
+      "ambient": "ambient/IMG_5164.jpg"
     },
     {
       "src": "images/IMG_5169.JPG",
       "title": "IMG 5169",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5440063923597336,
+        "y": 0.29373598098754883
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5169.jpg",
+      "ambient": "ambient/IMG_5169.jpg"
     },
     {
       "src": "images/IMG_5170.JPG",
       "title": "IMG 5170",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.42850056290626526,
+        "y": 0.37825433909893036
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5170.jpg",
+      "ambient": "ambient/IMG_5170.jpg"
     },
     {
       "src": "images/IMG_5172.JPG",
       "title": "IMG 5172",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.42979997396469116,
+        "y": 0.3977404087781906
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5172.jpg",
+      "ambient": "ambient/IMG_5172.jpg"
     },
     {
       "src": "images/IMG_5173.JPG",
       "title": "IMG 5173",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6602457463741302,
+        "y": 0.36503951251506805
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5173.jpg",
+      "ambient": "ambient/IMG_5173.jpg"
     },
     {
       "src": "images/IMG_5175.JPG",
       "title": "IMG 5175",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6275353133678436,
+        "y": 0.40610431134700775
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5175.jpg",
+      "ambient": "ambient/IMG_5175.jpg"
     },
     {
       "src": "images/IMG_5184.JPG",
       "title": "IMG 5184",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.44616784155368805,
+        "y": 0.3674185276031494
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_5184.jpg",
+      "ambient": "ambient/IMG_5184.jpg"
     },
     {
       "src": "images/IMG_6173.JPG",
       "title": "IMG 6173",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4167711138725281,
+        "y": 0.3039277046918869
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_6173.jpg",
+      "ambient": "ambient/IMG_6173.jpg"
     },
     {
       "src": "images/IMG_6605.JPG",
       "title": "IMG 6605",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6473520994186401,
+        "y": 0.6297297477722168
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_6605.jpg",
+      "ambient": "ambient/IMG_6605.jpg"
     },
     {
       "src": "images/IMG_6902.JPG",
       "title": "IMG 6902",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.43463312089443207,
+        "y": 0.31852272152900696
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_6902.jpg",
+      "ambient": "ambient/IMG_6902.jpg"
     },
     {
       "src": "images/IMG_6984.JPG",
       "title": "IMG 6984",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.48187437653541565,
+        "y": 0.5836959183216095
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_6984.jpg",
+      "ambient": "ambient/IMG_6984.jpg"
     },
     {
       "src": "images/IMG_7068.JPG",
       "title": "IMG 7068",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.39802373945713043,
+        "y": 0.43494516611099243
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_7068.jpg",
+      "ambient": "ambient/IMG_7068.jpg"
     },
     {
       "src": "images/IMG_8331.JPG",
       "title": "IMG 8331",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.27894115447998047,
+        "y": 0.22097699344158173
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/IMG_8331.jpg",
+      "ambient": "ambient/IMG_8331.jpg"
     },
     {
       "src": "images/June 1971 Germany.jpg",
       "title": "June 1971 Germany",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5271933525800705,
+        "y": 0.3942904472351074
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/June 1971 Germany.jpg",
+      "ambient": "ambient/June 1971 Germany.jpg"
     },
     {
       "src": "images/Memorial photo.jpg",
       "title": "Memorial photo",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4714272767305374,
+        "y": 0.5572071075439453
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/Memorial photo.jpg",
+      "ambient": "ambient/Memorial photo.jpg"
     },
     {
       "src": "images/P_1933.png",
       "title": "P 1933",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5376049280166626,
+        "y": 0.27901193499565125
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/P_1933.jpg",
+      "ambient": "ambient/P_1933.jpg"
     },
     {
       "src": "images/P_1933colorized.png",
       "title": "P 1933colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4803413897752762,
+        "y": 0.4351756274700165
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/P_1933colorized.jpg",
+      "ambient": "ambient/P_1933colorized.jpg"
     },
     {
       "src": "images/P_CleoAndSis.png",
       "title": "P Cleo And Sis",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5317664593458176,
+        "y": 0.1378275789320469
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/P_CleoAndSis.jpg",
+      "ambient": "ambient/P_CleoAndSis.jpg"
     },
     {
       "src": "images/P_CleoAndSister.png",
       "title": "P Cleo And Sister",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5406261533498764,
+        "y": 0.1407557986676693
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/P_CleoAndSister.jpg",
+      "ambient": "ambient/P_CleoAndSister.jpg"
     },
     {
       "src": "images/P_CleoFamily.png",
       "title": "P Cleo Family",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5241180062294006,
+        "y": 0.28121793270111084
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/P_CleoFamily.jpg",
+      "ambient": "ambient/P_CleoFamily.jpg"
     },
     {
       "src": "images/P_OttoMotorcycle.png",
       "title": "P Otto Motorcycle",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6478204727172852,
+        "y": 0.318174809217453
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/P_OttoMotorcycle.jpg",
+      "ambient": "ambient/P_OttoMotorcycle.jpg"
     },
     {
       "src": "images/P_OttoMotorcycleColorized.png",
       "title": "P Otto Motorcycle Colorized",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6573941707611084,
+        "y": 0.3555872142314911
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/P_OttoMotorcycleColorized.jpg",
+      "ambient": "ambient/P_OttoMotorcycleColorized.jpg"
     },
     {
       "src": "images/Photo_2025-07-30_181712.jpg",
       "title": "Photo 2025 07 30 181712",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4635059931506849,
+        "y": 0.6044446624803768
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/Photo_2025-07-30_181712.jpg",
+      "ambient": "ambient/Photo_2025-07-30_181712.jpg"
     },
     {
       "src": "images/Photo_2025-07-30_182444.jpg",
       "title": "Photo 2025 07 30 182444",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4112799657534247,
+        "y": 0.6355474882260597
       },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/QVZjbngxRml1R0pzcFMxeA.jpeg",
-      "title": "QVZjbngx Rml1 R0pzc FMxe A",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/Photo_2025-07-30_182444.jpg",
+      "ambient": "ambient/Photo_2025-07-30_182444.jpg"
     },
     {
       "src": "images/QVZjMFEtVWx1ZWhNUUd5cw.jpeg",
       "title": "QVZj MFEt VWx1 ZWh NUUd5cw",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5340277777777778,
+        "y": 0.6731481481481482
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZjMFEtVWx1ZWhNUUd5cw.jpg",
+      "ambient": "ambient/QVZjMFEtVWx1ZWhNUUd5cw.jpg"
     },
     {
       "src": "images/QVZjQ094MlN6b0p4VU80Tg.jpeg",
       "title": "QVZj Q094 Ml N6b0p4 VU80 Tg",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.21733123064041138,
+        "y": 0.4359736144542694
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZjQ094MlN6b0p4VU80Tg.jpg",
+      "ambient": "ambient/QVZjQ094MlN6b0p4VU80Tg.jpg"
     },
     {
       "src": "images/QVZjVVN5THRKRHVud3g3eA.jpeg",
       "title": "QVZj VVN5 THRKRHVud3g3e A",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.36254487931728363,
+        "y": 0.4497443586587906
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZjVVN5THRKRHVud3g3eA.jpg",
+      "ambient": "ambient/QVZjVVN5THRKRHVud3g3eA.jpg"
     },
     {
       "src": "images/QVZjWFplZUJkazNYTlVfYg.jpeg",
       "title": "QVZj WFpl ZUJkaz NYTl Vf Yg",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.9169958829879761,
+        "y": 0.33348217606544495
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZjWFplZUJkazNYTlVfYg.jpg",
+      "ambient": "ambient/QVZjWFplZUJkazNYTlVfYg.jpg"
     },
     {
-      "src": "images/QVZkbklpWU1pcEh4OUJPbA.jpeg",
-      "title": "QVZkbklp WU1pc Eh4 OUJPb A",
+      "src": "images/QVZjbngxRml1R0pzcFMxeA.jpeg",
+      "title": "QVZjbngx Rml1 R0pzc FMxe A",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4837711751461029,
+        "y": 0.5153523832559586
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZjbngxRml1R0pzcFMxeA.jpg",
+      "ambient": "ambient/QVZjbngxRml1R0pzcFMxeA.jpg"
     },
     {
       "src": "images/QVZkQmNBRUdOck5xNG0tTw.jpeg",
       "title": "QVZk Qm NBRUd Ock5x NG0t Tw",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.271989643573761,
+        "y": 0.36681339144706726
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZkQmNBRUdOck5xNG0tTw.jpg",
+      "ambient": "ambient/QVZkQmNBRUdOck5xNG0tTw.jpg"
     },
     {
       "src": "images/QVZkSFcyTTN5QkFHc0ZocQ.jpeg",
       "title": "QVZk SFcy TTN5 Qk FHc0 Zoc Q",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5733995735645294,
+        "y": 0.3970227837562561
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZkSFcyTTN5QkFHc0ZocQ.jpg",
+      "ambient": "ambient/QVZkSFcyTTN5QkFHc0ZocQ.jpg"
     },
     {
       "src": "images/QVZkU1JocU9jWGFNaW9mNQ.jpeg",
       "title": "QVZk U1 Joc U9j WGFNa W9m NQ",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.5070429295301437,
+        "y": 0.4466416835784912
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZkU1JocU9jWGFNaW9mNQ.jpg",
+      "ambient": "ambient/QVZkU1JocU9jWGFNaW9mNQ.jpg"
+    },
+    {
+      "src": "images/QVZkbklpWU1pcEh4OUJPbA.jpeg",
+      "title": "QVZkbklp WU1pc Eh4 OUJPb A",
+      "focal_point": {
+        "x": 0.3965921700000763,
+        "y": 0.6894428730010986
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZkbklpWU1pcEh4OUJPbA.jpg",
+      "ambient": "ambient/QVZkbklpWU1pcEh4OUJPbA.jpg"
     },
     {
       "src": "images/QVZlSWFCbEV0TTVUbTJCSQ.jpeg",
       "title": "QVZl SWFCb EV0 TTVUb TJCSQ",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.543353259563446,
+        "y": 0.4468650817871094
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZlSWFCbEV0TTVUbTJCSQ.jpg",
+      "ambient": "ambient/QVZlSWFCbEV0TTVUbTJCSQ.jpg"
     },
     {
       "src": "images/QVZlTndELXNqMG9qenBOcw.jpeg",
       "title": "QVZl Tnd ELXNq MG9qen BOcw",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.37992821633815765,
+        "y": 0.40345411002635956
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZlTndELXNqMG9qenBOcw.jpg",
+      "ambient": "ambient/QVZlTndELXNqMG9qenBOcw.jpg"
     },
     {
       "src": "images/QVZlUXpQaWdGMml6dG96Mg.jpeg",
       "title": "QVZl UXp Qa Wd GMml6d G96 Mg",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.44182083010673523,
+        "y": 0.5341114550828934
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZlUXpQaWdGMml6dG96Mg.jpg",
+      "ambient": "ambient/QVZlUXpQaWdGMml6dG96Mg.jpg"
     },
     {
       "src": "images/QVZlVG1tOW5hMS1mdEhqeg.jpeg",
       "title": "QVZl VG1t OW5h MS1md Ehqeg",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.286734476685524,
+        "y": 0.20832807570695877
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZlVG1tOW5hMS1mdEhqeg.jpg",
+      "ambient": "ambient/QVZlVG1tOW5hMS1mdEhqeg.jpg"
     },
     {
       "src": "images/QVZlVlIyOHlZcnNEU3lHVw.jpeg",
       "title": "QVZl Vl Iy OHl Zcn NEU3l HVw",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6316678524017334,
+        "y": 0.4435543417930603
       },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/QVZma1hjeHN0Y040LTJ6dw.jpeg",
-      "title": "QVZma1hje HN0 Y040 LTJ6dw",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/QVZmaWFhbElKZmZMTDlYdA.jpeg",
-      "title": "QVZma WFhb El KZm ZMTDl Yd A",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/QVZmbklwQXhsajNyNGxxeg.jpeg",
-      "title": "QVZmbklw QXhsaj Ny NGxxeg",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/QVZmcVVHVE5IZFVEeU1qTg.jpeg",
-      "title": "QVZmc VVHVE5 IZFVEe U1q Tg",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZlVlIyOHlZcnNEU3lHVw.jpg",
+      "ambient": "ambient/QVZlVlIyOHlZcnNEU3lHVw.jpg"
     },
     {
       "src": "images/QVZmQVk3bmVXSGx1aURrNg.jpeg",
       "title": "QVZm QVk3bm VXSGx1a URr Ng",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.3822108805179596,
+        "y": 0.2606393173336983
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZmQVk3bmVXSGx1aURrNg.jpg",
+      "ambient": "ambient/QVZmQVk3bmVXSGx1aURrNg.jpg"
     },
     {
       "src": "images/QVZmR0tkc096REJFckU4eQ.jpeg",
       "title": "QVZm R0tkc096 REJFck U4e Q",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.6647555232048035,
+        "y": 0.45843134820461273
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZmR0tkc096REJFckU4eQ.jpg",
+      "ambient": "ambient/QVZmR0tkc096REJFckU4eQ.jpg"
     },
     {
       "src": "images/QVZmWWFqTjNTQUgzY0VZdw.jpeg",
       "title": "QVZm WWFq Tj NTQUgz Y0 VZdw",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.44133056700229645,
+        "y": 0.3907444477081299
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZmWWFqTjNTQUgzY0VZdw.jpg",
+      "ambient": "ambient/QVZmWWFqTjNTQUgzY0VZdw.jpg"
     },
     {
       "src": "images/QVZmYXdlR1Z0cVVteHNwYg.jpeg",
       "title": "QVZm YXdl R1 Z0c VVte HNw Yg",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.659963846206665,
+        "y": 0.3099343702197075
       },
-      "focal_source": "fallback"
-    },
-    {
-      "src": "images/QVZmZktzRm9JXzZ3T2xtVw.jpeg",
-      "title": "QVZm Zktz Rm9 JXz Z3 T2xt Vw",
-      "focal_point": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZmYXdlR1Z0cVVteHNwYg.jpg",
+      "ambient": "ambient/QVZmYXdlR1Z0cVVteHNwYg.jpg"
     },
     {
       "src": "images/QVZmZTdCMDN5dEpQSV9hUw.jpeg",
       "title": "QVZm ZTd CMDN5d Ep QSV9h Uw",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.38194429874420166,
+        "y": 0.2601896747946739
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZmZTdCMDN5dEpQSV9hUw.jpg",
+      "ambient": "ambient/QVZmZTdCMDN5dEpQSV9hUw.jpg"
+    },
+    {
+      "src": "images/QVZmZktzRm9JXzZ3T2xtVw.jpeg",
+      "title": "QVZm Zktz Rm9 JXz Z3 T2xt Vw",
+      "focal_point": {
+        "x": 0.7688469290733337,
+        "y": 0.3153039515018463
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZmZktzRm9JXzZ3T2xtVw.jpg",
+      "ambient": "ambient/QVZmZktzRm9JXzZ3T2xtVw.jpg"
+    },
+    {
+      "src": "images/QVZma1hjeHN0Y040LTJ6dw.jpeg",
+      "title": "QVZma1hje HN0 Y040 LTJ6dw",
+      "focal_point": {
+        "x": 0.4836498647928238,
+        "y": 0.5194538533687592
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZma1hjeHN0Y040LTJ6dw.jpg",
+      "ambient": "ambient/QVZma1hjeHN0Y040LTJ6dw.jpg"
+    },
+    {
+      "src": "images/QVZmaWFhbElKZmZMTDlYdA.jpeg",
+      "title": "QVZma WFhb El KZm ZMTDl Yd A",
+      "focal_point": {
+        "x": 0.4583605080842972,
+        "y": 0.33059176802635193
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZmaWFhbElKZmZMTDlYdA.jpg",
+      "ambient": "ambient/QVZmaWFhbElKZmZMTDlYdA.jpg"
+    },
+    {
+      "src": "images/QVZmbklwQXhsajNyNGxxeg.jpeg",
+      "title": "QVZmbklw QXhsaj Ny NGxxeg",
+      "focal_point": {
+        "x": 0.5212402939796448,
+        "y": 0.47678397595882416
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZmbklwQXhsajNyNGxxeg.jpg",
+      "ambient": "ambient/QVZmbklwQXhsajNyNGxxeg.jpg"
+    },
+    {
+      "src": "images/QVZmcVVHVE5IZFVEeU1qTg.jpeg",
+      "title": "QVZmc VVHVE5 IZFVEe U1q Tg",
+      "focal_point": {
+        "x": 0.528054490685463,
+        "y": 0.3988994061946869
+      },
+      "focal_source": "face",
+      "thumb": "thumbnails/QVZmcVVHVE5IZFVEeU1qTg.jpg",
+      "ambient": "ambient/QVZmcVVHVE5IZFVEeU1qTg.jpg"
     },
     {
       "src": "images/Summer 1988.jpg",
       "title": "Summer 1988",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4093091983745844,
+        "y": 0.47417355371900827
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/Summer 1988.jpg",
+      "ambient": "ambient/Summer 1988.jpg"
     },
     {
       "src": "images/VideoCapture_20221214-114205.jpg",
       "title": "Video Capture 20221214 114205",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4728441387414932,
+        "y": 0.3109828233718872
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/VideoCapture_20221214-114205.jpg",
+      "ambient": "ambient/VideoCapture_20221214-114205.jpg"
     },
     {
       "src": "images/VideoCapture_20221214-114307.jpg",
       "title": "Video Capture 20221214 114307",
       "focal_point": {
-        "x": 0.5,
-        "y": 0.5
+        "x": 0.4502400755882263,
+        "y": 0.3049899637699127
       },
-      "focal_source": "fallback"
+      "focal_source": "face",
+      "thumb": "thumbnails/VideoCapture_20221214-114307.jpg",
+      "ambient": "ambient/VideoCapture_20221214-114307.jpg"
     }
   ]
 }

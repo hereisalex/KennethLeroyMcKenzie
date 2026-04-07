@@ -5,6 +5,7 @@ import { spawnSync } from 'node:child_process';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const IMAGES_DIR = path.join(__dirname, '..', 'public', 'images');
+const AMBIENT_DIR = path.join(__dirname, '..', 'public', 'ambient');
 const OUT = path.join(__dirname, '..', 'public', 'manifest.json');
 
 const EXT = /\.(jpe?g|png|gif|webp|avif|bmp)$/i;
@@ -50,6 +51,9 @@ const manifest = {
     title: deriveTitle(file),
     focal_point: { x: 0.5, y: 0.5 },
     focal_source: 'fallback',
+    ambient: fs.existsSync(path.join(AMBIENT_DIR, `${path.parse(file).name}.jpg`))
+      ? `ambient/${path.parse(file).name}.jpg`
+      : '',
   })),
 };
 
