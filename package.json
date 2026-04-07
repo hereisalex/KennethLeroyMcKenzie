@@ -1,0 +1,12 @@
+{
+  "name": "kenneth-leroy-mckenzie-memorial",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "manifest": "node tools/generate-manifest.js",
+    "manifest:python": "python tools/generate-manifest.py"
+  },
+  "dependencies": {
+    "@upstash/redis": "^1.34.0"
+  }
+}

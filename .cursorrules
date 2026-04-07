@@ -1,0 +1,28 @@
+Act as a Senior Frontend Engineer. We are building an ultra-lean, high-performance Ken Burns slideshow website for mobile and desktop. The purpose of the website is a memorial for a deceased relative, as a way to share the slideshow I prepared for the memorial service that took place last year.
+
+Core Constraints:
+
+Tech Stack: Vanilla HTML5, CSS3, and JavaScript only. No frameworks.
+
+Performance: Prioritize GPU-accelerated CSS transforms over JS-driven animations. Use 100dvh for full-screen layout.
+
+State Management: Use a 'Double-Buffered' DOM approach (two overlapping containers) to ensure seamless cross-fades without flickering.
+
+Data Source: Assets are local. Photos are in /public/images/ and listed in a manifest.json (generate this if it does not already exist, and any time the directory is updated). Music is a YouTube playlist.
+
+Code Style: Clean, modular ES6. No external dependencies unless strictly necessary (e.g., YouTube IFrame API)."
+
+Future features for integration:
+
+Semantic Ken Burns (Focal Points):
+-Support for normalized focal_point coordinates (x, y from 0.0 to 1.0) in the manifest.
+-Transition logic should dynamically update CSS transform-origin to the focal point (e.g., Grandpa's face) before the zoom begins.
+-Implementation of a "Safe Zoom" calculation to ensure edge-focused zooms don't reveal background letterboxing.
+
+Pre-baked Asset Intelligence:
+-A "Director's Script" (Python/Node) to pre-analyze images for saliency (face detection).
+-The frontend remains "dumb" and purely execution-based, reading all timing and focal data from the pre-generated manifest.
+
+Advanced Preloading & Memory Management:
+-Anticipatory loading of the next 2–3 images in the manifest sequence to ensure zero-latency transitions on low-bandwidth mobile connections.
+-Automatic DOM cleanup of inactive slides to maintain a minimal memory footprint during long-duration playback

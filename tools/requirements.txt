@@ -1,0 +1,4 @@
+# Face detection + thumbnails for tools/generate-manifest.py
+opencv-python-headless>=4.8.0,<5
+# Newer mediapipe wheels (e.g. 0.10.30 win) ship only `tasks` — classic Face Detection needs <=0.10.14
+mediapipe>=0.10.9,<=0.10.14

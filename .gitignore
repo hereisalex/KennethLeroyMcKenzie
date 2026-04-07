@@ -1,0 +1,19 @@
+# Dependencies (manifest scripts use Node built-ins; lockfile is optional to keep)
+node_modules/
+
+# Local env / secrets (e.g. if you add tooling later)
+.env
+.env.*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Cursor / IDE (optional — uncomment if you prefer not to commit)
+# .cursor/

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0a" />
+  <title>Kenneth Leroy McKenzie — Memorial</title>
+  <link rel="icon" href="public/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="src/css/style.css" />
+</head>
+<body>
+  <!-- Shared reactions/comments: deploy api/feedback to Vercel + Upstash Redis, then set data-feedback-api="/api/feedback" (same origin) or your full API URL (e.g. GitHub Pages → Vercel API). -->
+  <div id="app" data-youtube-playlist="PLN-SBKLnxgwvH4TKfsWG6YMYLPzg5aGXp">
+    <div id="status-banner" class="status-banner" role="status" aria-live="polite" hidden></div>
+    <div id="stage" aria-hidden="true">
+      <div id="buffer-a" class="buffer" data-buffer="a">
+        <div class="slide-img-wrap">
+          <img class="slide-img" alt="" decoding="async" draggable="false" />
+        </div>
+      </div>
+      <div id="buffer-b" class="buffer" data-buffer="b">
+        <div class="slide-img-wrap">
+          <img class="slide-img" alt="" decoding="async" draggable="false" />
+        </div>
+      </div>
+      <div id="slide-meta" class="slide-meta" aria-live="polite">
+        <p id="slide-meta-title" class="slide-meta__title"></p>
+        <p id="slide-meta-detail" class="slide-meta__detail"></p>
+        <p id="slide-meta-caption" class="slide-meta__caption"></p>
+      </div>
+    </div>
+    <div id="chrome-dock" class="chrome-dock chrome-dock--hidden">
+      <div id="filmstrip" class="filmstrip" role="navigation" aria-label="Photos near current slide"></div>
+      <div id="controls" class="controls" aria-label="Memorial controls">
+        <div class="controls__inner">
+          <div class="controls__group controls__group--slides" role="group" aria-label="Slides">
+            <button type="button" class="controls__btn" id="ctrl-slide-prev" aria-label="Previous slide">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
+            </button>
+            <button type="button" class="controls__btn controls__btn--primary" id="ctrl-play-pause" aria-label="Pause slideshow and music">
+              <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <button type="button" class="controls__btn" id="ctrl-slide-next" aria-label="Next slide">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+            </button>
+            <button type="button" class="controls__btn" id="ctrl-share-slide" disabled aria-label="Download or share current photo" title="Save or share this photo">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+            </button>
+            <button type="button" class="controls__btn" id="ctrl-photo-feedback" disabled aria-label="React and comment on this photo" title="Reactions and comments">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12zM7 9h2v2H7V9zm8 0h2v2h-2V9zm-4 0h2v2h-2V9z"/></svg>
+            </button>
+          </div>
+          <div class="controls__divider" aria-hidden="true"></div>
+          <div class="controls__group controls__group--timing" role="group" aria-label="Slide timing">
+            <label class="controls__timing" for="ctrl-slide-sec">
+              <span class="controls__timing-label">Sec / slide</span>
+              <input type="range" class="controls__timing-range" id="ctrl-slide-sec" min="3" max="120" step="0.5" value="15" aria-valuemin="3" aria-valuemax="120" aria-label="Seconds per slide" />
+              <span class="controls__timing-val" id="ctrl-slide-sec-val" aria-hidden="true">15s</span>
+            </label>
+            <label class="controls__fit-full" for="ctrl-fit-full">
+              <input type="checkbox" id="ctrl-fit-full" aria-label="Show full photo without cropping or Ken Burns motion" />
+              <span class="controls__fit-full-text">Full photo (no crop)</span>
+            </label>
+          </div>
+          <div class="controls__divider" aria-hidden="true"></div>
+          <div class="controls__group controls__group--tracks" role="group" aria-label="Music track">
+            <button type="button" class="controls__btn" id="ctrl-track-prev" aria-label="Previous track">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h2v12H6V6zm3.5 6l8.5 6V6l-8.5 6z"/></svg>
+            </button>
+            <button type="button" class="controls__btn" id="ctrl-track-next" aria-label="Next track">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+            </button>
+          </div>
+          <div class="controls__divider" aria-hidden="true"></div>
+          <div class="controls__group controls__group--volume" role="group" aria-label="Volume">
+            <button type="button" class="controls__btn" id="ctrl-mute" aria-label="Mute">
+              <svg class="icon-volume-high" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+              <svg class="icon-volume-muted" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+            </button>
+            <label class="controls__volume-label" for="ctrl-volume">
+              <span class="visually-hidden">Volume</span>
+              <input type="range" class="controls__volume" id="ctrl-volume" min="0" max="100" value="80" aria-valuemin="0" aria-valuemax="100" />
+            </label>
+          </div>
+          <div class="controls__divider" aria-hidden="true"></div>
+          <button type="button" class="controls__btn" id="ctrl-archive" aria-label="Open photo archive">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></svg>
+          </button>
+          <button type="button" class="controls__btn" id="ctrl-fullscreen" aria-label="Enter fullscreen">
+            <svg class="icon-enter-fullscreen" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+            <svg class="icon-exit-fullscreen" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="feedback-overlay" class="feedback-overlay" aria-hidden="true">
+      <div class="feedback-overlay__backdrop" id="feedback-backdrop"></div>
+      <div class="feedback-overlay__sheet" role="dialog" aria-modal="true" aria-labelledby="feedback-title">
+        <div class="feedback-overlay__header">
+          <h2 id="feedback-title" class="feedback-overlay__title">This photo</h2>
+          <button type="button" class="feedback-overlay__close" id="feedback-close" aria-label="Close reactions and comments">×</button>
+        </div>
+        <div class="feedback-overlay__body">
+          <p class="feedback-overlay__label" id="feedback-photo-label"></p>
+          <p class="feedback-overlay__privacy" id="feedback-privacy-note"></p>
+          <div class="feedback-reactions" role="group" aria-label="Your reactions">
+            <button type="button" class="feedback-reaction-btn" data-reaction="heart" aria-pressed="false" aria-label="Love" title="Love"><span class="feedback-reaction-btn__emoji" aria-hidden="true">❤️</span></button>
+            <button type="button" class="feedback-reaction-btn" data-reaction="pray" aria-pressed="false" aria-label="Prayer" title="Prayer"><span class="feedback-reaction-btn__emoji" aria-hidden="true">🙏</span></button>
+            <button type="button" class="feedback-reaction-btn" data-reaction="smile" aria-pressed="false" aria-label="Smile" title="Smile"><span class="feedback-reaction-btn__emoji" aria-hidden="true">😊</span></button>
+            <button type="button" class="feedback-reaction-btn" data-reaction="tear" aria-pressed="false" aria-label="Moved" title="Moved"><span class="feedback-reaction-btn__emoji" aria-hidden="true">🥲</span></button>
+            <button type="button" class="feedback-reaction-btn" data-reaction="flower" aria-pressed="false" aria-label="In remembrance" title="In remembrance"><span class="feedback-reaction-btn__emoji" aria-hidden="true">🌸</span></button>
+          </div>
+          <section class="feedback-comments" aria-labelledby="feedback-comments-heading">
+            <h3 id="feedback-comments-heading" class="feedback-comments__heading">Comments</h3>
+            <p class="feedback-comments__empty" id="feedback-comments-empty" hidden>No comments yet — yours can be the first.</p>
+            <ul id="feedback-comment-list" class="feedback-comment-list"></ul>
+            <form id="feedback-comment-form" class="feedback-comment-form">
+              <label class="visually-hidden" for="feedback-comment-input">Add a comment</label>
+              <textarea id="feedback-comment-input" class="feedback-comment-input" rows="3" maxlength="2000" placeholder="Share a memory or kind words…" autocomplete="off"></textarea>
+              <button type="submit" class="feedback-comment-submit">Post comment</button>
+            </form>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div id="archive-overlay" class="archive-overlay" aria-hidden="true">
+      <div class="archive-overlay__backdrop" id="archive-backdrop"></div>
+      <div class="archive-overlay__sheet" role="dialog" aria-modal="true" aria-labelledby="archive-title">
+        <div class="archive-overlay__header">
+          <h2 id="archive-title" class="archive-overlay__title">Photo archive</h2>
+          <button type="button" class="archive-overlay__close" id="archive-close" aria-label="Close archive">×</button>
+        </div>
+        <div id="archive-grid" class="archive-grid"></div>
+      </div>
+    </div>
+    <div id="yt-anchor"></div>
+    <div id="start-overlay" class="start-overlay" role="dialog" aria-modal="true" aria-labelledby="start-title">
+      <div class="start-overlay__inner">
+        <h1 id="start-title" class="start-overlay__title">Memorial slideshow</h1>
+        <p class="start-overlay__hint">Tap to begin and hear the music.</p>
+        <button type="button" id="start-memorial" class="start-overlay__btn">Begin memorial</button>
+      </div>
+    </div>
+    <div id="fatal-overlay" class="fatal-overlay" hidden role="alertdialog" aria-modal="true" aria-labelledby="fatal-title">
+      <div class="fatal-overlay__inner">
+        <h2 id="fatal-title" class="fatal-overlay__title">Unable to load memorial</h2>
+        <p id="fatal-message" class="fatal-overlay__message">Please refresh and try again.</p>
+        <button type="button" id="fatal-retry" class="fatal-overlay__btn">Try again</button>
+      </div>
+    </div>
+  </div>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script type="module" src="src/js/app.js"></script>
+</body>
+</html>

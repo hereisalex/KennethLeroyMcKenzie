@@ -1,0 +1,3434 @@
+{
+  "generatedAt": "2026-03-26T22:51:13.115Z",
+  "images": [
+    {
+      "src": "images/0_8mos.png",
+      "title": "0 8mos",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/0_8mosColorized.png",
+      "title": "0 8mos Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/0ToddlerPortrait.png",
+      "title": "0 Toddler Portrait",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/0ToddlerPortraitColorizedv2.png",
+      "title": "0 Toddler Portrait Colorizedv2",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/1_Goat.png",
+      "title": "1 Goat",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/1_GoatColorized.png",
+      "title": "1 Goat Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/1_GoatTwo.png",
+      "title": "1 Goat Two",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/1_GoatTwoColorized.png",
+      "title": "1 Goat Two Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/1_Grass.png",
+      "title": "1 Grass",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/1_UniformYoung.png",
+      "title": "1 Uniform Young",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/1_UniformYoungColorized.png",
+      "title": "1 Uniform Young Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/1_Young.png",
+      "title": "1 Young",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/1_YoungColorized.png",
+      "title": "1 Young Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/1671054711924.jpg",
+      "title": "1671054711924",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/1966 Germany.jpg",
+      "title": "1966 Germany",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2_AlaskaLauraShirt.png",
+      "title": "2 Alaska Laura Shirt",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2_AlaskaLauraShirtColorized.png",
+      "title": "2 Alaska Laura Shirt Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2_Clogs.png",
+      "title": "2 Clogs",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2_ClogsColorized.png",
+      "title": "2 Clogs Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2_Dental.png",
+      "title": "2 Dental",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2_Forest.png",
+      "title": "2 Forest",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2_ForestColorized.png",
+      "title": "2 Forest Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2_FtRichardson.png",
+      "title": "2 Ft Richardson",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2_GrandpaFolks.png",
+      "title": "2 Grandpa Folks",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2_GrandpaFolksColorized.png",
+      "title": "2 Grandpa Folks Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2_Horseshoeing.png",
+      "title": "2 Horseshoeing",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2_HorseshoeingColorized.png",
+      "title": "2 Horseshoeing Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2_Piglets.png",
+      "title": "2 Piglets",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2_Snow.png",
+      "title": "2 Snow",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2_SnowColorized.png",
+      "title": "2 Snow Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2_TennesseeWalker.png",
+      "title": "2 Tennessee Walker",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/20171121_213159.jpg",
+      "title": "20171121 213159",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/20171122_192256.jpg",
+      "title": "20171122 192256",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/20200309_191838.jpg",
+      "title": "20200309 191838",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/20200309_191842.jpg",
+      "title": "20200309 191842",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/20210618_192505.jpg",
+      "title": "20210618 192505",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/20210618_201123.jpg",
+      "title": "20210618 201123",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/20210618_201127.jpg",
+      "title": "20210618 201127",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/20210618_205751.jpg",
+      "title": "20210618 205751",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/20210618_205800.jpg",
+      "title": "20210618 205800",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/20210619_111623.jpg",
+      "title": "20210619 111623",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/20210619_111624.jpg",
+      "title": "20210619 111624",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/20210619_111627_capture.jpg",
+      "title": "20210619 111627 capture",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/20210619_111627.jpg",
+      "title": "20210619 111627",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/20210619_120156.jpg",
+      "title": "20210619 120156",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/20210619_120158_capture.jpg",
+      "title": "20210619 120158 capture",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/20210619_120158.jpg",
+      "title": "20210619 120158",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/20210619_120159.jpg",
+      "title": "20210619 120159",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2A_ArmyBadge.png",
+      "title": "2 A Army Badge",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2A_ArmyBadgeColorized.png",
+      "title": "2 A Army Badge Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2A_ArmyCeremony.png",
+      "title": "2 A Army Ceremony",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2A_ArmyCeremonyColorized.png",
+      "title": "2 A Army Ceremony Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2A_KenAndFriend.png",
+      "title": "2 A Ken And Friend",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2A_KenAndFriendColorized.png",
+      "title": "2 A Ken And Friend Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2A_MP.png",
+      "title": "2 A MP",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2A_MPColorized.png",
+      "title": "2 A MPColorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_CouchSnuggles.png",
+      "title": "2 F Couch Snuggles",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_Gardner.png",
+      "title": "2 F Gardner",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_GardnerColorized.png",
+      "title": "2 F Gardner Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_KenAndNancyChurch.png",
+      "title": "2 F Ken And Nancy Church",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_KenAndNancyChurchColorized.png",
+      "title": "2 F Ken And Nancy Church Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_KenAndNancyCo.png",
+      "title": "2 F Ken And Nancy Co",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_KenAndNancyColorized.png",
+      "title": "2 F Ken And Nancy Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_KenLaura.png",
+      "title": "2 F Ken Laura",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_KenWithBaby.png",
+      "title": "2 F Ken With Baby",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_KenWithLaura.png",
+      "title": "2 F Ken With Laura",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_KenWithLauraColorized.png",
+      "title": "2 F Ken With Laura Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_LauraFirstBirthday.png",
+      "title": "2 F Laura First Birthday",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_LauraFirstBirthdayColorized.png",
+      "title": "2 F Laura First Birthday Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_Lucille.png",
+      "title": "2 F Lucille",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_LucilleColorized.png",
+      "title": "2 F Lucille Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_NancyAndBaby.png",
+      "title": "2 F Nancy And Baby",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_NancyAndBabyColorized.png",
+      "title": "2 F Nancy And Baby Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_NancyAndBabyLaura.png",
+      "title": "2 F Nancy And Baby Laura",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_NancyAndBabyLauraColorized.png",
+      "title": "2 F Nancy And Baby Laura Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_NancyInKensLap.png",
+      "title": "2 F Nancy In Kens Lap",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_NancyLaura.png",
+      "title": "2 F Nancy Laura",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_NancyLauraColorized.png",
+      "title": "2 F Nancy Laura Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_NancyLauraSnow.png",
+      "title": "2 F Nancy Laura Snow",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_NancyLauraSnowColorized.png",
+      "title": "2 F Nancy Laura Snow Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_WeddingCake.png",
+      "title": "2 F Wedding Cake",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_WeddingDress.png",
+      "title": "2 F Wedding Dress",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_WeddingFolks.png",
+      "title": "2 F Wedding Folks",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/2F_WeddingFolks2.png",
+      "title": "2 F Wedding Folks2",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/3_FamilyStairs.png",
+      "title": "3 Family Stairs",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/3_FamilyStairsColorized.png",
+      "title": "3 Family Stairs Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/3_FountainBabies.png",
+      "title": "3 Fountain Babies",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/3_FountainBabiesColorized.png",
+      "title": "3 Fountain Babies Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/3_Ken72.png",
+      "title": "3 Ken72",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/3_KenAndKatie.png",
+      "title": "3 Ken And Katie",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/3_KenAndKatie1970Colorized.png",
+      "title": "3 Ken And Katie1970 Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/3_MilitaryUniform.png",
+      "title": "3 Military Uniform",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/3_MilitaryUniform2.png",
+      "title": "3 Military Uniform2",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/3_MilitaryUniform2Colorized.png",
+      "title": "3 Military Uniform2 Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/3_MilitaryUniformColorized.png",
+      "title": "3 Military Uniform Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/3_Passport.png",
+      "title": "3 Passport",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/3_Portrait.png",
+      "title": "3 Portrait",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/3_PortraitColorized.png",
+      "title": "3 Portrait Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/3_SuitAndTie.png",
+      "title": "3 Suit And Tie",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/3_Undies.png",
+      "title": "3 Undies",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/3A_Army.png",
+      "title": "3 A Army",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/3A_ArmyColorized.png",
+      "title": "3 A Army Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/3A_ArmyGrad.png",
+      "title": "3 A Army Grad",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/3A_ArmyGradCircled.png",
+      "title": "3 A Army Grad Circled",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/3A_ArmyGradColorized.png",
+      "title": "3 A Army Grad Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/4_Birthday.png",
+      "title": "4 Birthday",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/4_Buffet.png",
+      "title": "4 Buffet",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/4_Christmas.png",
+      "title": "4 Christmas",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/4_Christmas2.png",
+      "title": "4 Christmas2",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/4_Christmas3.png",
+      "title": "4 Christmas3",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/4_Christmas78.png",
+      "title": "4 Christmas78",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/4_Couch.png",
+      "title": "4 Couch",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/4_FeedingCake.png",
+      "title": "4 Feeding Cake",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/4_Fireplace.png",
+      "title": "4 Fireplace",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/4_SocketWrench.png",
+      "title": "4 Socket Wrench",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/4_Wrestling.jpg",
+      "title": "4 Wrestling",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/4_Wrestling.png",
+      "title": "4 Wrestling",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/5_Buffet87.png",
+      "title": "5 Buffet87",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/5_FishingBronson.png",
+      "title": "5 Fishing Bronson",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/5_KatieGermanyNewRedShirt.png",
+      "title": "5 Katie Germany New Red Shirt",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/5_KatieGermanyNewRedShirtColorized.png",
+      "title": "5 Katie Germany New Red Shirt Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/5_KenAndNancy2.png",
+      "title": "5 Ken And Nancy2",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/5_KenAndNancy4.png",
+      "title": "5 Ken And Nancy4",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/5_KenAndNancyBed.png",
+      "title": "5 Ken And Nancy Bed",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/5_KenAndNancyBirthday.png",
+      "title": "5 Ken And Nancy Birthday",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/5_KenBruceKatie.png",
+      "title": "5 Ken Bruce Katie",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/5_Summer 2003 second pic.jpg",
+      "title": "5 Summer 2003 second pic",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/5_Summer 2003 third.jpg",
+      "title": "5 Summer 2003 third",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/5_Summer 2003.jpg",
+      "title": "5 Summer 2003",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504226102.995570.jpg",
+      "title": "504226102.995570",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504226522.427282.jpg",
+      "title": "504226522.427282",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504227293.286266.jpg",
+      "title": "504227293.286266",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504227485.269461.jpg",
+      "title": "504227485.269461",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504227515.431583.jpg",
+      "title": "504227515.431583",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504227515.431583~2.jpg",
+      "title": "504227515.431583~2",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504228514.066629.jpg",
+      "title": "504228514.066629",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504228555.467917.jpg",
+      "title": "504228555.467917",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504228587.110371.jpg",
+      "title": "504228587.110371",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504229831.624597.jpg",
+      "title": "504229831.624597",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504229870.112508.jpg",
+      "title": "504229870.112508",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504230041.844528.jpg",
+      "title": "504230041.844528",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504230291.026064.jpg",
+      "title": "504230291.026064",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504230397.098789.jpg",
+      "title": "504230397.098789",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504230580.753482.jpg",
+      "title": "504230580.753482",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504230594.045147.jpg",
+      "title": "504230594.045147",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504231167.086724.jpg",
+      "title": "504231167.086724",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504231179.115858.jpg",
+      "title": "504231179.115858",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504231632.681480.jpg",
+      "title": "504231632.681480",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504231661.718510.jpg",
+      "title": "504231661.718510",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504232364.798563.jpg",
+      "title": "504232364.798563",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504232440.598698.jpg",
+      "title": "504232440.598698",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504232473.442461.jpg",
+      "title": "504232473.442461",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504232638.158977.jpg",
+      "title": "504232638.158977",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504232780.571980.jpg",
+      "title": "504232780.571980",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504236714.311416.jpg",
+      "title": "504236714.311416",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504237079.657089.jpg",
+      "title": "504237079.657089",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504238033.692527.jpg",
+      "title": "504238033.692527",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504239428.336073.jpg",
+      "title": "504239428.336073",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504239473.979175.jpg",
+      "title": "504239473.979175",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504239490.097482.jpg",
+      "title": "504239490.097482",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504239550.152365.jpg",
+      "title": "504239550.152365",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504239608.511365.jpg",
+      "title": "504239608.511365",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504239677.747068.jpg",
+      "title": "504239677.747068",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504239706.846101.jpg",
+      "title": "504239706.846101",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504239757.633804.jpg",
+      "title": "504239757.633804",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504239892.317222.jpg",
+      "title": "504239892.317222",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504239986.948080.jpg",
+      "title": "504239986.948080",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504240019.995410.jpg",
+      "title": "504240019.995410",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504240043.844793.jpg",
+      "title": "504240043.844793",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504240064.558059.jpg",
+      "title": "504240064.558059",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504240510.588598.jpg",
+      "title": "504240510.588598",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504240522.787594.jpg",
+      "title": "504240522.787594",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504240580.065611.jpg",
+      "title": "504240580.065611",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504240673.375208.jpg",
+      "title": "504240673.375208",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504240687.720041.jpg",
+      "title": "504240687.720041",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504240716.217593.jpg",
+      "title": "504240716.217593",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504240757.632791.jpg",
+      "title": "504240757.632791",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504240821.712650.jpg",
+      "title": "504240821.712650",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504288284.117277.jpg",
+      "title": "504288284.117277",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504288303.011686.jpg",
+      "title": "504288303.011686",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504288355.166229.jpg",
+      "title": "504288355.166229",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504288367.759474.jpg",
+      "title": "504288367.759474",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504288958.052828.jpg",
+      "title": "504288958.052828",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504288997.115440.jpg",
+      "title": "504288997.115440",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504289175.008974.jpg",
+      "title": "504289175.008974",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504289489.866419.jpg",
+      "title": "504289489.866419",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504289759.374061.jpg",
+      "title": "504289759.374061",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504292020.862371.jpg",
+      "title": "504292020.862371",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504292047.791114.jpg",
+      "title": "504292047.791114",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504292385.213538.jpg",
+      "title": "504292385.213538",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504292976.446433.jpg",
+      "title": "504292976.446433",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504292992.781115.jpg",
+      "title": "504292992.781115",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504293009.648805.jpg",
+      "title": "504293009.648805",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504294109.485407.jpg",
+      "title": "504294109.485407",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504294149.494461.jpg",
+      "title": "504294149.494461",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504294291.294335.jpg",
+      "title": "504294291.294335",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504294302.531405.jpg",
+      "title": "504294302.531405",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504294804.092250.jpg",
+      "title": "504294804.092250",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504295492.108213.jpg",
+      "title": "504295492.108213",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504295556.506120.jpg",
+      "title": "504295556.506120",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504295572.952460.jpg",
+      "title": "504295572.952460",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504295633.726283.jpg",
+      "title": "504295633.726283",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504296020.116991.jpg",
+      "title": "504296020.116991",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504296276.311143.jpg",
+      "title": "504296276.311143",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504296446.601523.jpg",
+      "title": "504296446.601523",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504296581.347823.jpg",
+      "title": "504296581.347823",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/504296728.318873.jpg",
+      "title": "504296728.318873",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/56882909204__866BFF4C-50F8-4B12-B9DB-181F32E2D1FC.JPG",
+      "title": "56882909204 866 BFF4 C 50 F8 4 B12 B9 DB 181 F32 E2 D1 FC",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_9KenNancyBalloon.png",
+      "title": "6 9 Ken Nancy Balloon",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_Aunts.png",
+      "title": "6 Aunts",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_Candle.png",
+      "title": "6 Candle",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_ComputerTime.png",
+      "title": "6 Computer Time",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_Family.png",
+      "title": "6 Family",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_Family2.png",
+      "title": "6 Family2",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_FarmFamily.png",
+      "title": "6 Farm Family",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_Gift2.png",
+      "title": "6 Gift2",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_GrandpaAndBoys.png",
+      "title": "6 Grandpa And Boys",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_HelenNeilAlexKatieNancyKen.png",
+      "title": "6 Helen Neil Alex Katie Nancy Ken",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_JoeKenDavid.png",
+      "title": "6 Joe Ken David",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_KenAlexHorse.png",
+      "title": "6 Ken Alex Horse",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_KenAndAlex.png",
+      "title": "6 Ken And Alex",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_KenAndDog.png",
+      "title": "6 Ken And Dog",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_KenAndNancy3.png",
+      "title": "6 Ken And Nancy3",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_KenAndNeil.png",
+      "title": "6 Ken And Neil",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_KenAndNeil2.png",
+      "title": "6 Ken And Neil2",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_KenNeilKatie.png",
+      "title": "6 Ken Neil Katie",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_Lombard.png",
+      "title": "6 Lombard",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_Mom.png",
+      "title": "6 Mom",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_NancyAndKenChristmas.png",
+      "title": "6 Nancy And Ken Christmas",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_Rachel.png",
+      "title": "6 Rachel",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_ReadingMenu.png",
+      "title": "6 Reading Menu",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/6_Sarah.png",
+      "title": "6 Sarah",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_70thBirthday.png",
+      "title": "7 70th Birthday",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_Cars.png",
+      "title": "7 Cars",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_Cheesing.png",
+      "title": "7 Cheesing",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_Deer.png",
+      "title": "7 Deer",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_EthelRachelRandyNancy.png",
+      "title": "7 Ethel Rachel Randy Nancy",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_Family3.png",
+      "title": "7 Family3",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_Family96.png",
+      "title": "7 Family96",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_GrandpaPresents.png",
+      "title": "7 Grandpa Presents",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_KelseyGrandmaATV.png",
+      "title": "7 Kelsey Grandma ATV",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_KelseyTractor.png",
+      "title": "7 Kelsey Tractor",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_KenAndEthel.png",
+      "title": "7 Ken And Ethel",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_KenAndHelen.png",
+      "title": "7 Ken And Helen",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_KenAndKelsey.png",
+      "title": "7 Ken And Kelsey",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_KenAndNancy5.png",
+      "title": "7 Ken And Nancy5",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_KenAndNancyPortrait.png",
+      "title": "7 Ken And Nancy Portrait",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_KenAndNeil3.png",
+      "title": "7 Ken And Neil3",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_KenAndSarah.png",
+      "title": "7 Ken And Sarah",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_KenBruceNancy.png",
+      "title": "7 Ken Bruce Nancy",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_KenHelenNancy.png",
+      "title": "7 Ken Helen Nancy",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_KenJoeNeil.png",
+      "title": "7 Ken Joe Neil",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_KenNancySarah.png",
+      "title": "7 Ken Nancy Sarah",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_KenNeilAlex.png",
+      "title": "7 Ken Neil Alex",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_KenNeilAlex2.png",
+      "title": "7 Ken Neil Alex2",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_KenNeilMikeAlex.png",
+      "title": "7 Ken Neil Mike Alex",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_KenNeilSarah.png",
+      "title": "7 Ken Neil Sarah",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_KenRandyNickHalloween.png",
+      "title": "7 Ken Randy Nick Halloween",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_NancyKatieRandy.png",
+      "title": "7 Nancy Katie Randy",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_NeilEthelAlexLauraJoey.png",
+      "title": "7 Neil Ethel Alex Laura Joey",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_Nick.png",
+      "title": "7 Nick",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_NickRandy.png",
+      "title": "7 Nick Randy",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_Randy.png",
+      "title": "7 Randy",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7_SnowShoveling.png",
+      "title": "7 Snow Shoveling",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/7BE53763-B642-4891-8D03-E7918F23B4B1~2.JPG",
+      "title": "7 BE53763 B642 4891 8 D03 E7918 F23 B4 B1~2",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/8_DrinkInBW.png",
+      "title": "8 Drink In BW",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/8_FarmDiner.png",
+      "title": "8 Farm Diner",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/8_Gift.png",
+      "title": "8 Gift",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/8_HeartMug.png",
+      "title": "8 Heart Mug",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/8_Kelsey.png",
+      "title": "8 Kelsey",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/8_KenAndJoe.png",
+      "title": "8 Ken And Joe",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/8_KenAndKatieKitchen.png",
+      "title": "8 Ken And Katie Kitchen",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/August 1995 MS second.jpg",
+      "title": "August 1995 MS second",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/August 1995 MS.jpg",
+      "title": "August 1995 MS",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/Bunny.png",
+      "title": "Bunny",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/DSC00581.JPG",
+      "title": "DSC00581",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/DSC00660.JPG",
+      "title": "DSC00660",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/Farm.jpg",
+      "title": "Farm",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/FB_IMG_1707587806372.jpg",
+      "title": "FB IMG 1707587806372",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/Frankfurt zoo.jpg",
+      "title": "Frankfurt zoo",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/Germany Sept 65.jpg",
+      "title": "Germany Sept 65",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/Germany.jpg",
+      "title": "Germany",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_0157.JPG",
+      "title": "IMG 0157",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_0821.JPG",
+      "title": "IMG 0821",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_0822.JPG",
+      "title": "IMG 0822",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_0828.JPG",
+      "title": "IMG 0828",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_0829.JPG",
+      "title": "IMG 0829",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_0830.JPG",
+      "title": "IMG 0830",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_0958.JPG",
+      "title": "IMG 0958",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_1918.JPG",
+      "title": "IMG 1918",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_1920.JPG",
+      "title": "IMG 1920",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_2549.JPG",
+      "title": "IMG 2549",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_2550.JPG",
+      "title": "IMG 2550",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_2551.JPG",
+      "title": "IMG 2551",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_2552.JPG",
+      "title": "IMG 2552",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_2724.JPG",
+      "title": "IMG 2724",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_3658.JPG",
+      "title": "IMG 3658",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_4150.JPG",
+      "title": "IMG 4150",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_4184.JPG",
+      "title": "IMG 4184",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_4195.JPG",
+      "title": "IMG 4195",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_4371.JPG",
+      "title": "IMG 4371",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5064-COLLAGE.jpg",
+      "title": "IMG 5064 COLLAGE",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5068.JPG",
+      "title": "IMG 5068",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5069.JPG",
+      "title": "IMG 5069",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5079.JPG",
+      "title": "IMG 5079",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5080.JPG",
+      "title": "IMG 5080",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5081.JPG",
+      "title": "IMG 5081",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5089.JPG",
+      "title": "IMG 5089",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5090.JPG",
+      "title": "IMG 5090",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5091.JPG",
+      "title": "IMG 5091",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5092.JPG",
+      "title": "IMG 5092",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5093.JPG",
+      "title": "IMG 5093",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5129.JPG",
+      "title": "IMG 5129",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5131.JPG",
+      "title": "IMG 5131",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5133.JPG",
+      "title": "IMG 5133",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5134.JPG",
+      "title": "IMG 5134",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5135.JPG",
+      "title": "IMG 5135",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5136.JPG",
+      "title": "IMG 5136",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5138.JPG",
+      "title": "IMG 5138",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5139.JPG",
+      "title": "IMG 5139",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5141.JPG",
+      "title": "IMG 5141",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5142.JPG",
+      "title": "IMG 5142",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5143.JPG",
+      "title": "IMG 5143",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5144.JPG",
+      "title": "IMG 5144",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5145.JPG",
+      "title": "IMG 5145",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5146.JPG",
+      "title": "IMG 5146",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5147.JPG",
+      "title": "IMG 5147",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5148.JPG",
+      "title": "IMG 5148",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5149.JPG",
+      "title": "IMG 5149",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5161.JPG",
+      "title": "IMG 5161",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5164.JPG",
+      "title": "IMG 5164",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5169.JPG",
+      "title": "IMG 5169",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5170.JPG",
+      "title": "IMG 5170",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5172.JPG",
+      "title": "IMG 5172",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5173.JPG",
+      "title": "IMG 5173",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5175.JPG",
+      "title": "IMG 5175",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_5184.JPG",
+      "title": "IMG 5184",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_6173.JPG",
+      "title": "IMG 6173",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_6605.JPG",
+      "title": "IMG 6605",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_6902.JPG",
+      "title": "IMG 6902",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_6984.JPG",
+      "title": "IMG 6984",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_7068.JPG",
+      "title": "IMG 7068",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/IMG_8331.JPG",
+      "title": "IMG 8331",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/June 1971 Germany.jpg",
+      "title": "June 1971 Germany",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/Memorial photo.jpg",
+      "title": "Memorial photo",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/P_1933.png",
+      "title": "P 1933",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/P_1933colorized.png",
+      "title": "P 1933colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/P_CleoAndSis.png",
+      "title": "P Cleo And Sis",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/P_CleoAndSister.png",
+      "title": "P Cleo And Sister",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/P_CleoFamily.png",
+      "title": "P Cleo Family",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/P_OttoMotorcycle.png",
+      "title": "P Otto Motorcycle",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/P_OttoMotorcycleColorized.png",
+      "title": "P Otto Motorcycle Colorized",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/Photo_2025-07-30_181712.jpg",
+      "title": "Photo 2025 07 30 181712",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/Photo_2025-07-30_182444.jpg",
+      "title": "Photo 2025 07 30 182444",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZjbngxRml1R0pzcFMxeA.jpeg",
+      "title": "QVZjbngx Rml1 R0pzc FMxe A",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZjMFEtVWx1ZWhNUUd5cw.jpeg",
+      "title": "QVZj MFEt VWx1 ZWh NUUd5cw",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZjQ094MlN6b0p4VU80Tg.jpeg",
+      "title": "QVZj Q094 Ml N6b0p4 VU80 Tg",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZjVVN5THRKRHVud3g3eA.jpeg",
+      "title": "QVZj VVN5 THRKRHVud3g3e A",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZjWFplZUJkazNYTlVfYg.jpeg",
+      "title": "QVZj WFpl ZUJkaz NYTl Vf Yg",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZkbklpWU1pcEh4OUJPbA.jpeg",
+      "title": "QVZkbklp WU1pc Eh4 OUJPb A",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZkQmNBRUdOck5xNG0tTw.jpeg",
+      "title": "QVZk Qm NBRUd Ock5x NG0t Tw",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZkSFcyTTN5QkFHc0ZocQ.jpeg",
+      "title": "QVZk SFcy TTN5 Qk FHc0 Zoc Q",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZkU1JocU9jWGFNaW9mNQ.jpeg",
+      "title": "QVZk U1 Joc U9j WGFNa W9m NQ",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZlSWFCbEV0TTVUbTJCSQ.jpeg",
+      "title": "QVZl SWFCb EV0 TTVUb TJCSQ",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZlTndELXNqMG9qenBOcw.jpeg",
+      "title": "QVZl Tnd ELXNq MG9qen BOcw",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZlUXpQaWdGMml6dG96Mg.jpeg",
+      "title": "QVZl UXp Qa Wd GMml6d G96 Mg",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZlVG1tOW5hMS1mdEhqeg.jpeg",
+      "title": "QVZl VG1t OW5h MS1md Ehqeg",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZlVlIyOHlZcnNEU3lHVw.jpeg",
+      "title": "QVZl Vl Iy OHl Zcn NEU3l HVw",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZma1hjeHN0Y040LTJ6dw.jpeg",
+      "title": "QVZma1hje HN0 Y040 LTJ6dw",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZmaWFhbElKZmZMTDlYdA.jpeg",
+      "title": "QVZma WFhb El KZm ZMTDl Yd A",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZmbklwQXhsajNyNGxxeg.jpeg",
+      "title": "QVZmbklw QXhsaj Ny NGxxeg",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZmcVVHVE5IZFVEeU1qTg.jpeg",
+      "title": "QVZmc VVHVE5 IZFVEe U1q Tg",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZmQVk3bmVXSGx1aURrNg.jpeg",
+      "title": "QVZm QVk3bm VXSGx1a URr Ng",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZmR0tkc096REJFckU4eQ.jpeg",
+      "title": "QVZm R0tkc096 REJFck U4e Q",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZmWWFqTjNTQUgzY0VZdw.jpeg",
+      "title": "QVZm WWFq Tj NTQUgz Y0 VZdw",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZmYXdlR1Z0cVVteHNwYg.jpeg",
+      "title": "QVZm YXdl R1 Z0c VVte HNw Yg",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZmZktzRm9JXzZ3T2xtVw.jpeg",
+      "title": "QVZm Zktz Rm9 JXz Z3 T2xt Vw",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/QVZmZTdCMDN5dEpQSV9hUw.jpeg",
+      "title": "QVZm ZTd CMDN5d Ep QSV9h Uw",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/Summer 1988.jpg",
+      "title": "Summer 1988",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/VideoCapture_20221214-114205.jpg",
+      "title": "Video Capture 20221214 114205",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    },
+    {
+      "src": "images/VideoCapture_20221214-114307.jpg",
+      "title": "Video Capture 20221214 114307",
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "focal_source": "fallback"
+    }
+  ]
+}
