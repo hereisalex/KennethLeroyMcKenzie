@@ -874,21 +874,22 @@ body.body--chrome-hidden {
     max-width: none;
   }
 
+  /* The backdrop's only job is to catch taps on the photo so the tray can be
+     dismissed by tapping outside it. Visually it stays transparent so the rest of
+     the UI (photo, filmstrip, transport bar) doesn't feel darkened or frozen, and
+     its z-index sits BELOW `.chrome-dock` (z-index: 50) so the filmstrip and
+     archive stay interactive while the tray is open — only the photo underneath
+     intercepts a tap to close. */
   .controls-tray-backdrop {
     display: block;
     position: fixed;
     inset: 0;
-    z-index: 55;
-    background: rgba(4, 4, 6, 0.38);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    opacity: 0;
+    z-index: 40;
+    background: transparent;
     pointer-events: none;
-    transition: opacity 260ms ease-out;
   }
 
   #app.mobile-controls-expanded .controls-tray-backdrop {
-    opacity: 1;
     pointer-events: auto;
   }
 
