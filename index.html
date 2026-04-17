@@ -10,9 +10,9 @@
   <link rel="stylesheet" href="src/css/style.css" />
 </head>
 <body>
-  <!-- Shared reactions/comments: deploy api/feedback to Vercel + Upstash Redis, then set data-feedback-api="/api/feedback" (same origin) or your full API URL (e.g. GitHub Pages → Vercel API). -->
+  <!-- Shared reactions/comments: the site deploys to Vercel; api/feedback.js is the same-origin serverless endpoint (needs UPSTASH_REDIS_REST_URL + UPSTASH_REDIS_REST_TOKEN). To point at a different API host (e.g. Pages → external Vercel), change data-feedback-api below to an absolute URL. -->
   <!-- Optional: set data-focal-editor-secret for family-only Director tools (#focal=&lt;secret&gt;). Leave empty to disable. -->
-  <div id="app" data-youtube-playlist="PLN-SBKLnxgwvH4TKfsWG6YMYLPzg5aGXp" data-focal-editor-secret="">
+  <div id="app" data-youtube-playlist="PLN-SBKLnxgwvH4TKfsWG6YMYLPzg5aGXp" data-feedback-api="/api/feedback" data-focal-editor-secret="">
     <div id="status-banner" class="status-banner" role="status" aria-live="polite" hidden></div>
     <div id="stage" aria-hidden="true">
       <div id="buffer-a" class="buffer" data-buffer="a">
@@ -34,7 +34,12 @@
       </div>
     </div>
     <div id="chrome-dock" class="chrome-dock chrome-dock--hidden">
-      <div id="filmstrip" class="filmstrip" role="navigation" aria-label="Photos near current slide"></div>
+      <div class="filmstrip-dock">
+        <button type="button" class="filmstrip-dock__archive" id="ctrl-archive" aria-label="Open photo archive" title="All photos">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></svg>
+        </button>
+        <div id="filmstrip" class="filmstrip" role="navigation" aria-label="Photos near current slide"></div>
+      </div>
       <div id="controls" class="controls" aria-label="Memorial controls">
         <div class="controls__inner">
           <div class="controls__group controls__group--slides" role="group" aria-label="Slideshow">
@@ -53,6 +58,23 @@
               <svg class="icon-enter-fullscreen" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
               <svg class="icon-exit-fullscreen" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>
             </button>
+            <div class="controls__settings-wrap" id="ctrl-settings-wrap">
+              <button type="button" class="controls__btn" id="ctrl-settings" aria-label="Slideshow settings" aria-haspopup="true" aria-expanded="false" aria-controls="ctrl-settings-popover" title="Slideshow settings">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94 0 .32.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+              </button>
+              <div class="controls__settings-popover" id="ctrl-settings-popover" role="menu" aria-label="Slideshow settings">
+                <div class="controls__settings-section">
+                  <span class="controls__settings-section-label" aria-hidden="true">Slide speed</span>
+                  <span class="controls__settings-value" id="ctrl-slide-sec-val" aria-hidden="true">5s</span>
+                  <input type="range" class="controls__settings-range" id="ctrl-slide-sec" orient="vertical" min="1" max="60" step="0.5" value="5" aria-valuemin="1" aria-valuemax="60" aria-label="Seconds per slide" />
+                </div>
+                <div class="controls__settings-divider" aria-hidden="true"></div>
+                <label class="controls__fit-full" for="ctrl-fit-full">
+                  <input type="checkbox" id="ctrl-fit-full" aria-label="Show full photo without cropping or Ken Burns motion" />
+                  <span class="controls__fit-full-text">Full photo (no crop)</span>
+                </label>
+              </div>
+            </div>
             <button type="button" class="controls__btn controls__btn--more" id="ctrl-more" aria-label="Show more controls" aria-expanded="false" aria-controls="controls-tray" title="More controls">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
             </button>
@@ -71,21 +93,6 @@
               <button type="button" class="controls__btn" id="ctrl-photo-feedback" disabled aria-label="React and comment on this photo" title="Reactions and comments">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12zM7 9h2v2H7V9zm8 0h2v2h-2V9zm-4 0h2v2h-2V9z"/></svg>
               </button>
-              <button type="button" class="controls__btn" id="ctrl-archive" aria-label="Open photo archive">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></svg>
-              </button>
-            </div>
-            <div class="controls__divider" aria-hidden="true"></div>
-            <div class="controls__group controls__group--timing" role="group" aria-label="Slide timing">
-              <label class="controls__timing" for="ctrl-slide-sec">
-                <span class="controls__timing-label">Slide speed</span>
-                <input type="range" class="controls__timing-range" id="ctrl-slide-sec" min="1" max="60" step="0.5" value="5" aria-valuemin="1" aria-valuemax="60" aria-label="Seconds per slide" />
-                <span class="controls__timing-val" id="ctrl-slide-sec-val" aria-hidden="true">5s</span>
-              </label>
-              <label class="controls__fit-full" for="ctrl-fit-full">
-                <input type="checkbox" id="ctrl-fit-full" aria-label="Show full photo without cropping or Ken Burns motion" />
-                <span class="controls__fit-full-text">Full photo (no crop)</span>
-              </label>
             </div>
             <div class="controls__divider" aria-hidden="true"></div>
             <div class="controls__group controls__group--tracks" role="group" aria-label="Music">

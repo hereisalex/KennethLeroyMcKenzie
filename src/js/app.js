@@ -22,7 +22,6 @@ const STATUS_BANNER_MS = 5200;
 const AUDIO_STORAGE_KEY = 'klm-memorial-audio';
 const SLIDE_TIMING_KEY = 'klm-memorial-slide-sec';
 const FIT_CONTAIN_KEY = 'klm-memorial-fit-full';
-const PHOTO_FEEDBACK_KEY = 'klm-memorial-photo-feedback';
 const PHOTO_REACTION_IDS = new Set(['heart', 'pray', 'smile', 'tear', 'flower']);
 /** Half-window each side of current index → 9 thumbnails when possible */
 const FILMSTRIP_HALF = 4;
@@ -51,7 +50,7 @@ function getFeedbackApiBase() {
   return String(raw).trim().replace(/\/$/, '');
 }
 
-function feedbackRemoteEnabled() {
+function feedbackApiConfigured() {
   return getFeedbackApiBase().length > 0;
 }
 
@@ -111,6 +110,9 @@ const ctrlArchive = document.querySelector('#ctrl-archive');
 const ctrlSlideSec = document.querySelector('#ctrl-slide-sec');
 const ctrlSlideSecVal = document.querySelector('#ctrl-slide-sec-val');
 const ctrlFitFull = document.querySelector('#ctrl-fit-full');
+const ctrlSettings = document.querySelector('#ctrl-settings');
+const ctrlSettingsWrap = document.querySelector('#ctrl-settings-wrap');
+const ctrlSettingsPopover = document.querySelector('#ctrl-settings-popover');
 const ctrlMore = document.querySelector('#ctrl-more');
 const ctrlMusicPlayPause = document.querySelector('#ctrl-music-play-pause');
 const controlsTray = document.querySelector('#controls-tray');
@@ -149,9 +151,10 @@ let manualSlideSeconds = 5;
 /** Letterbox full image; disables Ken Burns and elastic drag on the stage. */
 let fitContainMode = false;
 /**
- * Per photo: myReactions = this visitor’s picks; reactionCounts = shared totals (remote only);
- * comments = list. Local-only mode uses myReactions + comments; reactionCounts null.
- * @type {Record<string, { myReactions: string[]; reactionCounts: Record<string, number> | null; comments: Array<{ id: string; text: string; at: string }> }>}
+ * Per photo cache mirroring the database: myReactions = this visitor's picks; reactionCounts =
+ * shared totals; comments = list. Entries are populated lazily as the feedback overlay opens
+ * each photo, and refreshed against the API whenever the panel is re-rendered.
+ * @type {Record<string, { myReactions: string[]; reactionCounts: Record<string, number>; comments: Array<{ id: string; text: string; at: string }> }>}
  */
 let feedbackStoreCache = {};
 /** True from stage pointerdown until snap-back transition finishes (or no-op release). */
@@ -1743,65 +1746,12 @@ function toggleArchive() {
   else openArchive();
 }
 
-function loadRawFeedbackFromLocal() {
-  try {
-    const raw = localStorage.getItem(PHOTO_FEEDBACK_KEY);
-    if (!raw) return {};
-    const o = JSON.parse(raw);
-    if (o && typeof o === 'object' && !Array.isArray(o)) return o;
-  } catch {
-    /* ignore */
-  }
-  return {};
-}
-
-function saveFeedbackStoreToLocal(store) {
-  try {
-    localStorage.setItem(PHOTO_FEEDBACK_KEY, JSON.stringify(store));
-  } catch {
-    /* ignore */
-  }
-}
-
-function migrateFeedbackEntry(key, e) {
-  const remote = feedbackRemoteEnabled();
-  const comments = e && Array.isArray(e.comments) ? e.comments : [];
-  if (!e || typeof e !== 'object') {
-    return { myReactions: [], reactionCounts: remote ? {} : null, comments };
-  }
-  if (Array.isArray(e.myReactions)) {
-    return {
-      myReactions: e.myReactions.filter((x) => PHOTO_REACTION_IDS.has(x)),
-      reactionCounts:
-        remote && e.reactionCounts && typeof e.reactionCounts === 'object' ? e.reactionCounts : {},
-      comments,
-    };
-  }
-  if (Array.isArray(e.reactions)) {
-    return {
-      myReactions: e.reactions.filter((x) => PHOTO_REACTION_IDS.has(x)),
-      reactionCounts: remote ? {} : null,
-      comments,
-    };
-  }
-  return { myReactions: [], reactionCounts: remote ? {} : null, comments };
+function emptyFeedbackEntry() {
+  return { myReactions: [], reactionCounts: {}, comments: [] };
 }
 
 function initFeedbackStore() {
-  if (feedbackRemoteEnabled()) {
-    feedbackStoreCache = {};
-    return;
-  }
-  const raw = loadRawFeedbackFromLocal();
   feedbackStoreCache = {};
-  for (const [k, v] of Object.entries(raw)) {
-    feedbackStoreCache[k] = migrateFeedbackEntry(k, v);
-  }
-}
-
-function persistFeedbackStore() {
-  if (feedbackRemoteEnabled()) return;
-  saveFeedbackStoreToLocal(feedbackStoreCache);
 }
 
 function photoFeedbackKeyFromIndex(i) {
@@ -1812,9 +1762,7 @@ function photoFeedbackKeyFromIndex(i) {
 function ensurePhotoFeedbackEntry(key) {
   if (!key) return null;
   if (!feedbackStoreCache[key]) {
-    feedbackStoreCache[key] = migrateFeedbackEntry(key, null);
-  } else {
-    feedbackStoreCache[key] = migrateFeedbackEntry(key, feedbackStoreCache[key]);
+    feedbackStoreCache[key] = emptyFeedbackEntry();
   }
   return feedbackStoreCache[key];
 }
@@ -1826,9 +1774,9 @@ function isFeedbackOpen() {
 function syncFeedbackPrivacyNote() {
   const el = document.getElementById('feedback-privacy-note');
   if (!el) return;
-  el.textContent = feedbackRemoteEnabled()
+  el.textContent = feedbackApiConfigured()
     ? 'Reactions and comments are shared with everyone who visits this memorial.'
-    : 'Reactions and comments are saved only on this device.';
+    : 'Comments are currently unavailable — please try again later.';
 }
 
 async function refreshCurrentPhotoFeedbackFromApi() {
@@ -1839,15 +1787,7 @@ async function refreshCurrentPhotoFeedbackFromApi() {
   const url = `${base}?${new URLSearchParams({ photo, visitor }).toString()}`;
   const res = await fetch(url, { credentials: 'omit' });
   if (!res.ok) throw new Error(`feedback ${res.status}`);
-  const data = await res.json();
-  feedbackStoreCache[photo] = {
-    myReactions: Array.isArray(data.myReactions)
-      ? data.myReactions.filter((x) => PHOTO_REACTION_IDS.has(x))
-      : [],
-    reactionCounts:
-      data.reactionCounts && typeof data.reactionCounts === 'object' ? data.reactionCounts : {},
-    comments: Array.isArray(data.comments) ? data.comments : [],
-  };
+  applyFeedbackApiResponse(photo, await res.json(), feedbackStoreCache[photo]);
 }
 
 function renderPhotoFeedbackPanel() {
@@ -1871,7 +1811,7 @@ function renderPhotoFeedbackPanel() {
       btn.appendChild(badge);
     }
     const n = id && counts && typeof counts[id] === 'number' ? counts[id] : 0;
-    if (feedbackRemoteEnabled() && n > 0) {
+    if (n > 0) {
       badge.textContent = String(n);
       badge.removeAttribute('hidden');
     } else {
@@ -1913,7 +1853,7 @@ function renderPhotoFeedbackPanel() {
 function syncPhotoFeedbackPanelIfOpen() {
   void (async () => {
     if (!isFeedbackOpen()) return;
-    if (feedbackRemoteEnabled()) {
+    if (feedbackApiConfigured()) {
       try {
         await refreshCurrentPhotoFeedbackFromApi();
       } catch {
@@ -1926,7 +1866,7 @@ function syncPhotoFeedbackPanelIfOpen() {
 
 async function openPhotoFeedback() {
   if (!feedbackOverlay || !images.length) return;
-  if (feedbackRemoteEnabled()) {
+  if (feedbackApiConfigured()) {
     try {
       await refreshCurrentPhotoFeedbackFromApi();
     } catch {
@@ -1957,89 +1897,71 @@ function closePhotoFeedback() {
   armHideChrome();
 }
 
-async function togglePhotoReaction(reactionId) {
-  if (!PHOTO_REACTION_IDS.has(reactionId)) return;
-  const key = photoFeedbackKeyFromIndex(index);
-  const e = ensurePhotoFeedbackEntry(key);
-  if (!e) return;
+function applyFeedbackApiResponse(key, data, fallback) {
+  feedbackStoreCache[key] = {
+    myReactions: Array.isArray(data?.myReactions)
+      ? data.myReactions.filter((x) => PHOTO_REACTION_IDS.has(x))
+      : [],
+    reactionCounts:
+      data?.reactionCounts && typeof data.reactionCounts === 'object' ? data.reactionCounts : {},
+    comments: Array.isArray(data?.comments) ? data.comments : fallback?.comments ?? [],
+  };
+}
 
-  if (!feedbackRemoteEnabled()) {
-    const i = e.myReactions.indexOf(reactionId);
-    if (i >= 0) e.myReactions.splice(i, 1);
-    else e.myReactions.push(reactionId);
-    persistFeedbackStore();
-    renderPhotoFeedbackPanel();
-    return;
+async function postFeedbackAction(body, errorMessage) {
+  if (!feedbackApiConfigured()) {
+    showStatusBanner('Comments are currently unavailable.');
+    return null;
   }
-
   try {
     const res = await fetch(getFeedbackApiBase(), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        action: 'toggleReaction',
-        photo: key,
-        visitorId: getOrCreateVisitorId(),
-        reactionId,
-      }),
+      body: JSON.stringify(body),
     });
     if (!res.ok) throw new Error(String(res.status));
-    const data = await res.json();
-    feedbackStoreCache[key] = {
-      myReactions: Array.isArray(data.myReactions)
-        ? data.myReactions.filter((x) => PHOTO_REACTION_IDS.has(x))
-        : [],
-      reactionCounts:
-        data.reactionCounts && typeof data.reactionCounts === 'object' ? data.reactionCounts : {},
-      comments: Array.isArray(data.comments) ? data.comments : e.comments,
-    };
-    renderPhotoFeedbackPanel();
+    return await res.json();
   } catch {
-    /* ignore */
+    showStatusBanner(errorMessage);
+    return null;
   }
+}
+
+async function togglePhotoReaction(reactionId) {
+  if (!PHOTO_REACTION_IDS.has(reactionId)) return;
+  const key = photoFeedbackKeyFromIndex(index);
+  const entry = ensurePhotoFeedbackEntry(key);
+  if (!entry) return;
+  const data = await postFeedbackAction(
+    {
+      action: 'toggleReaction',
+      photo: key,
+      visitorId: getOrCreateVisitorId(),
+      reactionId,
+    },
+    'Could not save your reaction. Please try again.',
+  );
+  if (!data) return;
+  applyFeedbackApiResponse(key, data, entry);
+  renderPhotoFeedbackPanel();
 }
 
 async function addPhotoComment(text) {
   const key = photoFeedbackKeyFromIndex(index);
-  const e = ensurePhotoFeedbackEntry(key);
-  if (!e) return;
-
-  if (!feedbackRemoteEnabled()) {
-    const id =
-      typeof crypto !== 'undefined' && crypto.randomUUID
-        ? crypto.randomUUID()
-        : `c-${Date.now()}-${Math.random().toString(16).slice(2)}`;
-    e.comments.push({ id, text, at: new Date().toISOString() });
-    persistFeedbackStore();
-    renderPhotoFeedbackPanel();
-    return;
-  }
-
-  try {
-    const res = await fetch(getFeedbackApiBase(), {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        action: 'addComment',
-        photo: key,
-        visitorId: getOrCreateVisitorId(),
-        text,
-      }),
-    });
-    if (!res.ok) throw new Error(String(res.status));
-    const data = await res.json();
-    feedbackStoreCache[key] = {
-      myReactions: Array.isArray(data.myReactions)
-        ? data.myReactions.filter((x) => PHOTO_REACTION_IDS.has(x))
-        : [],
-      reactionCounts:
-        data.reactionCounts && typeof data.reactionCounts === 'object' ? data.reactionCounts : {},
-      comments: Array.isArray(data.comments) ? data.comments : e.comments,
-    };
-    renderPhotoFeedbackPanel();
-  } catch {
-    /* ignore */
-  }
+  const entry = ensurePhotoFeedbackEntry(key);
+  if (!entry) return;
+  const data = await postFeedbackAction(
+    {
+      action: 'addComment',
+      photo: key,
+      visitorId: getOrCreateVisitorId(),
+      text,
+    },
+    'Could not post your comment. Please try again.',
+  );
+  if (!data) return;
+  applyFeedbackApiResponse(key, data, entry);
+  renderPhotoFeedbackPanel();
 }
 
 function wirePhotoFeedbackUi() {
@@ -2308,6 +2230,39 @@ function wireBrowsingUi() {
   });
 }
 
+function isSettingsPopoverOpen() {
+  return Boolean(ctrlSettingsWrap?.classList.contains('is-open'));
+}
+
+function setSettingsPopoverOpen(open) {
+  if (!ctrlSettingsWrap || !ctrlSettings) return;
+  const isOpen = Boolean(open);
+  ctrlSettingsWrap.classList.toggle('is-open', isOpen);
+  ctrlSettings.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+}
+
+function wireSettingsPopover() {
+  if (!ctrlSettings || !ctrlSettingsWrap) return;
+  ctrlSettings.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setSettingsPopoverOpen(!isSettingsPopoverOpen());
+    showControls();
+  });
+  ctrlSettingsPopover?.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+  document.addEventListener('click', (e) => {
+    if (!isSettingsPopoverOpen()) return;
+    if (ctrlSettingsWrap.contains(e.target)) return;
+    setSettingsPopoverOpen(false);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape' || !isSettingsPopoverOpen()) return;
+    setSettingsPopoverOpen(false);
+    ctrlSettings.focus();
+  });
+}
+
 function wireControlsUi() {
   syncMobileControlsMode();
   ctrlSlidePrev?.addEventListener('click', () => manualStep(-1));
@@ -2372,12 +2327,15 @@ function wireControlsUi() {
     const ms = getSlideDurationMs();
     syncKenBurnsDurationCss(ms);
     if (!slideshowPaused) scheduleSlideshowTick();
+    showControls();
   });
 
   ctrlFitFull?.addEventListener('change', () => {
     setFitContainMode(ctrlFitFull.checked);
     showControls();
   });
+
+  wireSettingsPopover();
 
   const onActivity = () => showControls();
   document.addEventListener('mousemove', onActivity, { passive: true });

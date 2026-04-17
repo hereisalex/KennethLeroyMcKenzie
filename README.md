@@ -194,9 +194,11 @@ python -m http.server 8080
 
 ---
 
-## 5. Optional: shared reactions and comments (API)
+## 5. Shared reactions and comments (database-backed)
 
-The HTML comment in `**index.html`** describes deploying `**api/feedback**` (for example on Vercel with Upstash Redis) and setting `**data-feedback-api**` on `**#app**` to your API URL. Without that, reactions and comments stay **local to the device** (see in-app privacy text).
+Reactions and comments are **live and shared with everyone** who visits the memorial. They are persisted in Upstash Redis via the serverless function at `api/feedback.js`, which this project expects to be hosted same-origin on Vercel (see **Deploy to Vercel** below).
+
+The `#app` element in `index.html` points at the endpoint via `data-feedback-api="/api/feedback"`. If you host the static site elsewhere (for example, GitHub Pages) and the API on a separate Vercel deployment, change that attribute to the absolute API URL (e.g. `https://your-api.vercel.app/api/feedback`) and set `FEEDBACK_ALLOWED_ORIGINS` on the Vercel project to your site's origin.
 
 ---
 
@@ -206,8 +208,8 @@ The HTML comment in `**index.html`** describes deploying `**api/feedback**` (for
 
 ## Controls and shortcuts
 
-- **Bottom bar:** previous/next slide, seconds per slide, full-photo toggle, play/pause (slideshow and YouTube when available), previous/next track, volume, mute, archive grid, fullscreen, download, share (when supported), feedback.
-- **Filmstrip:** thumbnails around the current slide when the chrome bar is visible.
+- **Bottom bar (single row):** slideshow prev / play-pause / next / fullscreen / settings, download / share / feedback, slide-speed slider, music prev / play-pause / next, volume. The gear opens a settings popover that holds the **Full photo (no crop)** toggle.
+- **Carousel row:** the "all photos" archive button sits to the left of the filmstrip; the rest of the row is a horizontal thumbnail scrubber around the current slide.
 - **Mouse / touch:** move or touch to show the bar; it hides after idle time.
 
 
@@ -280,15 +282,23 @@ package.json
 run-manifest.bat        # Windows: Python manifest with dependency check
 ```
 
-## Deploy to GitHub Pages
+## Deploy to Vercel (recommended)
 
-This site is **static** (HTML, CSS, JS, and files under `public/`). You do **not** deploy the manifest generators or Python tooling—only the committed files. Regenerate `public/manifest.json` (and thumbnails if you use them) **locally** after changing photos, then commit and push.
+Vercel hosts both the static site and the serverless comments API in one place, same-origin. That means `data-feedback-api="/api/feedback"` works as-is with no CORS configuration.
 
-1. **Repository:** Push this project to a GitHub repository (see below). The **repository root** must contain `index.html`, `src/`, and `public/` (GitHub Pages will serve that root as the site).
-2. **Enable Pages:** In the repo on GitHub: **Settings → Pages → Build and deployment → Source:** **Deploy from a branch**. Choose branch `**main`** and folder `**/ (root)**`, then Save.
-3. **URL:** The site will be available at `**https://<your-username>.github.io/<repository-name>/`** (project site). Asset paths in this project work from that base URL (including `import.meta.url` for `public/manifest.json` and images).
-4. `**.nojekyll`:** A `.nojekyll` file at the repo root tells GitHub Pages **not** to process the site with Jekyll, which avoids surprises with static files.
-5. **Optional custom domain:** **Settings → Pages → Custom domain** (add your DNS records as GitHub documents).
+1. **Create an Upstash Redis database.** Free tier works. Copy the two REST credentials: `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`.
+2. **Import the repo on Vercel.** Framework preset: **Other**. Build command: leave blank. Output directory: leave blank. The included `vercel.json` handles caching headers; `api/feedback.js` is picked up automatically as a serverless function.
+3. **Add env vars** in **Settings → Environment Variables**:
+   - `UPSTASH_REDIS_REST_URL` — from Upstash.
+   - `UPSTASH_REDIS_REST_TOKEN` — from Upstash.
+   - *(Optional)* `FEEDBACK_ALLOWED_ORIGINS` — comma-separated list of origins allowed to POST (e.g. `https://mckenzie-memorial.vercel.app`). Leave empty to allow any origin.
+   - *(Optional)* `FEEDBACK_MAX_POSTS_PER_MINUTE`, `FEEDBACK_MAX_COMMENTS_PER_15MIN`, `FEEDBACK_COMMENT_BLOCKLIST` for rate-limit / moderation tuning.
+4. **Deploy.** Visit the Vercel URL; reactions and comments will round-trip through `api/feedback` and appear for every visitor.
+5. **Update photos:** regenerate `public/manifest.json` locally (`npm run manifest` or the Python equivalent), commit, and push. Vercel redeploys automatically.
+
+### Deploy static only to GitHub Pages (API elsewhere)
+
+If you prefer to keep the site on GitHub Pages, host only `api/feedback.js` on Vercel and set `data-feedback-api` on `#app` in `index.html` to the absolute function URL (e.g. `https://klm-feedback.vercel.app/api/feedback`). Add your Pages origin to `FEEDBACK_ALLOWED_ORIGINS` on the Vercel project so the API accepts cross-origin posts. Everything else in this README applies unchanged.
 
 **First-time push (after creating an empty repo on GitHub, no README added by GitHub):**
 
@@ -300,8 +310,6 @@ git branch -M main
 git remote add origin https://github.com/<your-username>/<your-repo>.git
 git push -u origin main
 ```
-
-Then complete step 2 above.
 
 ## Troubleshooting
 

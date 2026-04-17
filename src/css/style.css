@@ -473,12 +473,70 @@ body.body--chrome-hidden {
 .chrome-dock--hidden .controls__volume,
 .chrome-dock--hidden .controls__volume-wrap,
 .chrome-dock--hidden .controls__volume-popover,
-.chrome-dock--hidden .controls__timing,
-.chrome-dock--hidden .controls__timing-range,
 .chrome-dock--hidden .controls__fit-full,
+.chrome-dock--hidden .controls__settings-popover,
+.chrome-dock--hidden .controls__settings-range,
+.chrome-dock--hidden .filmstrip-dock,
 .chrome-dock--hidden .filmstrip,
-.chrome-dock--hidden .filmstrip__btn {
+.chrome-dock--hidden .filmstrip__btn,
+.chrome-dock--hidden .filmstrip-dock__archive {
   pointer-events: none;
+}
+
+/* Row above the controls: a compact "all photos" button to the left of the scrolling carousel,
+   so the archive shortcut sits with the visual photo navigation instead of inside the transport
+   bar. The button deliberately inherits the filmstrip pill's glass look for visual continuity. */
+.filmstrip-dock {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  max-width: min(100vw - 1.5rem, 54rem);
+  pointer-events: auto;
+}
+
+.filmstrip-dock__archive {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.88);
+  background: rgba(14, 14, 14, 0.42);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.filmstrip-dock__archive:hover {
+  background: rgba(34, 34, 38, 0.58);
+  color: #fff;
+  transform: scale(1.03);
+}
+
+.filmstrip-dock__archive:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 2px;
+}
+
+.filmstrip-dock__archive svg {
+  width: 1.3rem;
+  height: 1.3rem;
+  fill: currentColor;
+}
+
+.filmstrip-dock > .filmstrip {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .filmstrip {
@@ -567,19 +625,30 @@ body.body--chrome-hidden {
 
 .controls__inner {
   pointer-events: none;
+  /* Desktop layout is a single flex row: slideshow transport, per-photo actions, slide speed,
+     music transport and volume — each in their own group. On wide viewports we force `nowrap`
+     (see media query) so the row never stacks into two lines; on unusually narrow landscape
+     viewports we fall back to wrap so nothing ever overflows. Mobile portrait uses its own
+     compact layout below. */
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 0.35rem 0.5rem;
-  max-width: min(56rem, calc(100vw - 1.5rem));
-  padding: 0.55rem 0.85rem;
-  margin: 0 0.75rem;
+  gap: 0.35rem 0.55rem;
+  max-width: calc(100vw - 1rem);
+  padding: 0.5rem 0.85rem;
+  margin: 0 0.5rem;
   border-radius: 999px;
   background: rgba(18, 18, 18, 0.42);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+@media (min-width: 960px) {
+  .controls__inner {
+    flex-wrap: nowrap;
+  }
 }
 
 /* Tray wraps extras (actions, timing, tracks, volume). On desktop it dissolves so children flow inline
@@ -602,6 +671,21 @@ body.body--chrome-hidden {
   .chrome-dock {
     gap: 0.34rem;
     padding-bottom: max(0.32rem, env(safe-area-inset-bottom, 0px));
+  }
+
+  .filmstrip-dock {
+    gap: 0.3rem;
+    max-width: calc(100vw - 0.7rem);
+  }
+
+  .filmstrip-dock__archive {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .filmstrip-dock__archive svg {
+    width: 1.05rem;
+    height: 1.05rem;
   }
 
   .filmstrip {
@@ -725,52 +809,6 @@ body.body--chrome-hidden {
 
   .controls__tray .controls__group--actions {
     justify-content: space-around;
-  }
-
-  .controls__tray .controls__group--timing {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-    column-gap: 0.7rem;
-    row-gap: 0.35rem;
-    max-width: none;
-    width: 100%;
-  }
-
-  .controls__timing {
-    min-width: 0;
-    gap: 0.5rem;
-  }
-
-  .controls__timing-label {
-    font-size: 0.66rem;
-    color: rgba(255, 255, 255, 0.62);
-  }
-
-  .controls__timing-range {
-    flex: 1 1 auto;
-    width: auto;
-    min-width: 0;
-  }
-
-  .controls__timing-val {
-    min-width: 2rem;
-    font-size: 0.72rem;
-    text-align: right;
-  }
-
-  .controls__fit-full {
-    flex-basis: auto;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.72rem;
-    line-height: 1.2;
-    color: rgba(255, 255, 255, 0.72);
-    grid-column: 1 / -1;
-  }
-
-  .controls__fit-full-text {
-    white-space: nowrap;
   }
 
   .controls__tray .controls__group--tracks {
@@ -922,62 +960,23 @@ body.body--chrome-hidden {
   min-width: 0;
 }
 
-.controls__group--timing {
-  flex-wrap: wrap;
-  max-width: 14rem;
-  gap: 0.25rem 0.5rem;
-}
-
-.controls__timing {
-  pointer-events: auto;
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  margin: 0;
-  cursor: default;
-}
-
-.controls__timing-label {
-  font-size: 0.65rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
-  white-space: nowrap;
-}
-
-.controls__timing-range {
-  width: clamp(4.5rem, 18vw, 7rem);
-  height: 0.3rem;
-  margin: 0;
-  accent-color: rgba(200, 200, 210, 0.9);
-  cursor: pointer;
-}
-
-.controls__timing-val {
-  font-size: 0.75rem;
-  font-variant-numeric: tabular-nums;
-  color: rgba(255, 255, 255, 0.88);
-  min-width: 2.25rem;
-}
-
 .controls__fit-full {
   pointer-events: auto;
   display: flex;
-  align-items: flex-start;
-  gap: 0.35rem;
+  align-items: center;
+  gap: 0.5rem;
   margin: 0;
-  font-size: 0.7rem;
-  line-height: 1.25;
-  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.82rem;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.88);
   user-select: none;
   cursor: pointer;
-  flex-basis: 100%;
 }
 
 .controls__fit-full input[type="checkbox"] {
-  width: 0.85rem;
-  height: 0.85rem;
-  margin: 0.1rem 0 0;
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
   flex-shrink: 0;
   cursor: pointer;
   accent-color: rgba(200, 200, 210, 0.95);
@@ -985,6 +984,119 @@ body.body--chrome-hidden {
 
 .controls__fit-full-text {
   line-height: 1.3;
+}
+
+/* Settings gear + its click-open popover. Visually identical to the volume popover (floats above
+   the button, glassy sheet, scale/opacity transition) but opens on click only — the embedded
+   checkbox needs a stable surface, so hover-to-open would be fiddly on touch/pointer devices. */
+.controls__settings-wrap {
+  pointer-events: auto;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.controls__settings-popover {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 50%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.65rem;
+  min-width: 11rem;
+  padding: 0.85rem 0.9rem 0.75rem;
+  border-radius: 1rem;
+  background: rgba(16, 17, 20, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, 0.35rem) scale(0.97);
+  transform-origin: bottom center;
+  transition:
+    opacity 180ms ease,
+    transform 200ms cubic-bezier(0.32, 0.72, 0.3, 1),
+    visibility 0s linear 200ms;
+}
+
+.controls__settings-wrap.is-open > .controls__settings-popover {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0) scale(1);
+  transition:
+    opacity 180ms ease,
+    transform 200ms cubic-bezier(0.32, 0.72, 0.3, 1),
+    visibility 0s linear;
+}
+
+.controls__settings-wrap.is-open > #ctrl-settings {
+  background: rgba(72, 72, 80, 0.65);
+  color: #fff;
+}
+
+/* Slide-speed block inside the gear popover. Mirrors the volume popover's vertical-slider pattern:
+   uppercase label, numeric readout above, tall vertical track below — so the two popovers feel
+   like siblings rather than separate one-offs. */
+.controls__settings-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.controls__settings-section-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  white-space: nowrap;
+}
+
+.controls__settings-value {
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.92);
+  min-width: 2.25rem;
+  text-align: center;
+}
+
+.controls__settings-range {
+  writing-mode: vertical-lr;
+  direction: rtl;
+  -webkit-appearance: slider-vertical;
+  appearance: slider-vertical;
+  width: 0.45rem;
+  height: 7.5rem;
+  margin: 0.15rem 0 0.05rem;
+  accent-color: rgba(200, 200, 210, 0.95);
+  cursor: pointer;
+  background: transparent;
+}
+
+.controls__settings-divider {
+  height: 1px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0.1rem 0 0.2rem;
+}
+
+/* Inside the popover the checkbox row doesn't need to stay on one line; allow the label to wrap
+   so the popover width stays compact on narrow screens. */
+.controls__settings-popover .controls__fit-full {
+  align-items: flex-start;
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+
+.controls__settings-popover .controls__fit-full-text {
+  white-space: normal;
 }
 
 /* Entire image visible (letterboxed); no Ken Burns / grab-pan. The chrome-dock auto-hides and
@@ -1792,9 +1904,6 @@ body.feedback-open {
     min-height: 2.85rem;
   }
 
-  .controls__group--timing {
-    max-width: 13rem;
-  }
 }
 
 /* Very short landscape (e.g. fold outer display, toolbar-heavy browsers) */
