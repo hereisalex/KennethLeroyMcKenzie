@@ -202,11 +202,11 @@ The HTML comment in `**index.html`** describes deploying `**api/feedback**` (for
 
 ## Slide timing (control bar)
 
-- **Sec / slide:** range control (3–120 seconds, saved in `localStorage`). Sets photo duration and Ken Burns cycle length.
+- **Slide speed:** range control (1–60 seconds per photo, saved in `localStorage`). Sets photo duration and Ken Burns cycle length.
 
 ## Controls and shortcuts
 
-- **Bottom bar:** previous/next slide, seconds per slide, full-photo toggle, play/pause (slideshow and YouTube when available), previous/next track, volume, mute, archive grid, fullscreen, share, feedback.
+- **Bottom bar:** previous/next slide, seconds per slide, full-photo toggle, play/pause (slideshow and YouTube when available), previous/next track, volume, mute, archive grid, fullscreen, download, share (when supported), feedback.
 - **Filmstrip:** thumbnails around the current slide when the chrome bar is visible.
 - **Mouse / touch:** move or touch to show the bar; it hides after idle time.
 
@@ -224,7 +224,7 @@ The HTML comment in `**index.html`** describes deploying `**api/feedback**` (for
 
 ## Director features (focal + safe zoom)
 
-- Ken Burns **oscillates** between base scale and a safe maximum over each slide (same length as **Sec / slide**).
+- Ken Burns **oscillates** between base scale and a safe maximum over each slide (same length as **Slide speed**).
 - Each manifest image may include `**focal_point`**: `{ "x": 0–1, "y": 0–1 }` (Python generator or hand-edited).
 - The slide uses that point for **transform-origin** and **object-position**, with **safe zoom** so edge-heavy focals do not reveal obvious letterboxing.
 

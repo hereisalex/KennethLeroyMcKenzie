@@ -1,13 +1,16 @@
 :root {
   --fade-ms: 2000ms;
   --slide-ms: 5000ms;
+  /* Ken Burns runs longer than the slide so motion continues through the cross-fade instead
+     of freezing at the end keyframe before the next photo swaps in. */
+  --ken-ms: calc(var(--slide-ms) * 1.55);
   --color-reveal-ms: 2600ms;
-  --ken-min-scale: 1;
-  --ken-max-scale: 1.15;
   --controls-hide-shift: 14px;
   --controls-hide-duration: 520ms;
   /* Room above bottom chrome for captions (filmstrip + controls + gaps). Tuned per breakpoint. */
   --slide-meta-clearance: 5.85rem;
+  /* Approx chrome-dock height; pads the buffer so letterboxed photos stay visually centered above controls. */
+  --chrome-reserve: calc(8.5rem + env(safe-area-inset-bottom, 0px));
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -91,6 +94,7 @@ body.body--chrome-hidden {
   opacity: 0;
   z-index: 0;
   overflow: hidden;
+  box-sizing: border-box;
   transition: opacity var(--fade-ms) ease-in-out;
   pointer-events: none;
 }
@@ -135,26 +139,37 @@ body.body--chrome-hidden {
   height: 100%;
   object-fit: contain;
   object-position: center center;
+  /* `--fit-scale` is a per-slide upscale (set inline from JS) that shrinks the letterbox without
+     over-cropping: mismatch ≤ ~1.2 fills like cover; beyond that we cap the crop and let some
+     letterbox remain. The Ken Burns keyframes multiply their own scales by this value so motion
+     compounds naturally; reduced-motion falls back to this static base scale. */
+  transform: scale(var(--fit-scale, 1));
   transform-origin: 50% 50%;
   will-change: transform;
   -webkit-user-drag: none;
   user-select: none;
 }
 
-/* Focal-anchored zoom with translate drift (see --ken-tx/y in app.js). Order: translate then scale. */
+/* One generic keyframe covers every motion mode (zoom-in, zoom-out, pan, pan+zoom); per-slide
+   CSS variables describe the start and end transform. Translate runs before scale so the drift
+   is in image-local percentages, which keeps edges from sliding past the frame. */
 @keyframes kenBurnsDrift {
   0% {
-    transform: translate3d(var(--ken-tx0, 0%), var(--ken-ty0, 0%), 0) scale(var(--ken-min-scale, 1));
+    transform: translate3d(var(--ken-tx0, 0%), var(--ken-ty0, 0%), 0)
+      scale(calc(var(--ken-s0, 1) * var(--fit-scale, 1)));
   }
   100% {
-    transform: translate3d(var(--ken-tx1, 0%), var(--ken-ty1, 0%), 0) scale(var(--ken-max-scale, 1.15));
+    transform: translate3d(var(--ken-tx1, 0%), var(--ken-ty1, 0%), 0)
+      scale(calc(var(--ken-s1, 1.12) * var(--fit-scale, 1)));
   }
 }
 
 .slide-img.ken-burns {
   animation-name: kenBurnsDrift;
-  animation-duration: var(--slide-ms);
-  animation-timing-function: ease-in-out;
+  animation-duration: var(--ken-ms);
+  /* Gentle cinematic S-curve: enough ease to avoid a mechanical start/stop, flat through the
+     middle so the cross-fade hand-off feels like one continuous move. */
+  animation-timing-function: cubic-bezier(0.37, 0, 0.35, 1);
   animation-iteration-count: 1;
   animation-fill-mode: both;
 }
@@ -458,7 +473,8 @@ body.body--chrome-hidden {
 .chrome-dock--hidden .controls__inner,
 .chrome-dock--hidden .controls__btn,
 .chrome-dock--hidden .controls__volume,
-.chrome-dock--hidden .controls__volume-label,
+.chrome-dock--hidden .controls__volume-wrap,
+.chrome-dock--hidden .controls__volume-popover,
 .chrome-dock--hidden .controls__timing,
 .chrome-dock--hidden .controls__timing-range,
 .chrome-dock--hidden .controls__fit-full,
@@ -566,10 +582,22 @@ body.body--chrome-hidden {
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 }
 
-/* Portrait phones: premium compact dock with clear hierarchy (filmstrip > primary controls > utility row). */
+/* Tray wraps extras (actions, timing, tracks, volume). On desktop it dissolves so children flow inline
+   with the primary controls; on mobile portrait it becomes a slide-up panel (see media query below). */
+.controls__tray {
+  display: contents;
+}
+
+.controls-tray-backdrop {
+  display: none;
+}
+
+/* Portrait phones: compact dock with a single transport row; extras live in a slide-up tray. */
 @media (max-width: 900px) and (orientation: portrait) {
   :root {
     --slide-meta-clearance: 5.35rem;
+    --chrome-reserve: calc(7rem + env(safe-area-inset-bottom, 0px));
+    --mobile-bar-height: calc(3.5rem + env(safe-area-inset-bottom, 0px));
   }
 
   .chrome-dock {
@@ -594,83 +622,130 @@ body.body--chrome-hidden {
   }
 
   .controls__inner {
-    display: grid;
-    grid-template-columns: auto auto 1fr auto auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     align-items: center;
-    gap: 0.32rem 0.42rem;
+    justify-content: center;
+    gap: 0.35rem;
     max-width: min(100vw - 0.62rem, 25rem);
     margin: 0 0.28rem;
-    padding: 0.38rem 0.46rem;
-    border-radius: 13px;
-    background: rgba(14, 15, 17, 0.4);
+    padding: 0.38rem 0.58rem;
+    border-radius: 999px;
+    background: rgba(14, 15, 17, 0.42);
     border: 1px solid rgba(255, 255, 255, 0.07);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
     backdrop-filter: blur(16px) saturate(120%);
     -webkit-backdrop-filter: blur(16px) saturate(120%);
   }
 
-  .controls__divider {
+  .controls__inner > .controls__divider {
     display: none;
   }
 
   .controls__group--slides {
-    grid-column: 1 / -1;
     justify-content: center;
     gap: 0.3rem;
+  }
+
+  /* Compact mobile bar has no room for the "Slideshow" pill next to the transport buttons;
+     the tray sections below carry their own section headings instead. */
+  .controls__group--slides > .controls__group-label {
+    display: none;
   }
 
   .controls__btn--more {
     display: inline-flex;
   }
 
-  .controls__group--timing,
-  .controls__group--tracks,
-  .controls__group--volume,
-  #ctrl-archive,
-  #ctrl-fullscreen,
-  #ctrl-share-slide,
-  #ctrl-photo-feedback {
+  #app.mobile-controls-expanded .controls__btn--more {
+    background: rgba(90, 90, 96, 0.65);
+    color: #fff;
+  }
+
+  /* Tray becomes a bottom sheet above the transport row; default state is off-screen. */
+  .controls__tray {
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    position: fixed;
+    left: 0.45rem;
+    right: 0.45rem;
+    bottom: calc(var(--mobile-bar-height) + 0.55rem);
+    z-index: 60;
+    padding: 0.95rem 0.95rem 1.05rem;
+    border-radius: 16px;
+    background: rgba(16, 17, 20, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 16px 44px rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(22px) saturate(130%);
+    -webkit-backdrop-filter: blur(22px) saturate(130%);
+    opacity: 0;
+    transform: translateY(calc(100% + 1rem));
+    transition:
+      transform 340ms cubic-bezier(0.32, 0.72, 0.3, 1),
+      opacity 260ms ease-out;
+  }
+
+  #app.mobile-controls-expanded .controls__tray {
+    pointer-events: auto;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* In the tray the "Slideshow" and "Music" section labels do the separating work, so we
+     hide the inline dividers that are only useful on the desktop pill row. */
+  .controls__tray .controls__divider {
     display: none;
   }
 
-  #app.mobile-controls-expanded .controls__group--timing {
-    display: grid;
+  .controls__tray .controls__group {
+    gap: 0.55rem;
+    flex-wrap: wrap;
   }
 
-  #app.mobile-controls-expanded .controls__group--tracks,
-  #app.mobile-controls-expanded .controls__group--volume {
-    display: flex;
+  /* In the tray, the small pill becomes a full-width section heading so "Slideshow" and
+     "Music" clearly delineate the two halves of the panel. */
+  .controls__tray .controls__group-label {
+    flex: 1 0 100%;
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0 0 0.1rem;
+    border: 0;
+    background: transparent;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    color: rgba(255, 255, 255, 0.5);
   }
 
-  #app.mobile-controls-expanded #ctrl-archive,
-  #app.mobile-controls-expanded #ctrl-fullscreen,
-  #app.mobile-controls-expanded #ctrl-share-slide,
-  #app.mobile-controls-expanded #ctrl-photo-feedback {
+  .controls__tray .controls__group-label--tray {
     display: inline-flex;
   }
 
-  #app.mobile-controls-expanded .controls__btn--more {
-    background: rgba(90, 90, 96, 0.6);
+  .controls__tray .controls__group--actions {
+    justify-content: space-around;
   }
 
-  .controls__group--timing {
-    grid-column: 1 / -1;
+  .controls__tray .controls__group--timing {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
-    column-gap: 0.5rem;
-    row-gap: 0.2rem;
+    column-gap: 0.7rem;
+    row-gap: 0.35rem;
     max-width: none;
     width: 100%;
   }
 
   .controls__timing {
     min-width: 0;
-    gap: 0.3rem;
+    gap: 0.5rem;
   }
 
   .controls__timing-label {
-    display: none;
+    font-size: 0.66rem;
+    color: rgba(255, 255, 255, 0.62);
   }
 
   .controls__timing-range {
@@ -680,102 +755,126 @@ body.body--chrome-hidden {
   }
 
   .controls__timing-val {
-    min-width: 1.8rem;
-    font-size: 0.7rem;
+    min-width: 2rem;
+    font-size: 0.72rem;
+    text-align: right;
   }
 
   .controls__fit-full {
     flex-basis: auto;
     align-items: center;
-    gap: 0.28rem;
-    font-size: 0.64rem;
-    line-height: 1.1;
-    color: rgba(255, 255, 255, 0.68);
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    line-height: 1.2;
+    color: rgba(255, 255, 255, 0.72);
+    grid-column: 1 / -1;
   }
 
   .controls__fit-full-text {
     white-space: nowrap;
   }
 
-  .controls__group--tracks {
-    grid-column: 1 / span 2;
-    justify-content: flex-start;
-    gap: 0.24rem;
+  .controls__tray .controls__group--tracks {
+    justify-content: center;
+    gap: 0.6rem;
   }
 
-  .controls__group--volume {
-    grid-column: 3;
+  .controls__tray .controls__group--volume {
     justify-self: stretch;
     min-width: 0;
-    gap: 0.18rem;
+    gap: 0.5rem;
   }
 
-  .controls__volume {
+  /* In the mobile tray there's room (and no hover) so the volume control collapses back to a
+     simple inline layout: mute button plus a horizontal slider. No popover, no vertical slider. */
+  .controls__tray .controls__volume-wrap {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-width: 0;
+  }
+
+  .controls__tray .controls__volume-popover {
+    position: static;
+    flex: 1 1 auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+    transition: none;
+  }
+
+  .controls__tray .controls__volume-readout {
+    order: 2;
+    min-width: 2rem;
+  }
+
+  .controls__tray .controls__volume {
+    order: 1;
+    flex: 1 1 auto;
+    writing-mode: horizontal-tb;
+    direction: ltr;
+    -webkit-appearance: auto;
+    appearance: auto;
     width: 100%;
+    height: 0.35rem;
     min-width: 0;
     max-width: none;
   }
 
-  #ctrl-archive {
-    grid-column: 4;
-    justify-self: center;
+  .controls-tray-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 55;
+    background: rgba(4, 4, 6, 0.38);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 260ms ease-out;
   }
 
-  #ctrl-fullscreen {
-    grid-column: 5;
-    justify-self: center;
+  #app.mobile-controls-expanded .controls-tray-backdrop {
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .chrome-dock .controls__btn {
-    width: 2.28rem;
-    height: 2.28rem;
-    min-width: 2.28rem;
-    min-height: 2.28rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    min-width: 2.4rem;
+    min-height: 2.4rem;
     background: rgba(36, 37, 40, 0.52);
   }
 
   .chrome-dock .controls__btn--primary {
-    width: 2.52rem;
-    height: 2.52rem;
-    min-width: 2.52rem;
-    min-height: 2.52rem;
+    width: 2.72rem;
+    height: 2.72rem;
+    min-width: 2.72rem;
+    min-height: 2.72rem;
   }
 
   .chrome-dock .controls__btn svg {
-    width: 1.04rem;
-    height: 1.04rem;
+    width: 1.08rem;
+    height: 1.08rem;
   }
 
   .chrome-dock .controls__btn--primary svg {
-    width: 1.1rem;
-    height: 1.1rem;
-  }
-
-  /* Final override: compact portrait shows only transport row unless expanded. */
-  #app:not(.mobile-controls-expanded) .controls__group--timing,
-  #app:not(.mobile-controls-expanded) .controls__group--tracks,
-  #app:not(.mobile-controls-expanded) .controls__group--volume,
-  #app:not(.mobile-controls-expanded) #ctrl-archive,
-  #app:not(.mobile-controls-expanded) #ctrl-fullscreen,
-  #app:not(.mobile-controls-expanded) #ctrl-share-slide,
-  #app:not(.mobile-controls-expanded) #ctrl-photo-feedback {
-    display: none !important;
-  }
-
-  #app.mobile-controls-expanded .controls__group--timing {
-    display: grid !important;
-  }
-
-  #app.mobile-controls-expanded .controls__group--tracks,
-  #app.mobile-controls-expanded .controls__group--volume {
-    display: flex !important;
-  }
-
-  #app.mobile-controls-expanded #ctrl-archive,
-  #app.mobile-controls-expanded #ctrl-fullscreen,
-  #app.mobile-controls-expanded #ctrl-share-slide,
-  #app.mobile-controls-expanded #ctrl-photo-feedback {
-    display: inline-flex !important;
+    width: 1.2rem;
+    height: 1.2rem;
   }
 }
 
@@ -791,6 +890,32 @@ body.body--chrome-hidden {
   align-items: center;
   gap: 0.35rem;
   pointer-events: none;
+}
+
+/* Small uppercase tag that precedes a control group (e.g. "Slideshow", "Music") to visually
+   separate the photo transport from the music transport without adding a heavy divider. */
+.controls__group-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.12rem 0.5rem;
+  margin-right: 0.15rem;
+  border-radius: 999px;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Labels marked --tray only render when the mobile tray is in use; on desktop we rely on
+   group-level labels in the main row to avoid visual duplication. */
+.controls__group-label--tray {
+  display: none;
 }
 
 .controls__group--volume {
@@ -863,10 +988,16 @@ body.body--chrome-hidden {
   line-height: 1.3;
 }
 
-/* Entire image visible (letterboxed); no Ken Burns / grab-pan */
+/* Entire image visible (letterboxed); no Ken Burns / grab-pan. Reserve space for the dock so the
+   letterboxed photo isn't overlapped by the chrome while controls are visible. */
+#app.slideshow-fit-contain .buffer {
+  padding-bottom: var(--chrome-reserve);
+}
+
 #app.slideshow-fit-contain .slide-img {
   object-fit: contain;
   object-position: center center;
+  transform: none;
 }
 
 #app.slideshow-fit-contain .slide-img.ken-burns {
@@ -881,21 +1012,80 @@ body.body--chrome-hidden {
   cursor: default;
 }
 
-.controls__volume-label {
+/* Volume is a single inline button that pops a vertical slider above itself on hover/focus.
+   Click on the button toggles mute; hovering (or focusing) exposes the slider so the user can
+   fine-tune the level without giving up real estate in the dock. */
+.controls__volume-wrap {
   pointer-events: auto;
-  display: flex;
+  position: relative;
+  display: inline-flex;
   align-items: center;
-  margin: 0;
-  padding: 0 0.15rem;
+  justify-content: center;
+}
+
+.controls__volume-popover {
+  position: absolute;
+  bottom: calc(100% + 0.45rem);
+  left: 50%;
+  /* Sit above the filmstrip (z-index: 2) so the slider isn't occluded by the carousel when the
+     popover expands upward out of the button. */
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.7rem 0.55rem 0.55rem;
+  border-radius: 1rem;
+  background: rgba(16, 17, 20, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, 0.4rem) scale(0.96);
+  transform-origin: bottom center;
+  transition:
+    opacity 180ms ease,
+    transform 200ms cubic-bezier(0.32, 0.72, 0.3, 1),
+    visibility 0s linear 200ms;
+}
+
+.controls__volume-wrap:hover > .controls__volume-popover,
+.controls__volume-wrap:focus-within > .controls__volume-popover,
+.controls__volume-wrap.is-open > .controls__volume-popover {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0) scale(1);
+  transition:
+    opacity 180ms ease,
+    transform 200ms cubic-bezier(0.32, 0.72, 0.3, 1),
+    visibility 0s linear;
+}
+
+.controls__volume-readout {
+  font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.75);
+  min-width: 1.75rem;
+  text-align: center;
 }
 
 .controls__volume {
   pointer-events: auto;
-  width: clamp(4rem, 22vw, 7.5rem);
-  height: 0.35rem;
+  writing-mode: vertical-lr;
+  direction: rtl;
+  -webkit-appearance: slider-vertical;
+  appearance: slider-vertical;
+  width: 0.45rem;
+  height: 7.5rem;
   margin: 0;
-  accent-color: rgba(255, 255, 255, 0.85);
+  accent-color: rgba(255, 255, 255, 0.88);
   cursor: pointer;
+  background: transparent;
 }
 
 .controls__btn {
@@ -951,15 +1141,18 @@ body.body--chrome-hidden {
   display: none;
 }
 
-#ctrl-play-pause .icon-play {
+#ctrl-play-pause .icon-play,
+#ctrl-music-play-pause .icon-play {
   display: none;
 }
 
-#ctrl-play-pause.is-paused .icon-play {
+#ctrl-play-pause.is-paused .icon-play,
+#ctrl-music-play-pause.is-paused .icon-play {
   display: block;
 }
 
-#ctrl-play-pause.is-paused .icon-pause {
+#ctrl-play-pause.is-paused .icon-pause,
+#ctrl-music-play-pause.is-paused .icon-pause {
   display: none;
 }
 
@@ -1021,10 +1214,11 @@ body.body--chrome-hidden {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: min(1200px, 100%);
+  height: 100%;
+  max-width: 100%;
   max-height: 100%;
   margin: auto;
-  background: rgba(12, 12, 14, 0.88);
+  background: rgba(12, 12, 14, 0.92);
   border-radius: 12px 12px 0 0;
   box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.5);
   overflow: hidden;
@@ -1032,8 +1226,13 @@ body.body--chrome-hidden {
 
 @media (min-width: 720px) {
   .archive-overlay__sheet {
-    border-radius: 12px;
-    max-height: min(92dvh, 900px);
+    /* At least 85% of the viewport in both dimensions so the album feels like a dedicated
+       space, capped so it stays comfortable on ultra-wide monitors. */
+    width: min(95vw, 1680px);
+    height: min(92dvh, 1280px);
+    max-width: min(95vw, 1680px);
+    max-height: min(92dvh, 1280px);
+    border-radius: 14px;
   }
 }
 
@@ -1072,60 +1271,118 @@ body.body--chrome-hidden {
   background: rgba(255, 255, 255, 0.14);
 }
 
+/* Photo album: each cell is a thin "sliver" showing a horizontal band of its photo. Hover
+   lifts and un-clips the card into a full square. Cells keep a fixed sliver hit area so a
+   lifted card — which also has pointer-events:none — never blocks hover on its neighbours
+   and reverse-direction traversal stays smooth. */
 .archive-grid {
+  --sliver-h: 22px;
+  --sliver-gap-y: 4px;
+  --sliver-gap-x: 6px;
   flex: 1;
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 0.75rem;
+  padding: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(5.5rem, 1fr));
-  gap: 0.5rem;
+  grid-auto-rows: var(--sliver-h);
+  gap: var(--sliver-gap-y) var(--sliver-gap-x);
   align-content: start;
+  scroll-padding-block: 4rem;
   -webkit-overflow-scrolling: touch;
 }
 
 @media (min-width: 480px) {
   .archive-grid {
+    --sliver-h: 24px;
+    --sliver-gap-y: 5px;
     grid-template-columns: repeat(auto-fill, minmax(6.5rem, 1fr));
-    gap: 0.6rem;
   }
 }
 
 .archive-grid__cell {
   pointer-events: auto;
+  position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 1;
+  height: var(--sliver-h);
   padding: 0;
-  border: 2px solid transparent;
-  border-radius: 6px;
-  overflow: hidden;
+  border: none;
+  background: transparent;
   cursor: pointer;
-  background: #0a0a0a;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  /* Cell itself must not clip the lifted card; isolation keeps z-index local per cell. */
+  overflow: visible;
+  isolation: isolate;
 }
 
-.archive-grid__cell img {
+.archive-grid__cell-card {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  aspect-ratio: 1;
+  border-radius: 4px;
+  overflow: hidden;
+  /* Mouse never targets the card — always the fixed-size .archive-grid__cell beneath it.
+     This is what unblocks reverse-direction traversal through the stack. */
+  pointer-events: none;
+  transform: translate3d(0, -50%, 0) scale(1);
+  transform-origin: center center;
+  /* Resting state reveals only the centre band of the square photo, matching the sliver
+     height. The `round` keyword on inset() animates the corner radius as well. */
+  clip-path: inset(calc(50% - var(--sliver-h) / 2) 0 round 3px);
+  background: #0a0a0a;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+  z-index: 1;
+  transition:
+    clip-path 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 300ms ease,
+    z-index 0s linear 360ms;
+}
+
+.archive-grid__cell-card img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.archive-grid__cell:hover {
-  transform: scale(1.03);
+.archive-grid__cell:hover,
+.archive-grid__cell:focus-visible {
+  z-index: 30;
 }
 
-.archive-grid__cell.is-active {
-  border-color: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3);
-  transform: scale(1.02);
+.archive-grid__cell:hover .archive-grid__cell-card,
+.archive-grid__cell:focus-visible .archive-grid__cell-card {
+  clip-path: inset(0 round 7px);
+  transform: translate3d(0, -50%, 0) scale(1.06);
+  box-shadow:
+    0 22px 48px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(255, 255, 255, 0.18);
+  z-index: 30;
+  transition:
+    clip-path 340ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 340ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 280ms ease,
+    z-index 0s;
+}
+
+.archive-grid__cell.is-active .archive-grid__cell-card {
+  /* Active photo always reads as the "open" spread in the album. */
+  clip-path: inset(0 round 7px);
+  transform: translate3d(0, -50%, 0) scale(1.02);
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.55),
+    0 0 0 2px rgba(255, 255, 255, 0.92);
+  z-index: 10;
 }
 
 .archive-grid__cell:focus-visible {
   outline: 2px solid rgba(255, 255, 255, 0.55);
   outline-offset: 2px;
+  border-radius: 4px;
 }
 
 body.archive-open,
@@ -1588,9 +1845,18 @@ body.feedback-open {
   }
 
   .archive-grid {
+    --sliver-h: 26px;
+    --sliver-gap-y: 6px;
+    --sliver-gap-x: 8px;
     grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
-    gap: 0.65rem;
-    padding: 1rem;
+    padding: 1.25rem 1.25rem 2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .archive-grid {
+    --sliver-h: 28px;
+    grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
   }
 }
 
@@ -1638,7 +1904,14 @@ body.feedback-open {
 
   .filmstrip__btn,
   .archive-grid__cell,
+  .archive-grid__cell-card,
   .feedback-reaction-btn {
     transition: none;
+  }
+
+  /* Without motion we still want the sliver stack to be readable, so show photos fully
+     rather than leaving them clipped to a band. */
+  .archive-grid__cell-card {
+    clip-path: inset(0 round 5px);
   }
 }

@@ -8,6 +8,9 @@ const CONTROLS_HIDE_MS = 3_000;
 const KEN_BURNS_MAX_SCALE = 1.15;
 /** Keep at least 80% of any image visible while Ken Burns runs. */
 const MIN_VISIBLE_IMAGE_FRACTION = 0.8;
+/** Max base upscale used to close the letterbox on aspect-mismatched photos. 1.20 caps crop at ~17%
+    of the short axis so we reduce dead space without lopping heads off square portraits. */
+const MAX_FIT_SCALE = 1.2;
 const GRAB_RUBBER_SOFT_PX = 72;
 const GRAB_RUBBER_HARD_PX = 140;
 const GESTURE_MIN_SCALE = 0.5;
@@ -94,6 +97,7 @@ const feedbackCommentForm = document.querySelector('#feedback-comment-form');
 const feedbackCommentInput = document.querySelector('#feedback-comment-input');
 const ctrlSlidePrev = document.querySelector('#ctrl-slide-prev');
 const ctrlSlideNext = document.querySelector('#ctrl-slide-next');
+const ctrlDownloadSlide = document.querySelector('#ctrl-download-slide');
 const ctrlShareSlide = document.querySelector('#ctrl-share-slide');
 const ctrlPhotoFeedback = document.querySelector('#ctrl-photo-feedback');
 const ctrlPlayPause = document.querySelector('#ctrl-play-pause');
@@ -101,12 +105,16 @@ const ctrlTrackPrev = document.querySelector('#ctrl-track-prev');
 const ctrlTrackNext = document.querySelector('#ctrl-track-next');
 const ctrlMute = document.querySelector('#ctrl-mute');
 const ctrlVolume = document.querySelector('#ctrl-volume');
+const ctrlVolumeReadout = document.querySelector('#ctrl-volume-readout');
 const ctrlFullscreen = document.querySelector('#ctrl-fullscreen');
 const ctrlArchive = document.querySelector('#ctrl-archive');
 const ctrlSlideSec = document.querySelector('#ctrl-slide-sec');
 const ctrlSlideSecVal = document.querySelector('#ctrl-slide-sec-val');
 const ctrlFitFull = document.querySelector('#ctrl-fit-full');
 const ctrlMore = document.querySelector('#ctrl-more');
+const ctrlMusicPlayPause = document.querySelector('#ctrl-music-play-pause');
+const controlsTray = document.querySelector('#controls-tray');
+const controlsTrayBackdrop = document.querySelector('#controls-tray-backdrop');
 const focalEditorRoot = document.getElementById('focal-editor-root');
 const focalEditorToggle = document.getElementById('focal-editor-toggle');
 const focalEditorPanel = document.getElementById('focal-editor-panel');
@@ -320,7 +328,7 @@ function loadSlideTimingPrefs() {
     const raw = localStorage.getItem(SLIDE_TIMING_KEY);
     if (raw == null) return;
     const n = parseFloat(raw);
-    if (Number.isFinite(n)) manualSlideSeconds = clamp(n, 3, 120);
+    if (Number.isFinite(n)) manualSlideSeconds = clamp(n, 1, 60);
   } catch {
     /* ignore */
   }
@@ -419,6 +427,9 @@ function syncVolumeUi() {
     ctrlVolume.value = String(audioVolume);
     ctrlVolume.setAttribute('aria-valuenow', String(audioVolume));
   }
+  if (ctrlVolumeReadout) {
+    ctrlVolumeReadout.textContent = audioMuted ? '0' : String(audioVolume);
+  }
   if (ctrlMute) {
     ctrlMute.classList.toggle('is-muted', audioMuted);
     ctrlMute.setAttribute('aria-label', audioMuted ? 'Unmute' : 'Mute');
@@ -487,26 +498,126 @@ function usesFaceFocalForKenBurns(entry) {
   return Math.hypot(x - 0.5, y - 0.5) > 0.04;
 }
 
-function computeKenDriftPercents(entry, useFaceFocal, driftLimitPct) {
-  if (useFaceFocal) {
-    const { x: fx, y: fy } = getFocalPoint(entry);
-    const ux = (fx - 0.5) * 2;
-    const uy = (fy - 0.5) * 2;
-    return {
-      tx0: `${(-ux * driftLimitPct * 0.55).toFixed(2)}%`,
-      ty0: `${(-uy * driftLimitPct * 0.55).toFixed(2)}%`,
-      tx1: `${(ux * driftLimitPct * 0.65).toFixed(2)}%`,
-      ty1: `${(uy * driftLimitPct * 0.65).toFixed(2)}%`,
-    };
+/** Deterministically pick one item from `items` using the provided seeded RNG and weights. */
+function weightedPick(rnd, items, weights) {
+  let total = 0;
+  for (const w of weights) total += w;
+  let r = rnd() * total;
+  for (let i = 0; i < items.length; i++) {
+    if (r < weights[i]) return items[i];
+    r -= weights[i];
   }
+  return items[items.length - 1];
+}
+
+/**
+ * Build a per-slide Ken Burns plan: start/end scale and translate in image-local percent, plus
+ * the chosen `mode` for debugging/telemetry. Output is deterministic so the same photo always
+ * gets the same motion (no jarring variation when revisiting a slide).
+ *
+ * Modes roughly mirror Apple Photos' cinematic Ken Burns vocabulary:
+ *  - `zoom-in`       slow push toward the subject (most common with a face focal)
+ *  - `zoom-out`      pull-back reveal starting tight, ending wide
+ *  - `pan`           steady slide across the photo at a held mid-zoom
+ *  - `zoom-in-pan`   push while drifting diagonally toward the focal
+ *  - `zoom-out-pan`  reveal while drifting away from the subject
+ */
+function planKenBurns(entry, img) {
+  const focal = getFocalPoint(entry);
+  const useFaceFocal = usesFaceFocalForKenBurns(entry);
+  const { minScale, maxScale } = calculateSafeScale(img);
+  const range = Math.max(0.04, maxScale - minScale);
+  const driftLimitPct = clamp(range * 28, 1.8, 4.6);
+  const midScale = minScale + range * 0.7;
+  const endSettleScale = Math.max(1.015, minScale + range * 0.12);
+
   const key = imageUrl(entry) || 'slide';
-  const rnd = mulberry32(hashString32(`${key}|ken`));
-  const pick = () => (rnd() - 0.5) * 2 * driftLimitPct;
+  const rnd = mulberry32(hashString32(`${key}|ken-burns-v2`));
+
+  // Face focals prefer push-in motion so the viewer's eye lands on the subject; generic photos
+  // get a more even mix so the overall reel never feels repetitive.
+  const modes = ['zoom-in', 'zoom-out', 'pan', 'zoom-in-pan', 'zoom-out-pan'];
+  const weights = useFaceFocal ? [3, 1, 0.6, 2.4, 1.2] : [2, 1.8, 1.4, 2, 1.6];
+  const mode = weightedPick(rnd, modes, weights);
+
+  const fx = useFaceFocal ? (focal.x - 0.5) * 2 : 0;
+  const fy = useFaceFocal ? (focal.y - 0.5) * 2 : 0;
+  const rndAngle = rnd() * Math.PI * 2;
+  const cosA = Math.cos(rndAngle);
+  const sinA = Math.sin(rndAngle);
+
+  let s0 = minScale;
+  let s1 = maxScale;
+  let tx0 = 0;
+  let ty0 = 0;
+  let tx1 = 0;
+  let ty1 = 0;
+
+  switch (mode) {
+    case 'zoom-in': {
+      s0 = minScale;
+      s1 = maxScale;
+      tx0 = useFaceFocal ? -fx * driftLimitPct * 0.35 : cosA * driftLimitPct * 0.22;
+      ty0 = useFaceFocal ? -fy * driftLimitPct * 0.35 : sinA * driftLimitPct * 0.22;
+      tx1 = useFaceFocal ? fx * driftLimitPct * 0.55 : -cosA * driftLimitPct * 0.38;
+      ty1 = useFaceFocal ? fy * driftLimitPct * 0.55 : -sinA * driftLimitPct * 0.38;
+      break;
+    }
+    case 'zoom-out': {
+      s0 = maxScale;
+      s1 = endSettleScale;
+      tx0 = useFaceFocal ? fx * driftLimitPct * 0.5 : cosA * driftLimitPct * 0.42;
+      ty0 = useFaceFocal ? fy * driftLimitPct * 0.5 : sinA * driftLimitPct * 0.42;
+      tx1 = useFaceFocal ? fx * driftLimitPct * 0.1 : 0;
+      ty1 = useFaceFocal ? fy * driftLimitPct * 0.1 : 0;
+      break;
+    }
+    case 'pan': {
+      s0 = midScale;
+      s1 = midScale;
+      // Pan across the midline; face focals slide toward the subject so it crosses screen center.
+      const dirA = useFaceFocal ? Math.atan2(fy || 1e-3, fx || 1e-3) + Math.PI : rndAngle;
+      const mag = driftLimitPct * 1.1;
+      tx0 = Math.cos(dirA) * mag * 0.55;
+      ty0 = Math.sin(dirA) * mag * 0.55;
+      tx1 = -Math.cos(dirA) * mag * 0.55;
+      ty1 = -Math.sin(dirA) * mag * 0.55;
+      break;
+    }
+    case 'zoom-in-pan': {
+      s0 = minScale + range * 0.08;
+      s1 = maxScale;
+      const dx = cosA * driftLimitPct * 0.55;
+      const dy = sinA * driftLimitPct * 0.55;
+      tx0 = dx;
+      ty0 = dy;
+      tx1 = -dx * 0.65 + (useFaceFocal ? fx * driftLimitPct * 0.45 : 0);
+      ty1 = -dy * 0.65 + (useFaceFocal ? fy * driftLimitPct * 0.45 : 0);
+      break;
+    }
+    case 'zoom-out-pan': {
+      s0 = maxScale;
+      s1 = Math.max(1.03, minScale + range * 0.22);
+      const dx = cosA * driftLimitPct * 0.5;
+      const dy = sinA * driftLimitPct * 0.5;
+      tx0 = dx;
+      ty0 = dy;
+      tx1 = -dx * 0.55;
+      ty1 = -dy * 0.55;
+      break;
+    }
+    default:
+      break;
+  }
+
   return {
-    tx0: `${pick().toFixed(2)}%`,
-    ty0: `${pick().toFixed(2)}%`,
-    tx1: `${pick().toFixed(2)}%`,
-    ty1: `${pick().toFixed(2)}%`,
+    mode,
+    s0,
+    s1,
+    tx0: `${tx0.toFixed(2)}%`,
+    ty0: `${ty0.toFixed(2)}%`,
+    tx1: `${tx1.toFixed(2)}%`,
+    ty1: `${ty1.toFixed(2)}%`,
   };
 }
 
@@ -534,26 +645,49 @@ function calculateSafeScale(imgEl) {
   return { minScale, maxScale };
 }
 
+/** Upscale a contain-fitted image just enough to swallow most of the letterbox, capped so we never
+    crop more than `MAX_FIT_SCALE` worth off the short axis. Photos whose aspect already matches the
+    viewport return 1 (no change); extreme mismatches clamp at the cap and keep some letterbox
+    rather than chopping the subject. */
+function computeSmartFitScale(imgEl) {
+  const view = stageEl || document.documentElement;
+  const vw = Math.max(2, view?.clientWidth || window.innerWidth || 2);
+  const vh = Math.max(2, view?.clientHeight || window.innerHeight || 2);
+  const iw = Math.max(2, imgEl?.naturalWidth || 0);
+  const ih = Math.max(2, imgEl?.naturalHeight || 0);
+  if (iw < 2 || ih < 2) return 1;
+  const imageAspect = iw / ih;
+  const viewportAspect = vw / vh;
+  const mismatch =
+    imageAspect >= viewportAspect ? imageAspect / viewportAspect : viewportAspect / imageAspect;
+  return clamp(mismatch, 1, MAX_FIT_SCALE);
+}
+
 function applyKenBurnsForEntry(img, entry) {
   const focal = getFocalPoint(entry);
   const useFaceFocal = usesFaceFocalForKenBurns(entry);
-  let objX = focal.x;
-  let objY = focal.y;
-  if (!useFaceFocal) {
-    objX = 0.5;
-    objY = 0.5;
-  }
-  const { minScale, maxScale } = calculateSafeScale(img);
-  const driftLimitPct = clamp((maxScale - minScale) * 26, 1.25, 4.2);
-  const drift = computeKenDriftPercents(entry, useFaceFocal, driftLimitPct);
-  img.style.transformOrigin = `50% 50%`;
-  img.style.objectPosition = `${objX * 100}% ${objY * 100}%`;
-  img.style.setProperty('--ken-min-scale', String(minScale));
-  img.style.setProperty('--ken-max-scale', String(maxScale));
-  img.style.setProperty('--ken-tx0', drift.tx0);
-  img.style.setProperty('--ken-ty0', drift.ty0);
-  img.style.setProperty('--ken-tx1', drift.tx1);
-  img.style.setProperty('--ken-ty1', drift.ty1);
+  const plan = planKenBurns(entry, img);
+  // object-position shifts the focal inside the letterboxed area so "zoom in on the face" lands
+  // on the actual face; generic photos stay centered to avoid asymmetric letterboxing. When
+  // `--fit-scale` upscales past 1 to close the letterbox, the same object-position also biases
+  // what gets cropped, keeping faces in frame.
+  const objX = useFaceFocal ? focal.x : 0.5;
+  const objY = useFaceFocal ? focal.y : 0.5;
+  img.style.transformOrigin = '50% 50%';
+  img.style.objectPosition = `${(objX * 100).toFixed(2)}% ${(objY * 100).toFixed(2)}%`;
+  // Fit scale depends on natural image dimensions; set a best-effort value synchronously and
+  // refresh once the image decodes, so freshly-loaded slides settle to the correct framing.
+  img.style.setProperty('--fit-scale', computeSmartFitScale(img).toFixed(4));
+  whenImgLoaded(img, () => {
+    img.style.setProperty('--fit-scale', computeSmartFitScale(img).toFixed(4));
+  });
+  img.style.setProperty('--ken-s0', String(plan.s0));
+  img.style.setProperty('--ken-s1', String(plan.s1));
+  img.style.setProperty('--ken-tx0', plan.tx0);
+  img.style.setProperty('--ken-ty0', plan.ty0);
+  img.style.setProperty('--ken-tx1', plan.tx1);
+  img.style.setProperty('--ken-ty1', plan.ty1);
+  img.dataset.kenMode = plan.mode;
 }
 
 function restartKenBurns(img, entry) {
@@ -571,14 +705,17 @@ function clearKenBurnsInline(img) {
   if (!img) return;
   clearColorRevealClasses(img);
   img.classList.remove('ken-burns');
+  img.style.removeProperty('transform');
   img.style.removeProperty('transform-origin');
   img.style.removeProperty('object-position');
-  img.style.removeProperty('--ken-min-scale');
-  img.style.removeProperty('--ken-max-scale');
+  img.style.removeProperty('--fit-scale');
+  img.style.removeProperty('--ken-s0');
+  img.style.removeProperty('--ken-s1');
   img.style.removeProperty('--ken-tx0');
   img.style.removeProperty('--ken-ty0');
   img.style.removeProperty('--ken-tx1');
   img.style.removeProperty('--ken-ty1');
+  delete img.dataset.kenMode;
 }
 
 function findImageIndexForImg(img) {
@@ -622,12 +759,12 @@ function setFitContainMode(enabled) {
 }
 
 function syncKenBurnsDurationCss(ms) {
-  const bounded = clamp(Math.round(ms), 3000, 120_000);
+  const bounded = clamp(Math.round(ms), 1000, 60_000);
   document.documentElement.style.setProperty('--slide-ms', `${bounded}ms`);
 }
 
 function getSlideDurationMs() {
-  return clamp(Math.round(manualSlideSeconds * 1000), 3000, 120_000);
+  return clamp(Math.round(manualSlideSeconds * 1000), 1000, 60_000);
 }
 
 function clearSlideshowTimer() {
@@ -982,22 +1119,49 @@ function triggerAssetDownload(href, filename) {
   a.remove();
 }
 
-async function shareOrDownloadCurrentSlide() {
-  if (!images.length) return;
+/** Resolve the current slide as an absolute URL + filename, or null if the slideshow is empty. */
+function currentSlideAssetInfo() {
+  if (!images.length) return null;
   const entry = images[index];
   const path = resolveAssetUrl(entry);
   let absUrl;
   try {
     absUrl = new URL(path, window.location.href).href;
   } catch {
-    return;
+    return null;
   }
-  const filename = suggestedDownloadFilename(entry);
+  return { entry, absUrl, filename: suggestedDownloadFilename(entry) };
+}
+
+async function downloadCurrentSlide() {
+  const info = currentSlideAssetInfo();
+  if (!info) return;
+  // Prefer a blob download so the browser uses the original bytes with our filename; fall back
+  // to a plain href so offline/file:// still saves something sensible.
+  try {
+    const res = await fetch(info.absUrl);
+    if (res.ok) {
+      const blob = await res.blob();
+      const objUrl = URL.createObjectURL(blob);
+      triggerAssetDownload(objUrl, info.filename);
+      URL.revokeObjectURL(objUrl);
+      return;
+    }
+  } catch {
+    /* fall through to direct-URL download */
+  }
+  triggerAssetDownload(info.absUrl, info.filename);
+}
+
+async function shareCurrentSlide() {
+  if (!navigator.share) return;
+  const info = currentSlideAssetInfo();
+  if (!info) return;
   const shareTitle = 'Memorial photo';
 
   let blob = null;
   try {
-    const res = await fetch(absUrl);
+    const res = await fetch(info.absUrl);
     if (res.ok) blob = await res.blob();
   } catch {
     /* e.g. file:// or offline */
@@ -1006,39 +1170,43 @@ async function shareOrDownloadCurrentSlide() {
   if (blob) {
     const mime =
       blob.type && blob.type !== 'application/octet-stream' ? blob.type : 'image/jpeg';
-    const file = new File([blob], filename, { type: mime });
+    const file = new File([blob], info.filename, { type: mime });
     const withFiles = { files: [file], title: shareTitle };
     try {
-      if (navigator.share && navigator.canShare?.(withFiles)) {
+      if (navigator.canShare?.(withFiles)) {
         await navigator.share(withFiles);
         return;
       }
     } catch (e) {
       if (e.name === 'AbortError') return;
     }
-    try {
-      if (navigator.share) {
-        await navigator.share({ title: shareTitle, text: shareTitle, url: absUrl });
-        return;
-      }
-    } catch (e) {
-      if (e.name === 'AbortError') return;
-    }
-    const objUrl = URL.createObjectURL(blob);
-    triggerAssetDownload(objUrl, filename);
-    URL.revokeObjectURL(objUrl);
-    return;
   }
 
-  triggerAssetDownload(absUrl, filename);
+  try {
+    await navigator.share({ title: shareTitle, text: shareTitle, url: info.absUrl });
+  } catch (e) {
+    if (e.name !== 'AbortError') {
+      // As a last resort, hand the user the file so they can share it manually.
+      await downloadCurrentSlide();
+    }
+  }
+}
+
+/** Reveal the Share button only when the Web Share API is actually available. */
+function syncShareButtonAvailability() {
+  if (!ctrlShareSlide) return;
+  const supported = typeof navigator !== 'undefined' && typeof navigator.share === 'function';
+  ctrlShareSlide.hidden = !supported;
 }
 
 function syncSlideChromeButtons() {
   const dis = images.length === 0;
+  if (ctrlDownloadSlide) ctrlDownloadSlide.disabled = dis;
   if (ctrlShareSlide) ctrlShareSlide.disabled = dis;
   if (ctrlPhotoFeedback) ctrlPhotoFeedback.disabled = dis;
   if (ctrlTrackPrev) ctrlTrackPrev.disabled = !ytPlayerAvailable;
   if (ctrlTrackNext) ctrlTrackNext.disabled = !ytPlayerAvailable;
+  updateMusicPlayPauseButton();
 }
 
 function resetSlideWrapTransforms() {
@@ -1260,6 +1428,81 @@ function wireStageGrab() {
   stageEl.addEventListener('pointercancel', endPointer);
 }
 
+/**
+ * Scale the active slide to `newScale` while keeping the pixel under (cursorX, cursorY) fixed on
+ * screen. The wrap's CSS transform is `translate(tx, ty) rotate(deg) scale(s)` with the default
+ * center origin, so we can work entirely in screen space via getBoundingClientRect().
+ */
+function zoomAtPoint(newScale, cursorX, cursorY) {
+  if (!activeWrap) return;
+  const clamped = clamp(newScale, GESTURE_MIN_SCALE, GESTURE_MAX_SCALE);
+  if (Math.abs(clamped - userScale) < 0.001) return;
+  const rect = activeWrap.getBoundingClientRect();
+  const wrapCenterX = rect.left + rect.width / 2;
+  const wrapCenterY = rect.top + rect.height / 2;
+  const dx = cursorX - wrapCenterX;
+  const dy = cursorY - wrapCenterY;
+  const k = clamped / userScale;
+  userTx += (1 - k) * dx;
+  userTy += (1 - k) * dy;
+  userScale = clamped;
+  applyUserTransformToWrap(activeWrap);
+}
+
+function resetUserZoom(animated = true) {
+  if (!activeWrap) return;
+  const atIdentity =
+    Math.abs(userScale - 1) < 0.01 && Math.hypot(userTx, userTy) < 0.5 && Math.abs(userDeg) < 0.5;
+  if (atIdentity) return;
+  if (animated) {
+    finishGrabSpringBack(activeWrap);
+  } else {
+    resetSlideWrapTransforms();
+    if (!slideshowPaused) scheduleSlideshowTick();
+  }
+}
+
+function wireWheelZoom() {
+  if (!stageEl) return;
+
+  stageEl.addEventListener(
+    'wheel',
+    (e) => {
+      if (fitContainMode) return;
+      if (isStartOverlayVisible() || isArchiveOpen() || isFeedbackOpen()) return;
+      if (appRoot?.classList.contains('focal-editor-placing')) return;
+      const t = e.target;
+      if (!(t instanceof Element) || !t.closest('.buffer.is-active')) return;
+      if (!activeWrap) return;
+
+      e.preventDefault();
+
+      clearSlideshowTimer();
+      grabInteractionActive = true;
+      activeWrap.style.transition = 'none';
+
+      // Exponential step keeps zoom feel consistent for both mouse wheels (large deltaY) and
+      // trackpad pinch gestures (small deltaY with ctrlKey). Scroll up = zoom in.
+      const factor = Math.exp(-e.deltaY * 0.0016);
+      const target = userScale * factor;
+      zoomAtPoint(target, e.clientX, e.clientY);
+
+      showControls();
+    },
+    { passive: false },
+  );
+
+  // Double-click on the active photo snaps the zoom back to 1:1 with a gentle spring.
+  stageEl.addEventListener('dblclick', (e) => {
+    const t = e.target;
+    if (!(t instanceof Element) || !t.closest('.buffer.is-active')) return;
+    if (userScale === 1 && userTx === 0 && userTy === 0) return;
+    e.preventDefault();
+    resetUserZoom(true);
+    showControls();
+  });
+}
+
 function applySlideIndex(rawIndex) {
   const n = images.length;
   if (n === 0) return;
@@ -1272,39 +1515,44 @@ function applySlideIndex(rawIndex) {
   const url = resolveAssetUrl(currentEntry);
   setAmbientBackground(inactiveBg, currentEntry);
 
-  clearColorRevealClasses(inactiveImg);
+  // Capture before swapBuffers() so the closures below reliably target the incoming image.
+  const incomingImg = inactiveImg;
+  clearColorRevealClasses(incomingImg);
   const useColorBloom =
     !fitContainMode && !prefersReducedMotion() && isBwToColorizedTransition(prevEntry, currentEntry);
 
-  inactiveImg.src = url;
-  inactiveImg.alt = buildImageAlt(currentEntry, index);
+  incomingImg.src = url;
+  incomingImg.alt = buildImageAlt(currentEntry, index);
 
   if (useColorBloom) {
-    inactiveImg.classList.add('slide-img--color-reveal');
-    whenImgLoaded(inactiveImg, () => {
+    incomingImg.classList.add('slide-img--color-reveal');
+    whenImgLoaded(incomingImg, () => {
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          inactiveImg.classList.add('slide-img--color-reveal-on');
+          incomingImg.classList.add('slide-img--color-reveal-on');
         });
       });
     });
-    inactiveImg.addEventListener(
+    incomingImg.addEventListener(
       'transitionend',
       (e) => {
         if (e.propertyName !== 'filter') return;
-        clearColorRevealClasses(inactiveImg);
+        clearColorRevealClasses(incomingImg);
       },
       { once: true },
     );
   }
 
-  applySlidePresentStyle(inactiveImg, currentEntry);
+  applySlidePresentStyle(incomingImg, currentEntry);
 
   inactiveEl.classList.add('is-active');
   activeEl.classList.remove('is-active');
 
   swapBuffers();
-  applySlidePresentStyle(inactiveImg, images[prevIndex]);
+  // Deliberately DO NOT restart Ken Burns on the outgoing image. With animation-fill-mode:both
+  // its current transform is preserved, so it keeps drifting through the cross-fade instead of
+  // snapping back to identity scale — that snap was the "previous photo shrinks before swapping"
+  // glitch. The outgoing buffer will get a fresh plan when it next becomes the incoming slide.
   preloadAheadFrom(index);
   updateSlideMeta(currentEntry, index);
   renderFilmstrip();
@@ -1418,12 +1666,19 @@ function buildArchiveGrid() {
     btn.type = 'button';
     btn.className = 'archive-grid__cell thumb-nav';
     btn.dataset.slideIndex = String(i);
+    btn.setAttribute('aria-label', buildImageAlt(images[i], i));
+    // Inner card is absolutely positioned and pointer-events:none so the sliver-sized
+    // button itself is the only hover target — this keeps reverse-direction traversal
+    // through the stack smooth when the lifted card visually overlaps its neighbours.
+    const card = document.createElement('span');
+    card.className = 'archive-grid__cell-card';
     const img = document.createElement('img');
     img.loading = 'lazy';
     img.decoding = 'async';
     img.src = resolveThumbUrl(images[i]);
-    img.alt = buildImageAlt(images[i], i);
-    btn.appendChild(img);
+    img.alt = '';
+    card.appendChild(img);
+    btn.appendChild(card);
     frag.appendChild(btn);
   });
   archiveGridEl.appendChild(frag);
@@ -1895,12 +2150,21 @@ function isCompactPortraitControls() {
 
 function setMobileControlsExpanded(open) {
   mobileControlsExpanded = Boolean(open);
-  const expanded = isCompactPortraitControls() ? mobileControlsExpanded : true;
+  const compact = isCompactPortraitControls();
+  const expanded = compact ? mobileControlsExpanded : true;
   appRoot?.classList.toggle('mobile-controls-expanded', expanded);
   if (ctrlMore) {
     ctrlMore.setAttribute('aria-expanded', expanded ? 'true' : 'false');
     ctrlMore.setAttribute('aria-label', expanded ? 'Hide extra controls' : 'Show more controls');
     ctrlMore.title = expanded ? 'Hide extra controls' : 'More controls';
+  }
+  // On desktop the tray is inline (always visible); in compact portrait it's a slide-up panel whose
+  // visibility mirrors `expanded`. Keeping aria-hidden in sync helps assistive tech + the backdrop.
+  if (controlsTray) {
+    controlsTray.setAttribute('aria-hidden', compact && !expanded ? 'true' : 'false');
+  }
+  if (controlsTrayBackdrop) {
+    controlsTrayBackdrop.setAttribute('aria-hidden', compact && expanded ? 'false' : 'true');
   }
 }
 
@@ -1910,6 +2174,62 @@ function syncMobileControlsMode() {
     return;
   }
   setMobileControlsExpanded(mobileControlsExpanded);
+}
+
+function nudgeVolume(delta) {
+  const next = clamp(audioVolume + delta, 0, 100);
+  if (next === audioVolume && !audioMuted) return;
+  audioVolume = next;
+  if (audioVolume > 0 && audioMuted) audioMuted = false;
+  applyVolumeToPlayer();
+  syncVolumeUi();
+  scheduleSaveAudioPrefs();
+  showControls();
+}
+
+function toggleMuteFromKeyboard() {
+  audioMuted = !audioMuted;
+  applyVolumeToPlayer();
+  syncVolumeUi();
+  scheduleSaveAudioPrefs();
+  showControls();
+}
+
+function isMusicPlaying() {
+  if (!ytPlayerAvailable || !ytPlayer) return false;
+  try {
+    const YT = window.YT;
+    const state = ytPlayer.getPlayerState?.();
+    return Boolean(YT && state === YT.PlayerState.PLAYING);
+  } catch {
+    return false;
+  }
+}
+
+function updateMusicPlayPauseButton() {
+  if (!ctrlMusicPlayPause) return;
+  const available = ytPlayerAvailable;
+  ctrlMusicPlayPause.disabled = !available;
+  const playing = isMusicPlaying();
+  ctrlMusicPlayPause.classList.toggle('is-paused', !playing);
+  ctrlMusicPlayPause.setAttribute('aria-label', playing ? 'Pause music' : 'Play music');
+  ctrlMusicPlayPause.title = playing ? 'Pause music' : 'Play music';
+}
+
+function toggleMusicPlayPause() {
+  if (!ytPlayerAvailable || !ytPlayer) {
+    showStatusBanner('Music controls are unavailable right now.');
+    return;
+  }
+  if (isMusicPlaying()) {
+    ytPlayer.pauseVideo?.();
+  } else {
+    ytPlayer.playVideo?.();
+  }
+  // The YT state change callback will flip the icon when the player confirms the new state;
+  // flipping it here gives immediate visual feedback in case the event is briefly delayed.
+  requestAnimationFrame(updateMusicPlayPauseButton);
+  showControls();
 }
 
 function ytPreviousTrack() {
@@ -1992,13 +2312,21 @@ function wireControlsUi() {
   syncMobileControlsMode();
   ctrlSlidePrev?.addEventListener('click', () => manualStep(-1));
   ctrlSlideNext?.addEventListener('click', () => manualStep(1));
-  ctrlShareSlide?.addEventListener('click', () => {
+  ctrlDownloadSlide?.addEventListener('click', () => {
     void (async () => {
-      await shareOrDownloadCurrentSlide();
+      await downloadCurrentSlide();
       showControls();
     })();
   });
+  ctrlShareSlide?.addEventListener('click', () => {
+    void (async () => {
+      await shareCurrentSlide();
+      showControls();
+    })();
+  });
+  syncShareButtonAvailability();
   ctrlPlayPause?.addEventListener('click', () => togglePlayPause());
+  ctrlMusicPlayPause?.addEventListener('click', () => toggleMusicPlayPause());
   ctrlTrackPrev?.addEventListener('click', () => ytPreviousTrack());
   ctrlTrackNext?.addEventListener('click', () => ytNextTrack());
   ctrlMute?.addEventListener('click', () => {
@@ -2015,6 +2343,12 @@ function wireControlsUi() {
     setMobileControlsExpanded(!mobileControlsExpanded);
     showControls();
   });
+  controlsTrayBackdrop?.addEventListener('click', () => {
+    if (mobileControlsExpanded && isCompactPortraitControls()) {
+      setMobileControlsExpanded(false);
+      showControls();
+    }
+  });
 
   ctrlVolume?.addEventListener('input', () => {
     audioVolume = clamp(Number(ctrlVolume.value) || 0, 0, 100);
@@ -2024,6 +2358,7 @@ function wireControlsUi() {
     applyVolumeToPlayer();
     syncVolumeUi();
     scheduleSaveAudioPrefs();
+    showControls();
   });
 
   ctrlVolume?.addEventListener('change', () => {
@@ -2031,7 +2366,7 @@ function wireControlsUi() {
   });
 
   ctrlSlideSec?.addEventListener('input', () => {
-    manualSlideSeconds = clamp(parseFloat(ctrlSlideSec.value) || 5, 3, 120);
+    manualSlideSeconds = clamp(parseFloat(ctrlSlideSec.value) || 5, 1, 60);
     syncSlideTimingUi();
     saveSlideTimingPrefs();
     const ms = getSlideDurationMs();
@@ -2098,6 +2433,12 @@ function wireKeyboard() {
       }
       return;
     }
+    if (e.code === 'Escape' && mobileControlsExpanded && isCompactPortraitControls()) {
+      e.preventDefault();
+      setMobileControlsExpanded(false);
+      showControls();
+      return;
+    }
     switch (e.code) {
       case 'Space':
         e.preventDefault();
@@ -2111,6 +2452,22 @@ function wireKeyboard() {
         e.preventDefault();
         manualStep(1);
         break;
+      case 'ArrowUp':
+        e.preventDefault();
+        nudgeVolume(e.shiftKey ? 10 : 5);
+        break;
+      case 'ArrowDown':
+        e.preventDefault();
+        nudgeVolume(e.shiftKey ? -10 : -5);
+        break;
+      case 'KeyM':
+        e.preventDefault();
+        toggleMuteFromKeyboard();
+        break;
+      case 'KeyP':
+        e.preventDefault();
+        toggleMusicPlayPause();
+        break;
       case 'KeyF':
         e.preventDefault();
         void toggleFullscreen();
@@ -2120,7 +2477,11 @@ function wireKeyboard() {
         openArchive();
         break;
       case 'Escape':
-        if (appRoot && getFullscreenElement() === appRoot) {
+        if (userScale !== 1 || userTx !== 0 || userTy !== 0) {
+          e.preventDefault();
+          resetUserZoom(true);
+          showControls();
+        } else if (appRoot && getFullscreenElement() === appRoot) {
           e.preventDefault();
           void toggleFullscreen();
         }
@@ -2198,6 +2559,7 @@ function setStartHintText(text) {
 function onYtStateChange(event) {
   try {
     const YT = window.YT;
+    updateMusicPlayPauseButton();
     if (!YT || event.data !== YT.PlayerState.PLAYING) return;
     const id = event.target?.getVideoData?.()?.video_id ?? '';
     if (id && id !== lastYtVideoId) {
@@ -2227,6 +2589,7 @@ async function main() {
   wireStartControl();
   wireFatalOverlayControls();
   wireStageGrab();
+  wireWheelZoom();
   wireBrowsingUi();
   wirePhotoFeedbackUi();
   wireControlsUi();
