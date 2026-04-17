@@ -1,16 +1,20 @@
 /**
  * Vercel Serverless: shared reactions + comments per manifest image src (e.g. images/photo.jpg).
  *
- * Env (Upstash Redis — free tier works):
- *   UPSTASH_REDIS_REST_URL
- *   UPSTASH_REDIS_REST_TOKEN
+ * Storage: Supabase (Postgres). Requires the `feedback` + `rate_limits` tables and the
+ * `fb_rate_limit` function created by `db/schema.sql`.
  *
- * Deploy: connect repo to Vercel, add env vars, deploy. Static files + /api/feedback.
- * GitHub Pages: host static site only; set data-feedback-api on #app to this function URL.
+ * Env:
+ *   SUPABASE_URL                         — e.g. https://xyzcompany.supabase.co
+ *   SUPABASE_SERVICE_ROLE_KEY            — server-side key; never expose to the browser
+ *   FEEDBACK_ALLOWED_ORIGINS             — optional comma list of allowed browser origins
+ *   FEEDBACK_MAX_POSTS_PER_MINUTE        — optional (default 24)
+ *   FEEDBACK_MAX_COMMENTS_PER_15MIN      — optional (default 10)
+ *   FEEDBACK_COMMENT_BLOCKLIST           — optional comma list of banned substrings
  */
 
 import { randomUUID } from 'node:crypto';
-import { Redis } from '@upstash/redis';
+import { createClient } from '@supabase/supabase-js';
 
 const ALLOWED = new Set(['heart', 'pray', 'smile', 'tear', 'flower']);
 const PHOTO_RE = /^images\/[A-Za-z0-9._\/-]+$/;
@@ -33,6 +37,19 @@ const COMMENT_BLOCKLIST = String(
   .split(',')
   .map((s) => s.trim().toLowerCase())
   .filter(Boolean);
+
+let _supabase;
+function getSupabase() {
+  if (_supabase) return _supabase;
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) return null;
+  _supabase = createClient(url, key, {
+    auth: { persistSession: false, autoRefreshToken: false },
+    global: { headers: { 'x-application-name': 'memorial-feedback' } },
+  });
+  return _supabase;
+}
 
 function emptyDoc() {
   return { reactions: {}, voters: {}, comments: [] };
@@ -72,10 +89,6 @@ function normalizeDoc(raw) {
 
 function isValidPhoto(photo) {
   return typeof photo === 'string' && photo.length <= 240 && PHOTO_RE.test(photo) && !photo.includes('..');
-}
-
-function redisKey(photo) {
-  return `memorial:fb:${photo}`;
 }
 
 function normalizeOrigin(raw) {
@@ -145,16 +158,41 @@ function clientIp(req) {
   return 'unknown';
 }
 
-async function enforceRateLimit(redis, key, max, windowSec) {
-  if (!Number.isFinite(max) || max <= 0) return true;
-  const count = await redis.incr(key);
-  if (count === 1) await redis.expire(key, windowSec);
-  return count <= max;
-}
-
 function isCommentAllowed(text) {
   const lower = text.toLowerCase();
   return !COMMENT_BLOCKLIST.some((needle) => needle && lower.includes(needle));
+}
+
+async function readDoc(supabase, photo) {
+  const { data, error } = await supabase
+    .from('feedback')
+    .select('doc')
+    .eq('photo', photo)
+    .maybeSingle();
+  if (error) throw error;
+  return normalizeDoc(data?.doc ?? null);
+}
+
+async function writeDoc(supabase, photo, doc) {
+  const { error } = await supabase
+    .from('feedback')
+    .upsert({ photo, doc, updated_at: new Date().toISOString() }, { onConflict: 'photo' });
+  if (error) throw error;
+}
+
+async function enforceRateLimit(supabase, key, max, windowSec) {
+  if (!Number.isFinite(max) || max <= 0) return true;
+  const { data, error } = await supabase.rpc('fb_rate_limit', {
+    p_key: key,
+    p_max: max,
+    p_window_seconds: windowSec,
+  });
+  if (error) {
+    // Fail open on transient RPC errors so the site stays usable; surface in logs for ops.
+    console.error('[feedback] rate-limit RPC failed', error);
+    return true;
+  }
+  return data !== false;
 }
 
 export default async function handler(req, res) {
@@ -167,123 +205,112 @@ export default async function handler(req, res) {
     return res.status(204).end();
   }
 
-  let redis;
+  const supabase = getSupabase();
+  if (!supabase) {
+    return res
+      .status(503)
+      .json({ error: 'Feedback API is not configured (missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY).' });
+  }
+
   try {
-    redis = Redis.fromEnv();
-  } catch {
-    return res.status(503).json({ error: 'Feedback API is not configured (missing Upstash env).' });
-  }
-
-  if (req.method === 'GET') {
-    const photo = req.query.photo;
-    const visitorId = normalizeVisitorId(req.query.visitor);
-    if (!isValidPhoto(photo)) {
-      return res.status(400).json({ error: 'Invalid photo key.' });
+    if (req.method === 'GET') {
+      const photo = req.query.photo;
+      const visitorId = normalizeVisitorId(req.query.visitor);
+      if (!isValidPhoto(photo)) {
+        return res.status(400).json({ error: 'Invalid photo key.' });
+      }
+      const doc = await readDoc(supabase, photo);
+      return res.status(200).json(buildResponse(doc, visitorId));
     }
-    let raw = await redis.get(redisKey(photo));
-    if (typeof raw === 'string') {
+
+    if (req.method === 'POST') {
+      let body;
       try {
-        raw = JSON.parse(raw);
+        body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
       } catch {
-        raw = null;
+        return res.status(400).json({ error: 'Invalid JSON.' });
       }
-    }
-    const doc = normalizeDoc(raw);
-    return res.status(200).json(buildResponse(doc, visitorId));
-  }
+      if (!body || typeof body !== 'object') {
+        return res.status(400).json({ error: 'Invalid body.' });
+      }
 
-  if (req.method === 'POST') {
-    let body;
-    try {
-      body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
-    } catch {
-      return res.status(400).json({ error: 'Invalid JSON.' });
-    }
-    if (!body || typeof body !== 'object') {
-      return res.status(400).json({ error: 'Invalid body.' });
-    }
-
-    const photo = body.photo;
-    const visitorId = normalizeVisitorId(body.visitorId);
-    if (!isValidPhoto(photo)) {
-      return res.status(400).json({ error: 'Invalid photo key.' });
-    }
-    if (!visitorId) {
-      return res.status(400).json({ error: 'visitorId required.' });
-    }
-    const ip = clientIp(req);
-    const rlOk = await enforceRateLimit(redis, `memorial:rl:ip:${ip}`, MAX_POSTS_PER_MINUTE, 60);
-    if (!rlOk) {
-      return res.status(429).json({ error: 'Too many requests. Please slow down.' });
-    }
-    const rlVisitorOk = await enforceRateLimit(
-      redis,
-      `memorial:rl:visitor:${visitorId}`,
-      MAX_POSTS_PER_MINUTE,
-      60,
-    );
-    if (!rlVisitorOk) {
-      return res.status(429).json({ error: 'Too many actions from this device. Try again soon.' });
-    }
-
-    let raw = await redis.get(redisKey(photo));
-    if (typeof raw === 'string') {
-      try {
-        raw = JSON.parse(raw);
-      } catch {
-        raw = null;
+      const photo = body.photo;
+      const visitorId = normalizeVisitorId(body.visitorId);
+      if (!isValidPhoto(photo)) {
+        return res.status(400).json({ error: 'Invalid photo key.' });
       }
-    }
-    let doc = normalizeDoc(raw);
-
-    if (body.action === 'toggleReaction') {
-      const reactionId = body.reactionId;
-      if (!ALLOWED.has(reactionId)) {
-        return res.status(400).json({ error: 'Invalid reaction.' });
+      if (!visitorId) {
+        return res.status(400).json({ error: 'visitorId required.' });
       }
-      const voters = [...(doc.voters[reactionId] || [])];
-      const pos = voters.indexOf(visitorId);
-      if (pos >= 0) {
-        voters.splice(pos, 1);
-        doc.reactions[reactionId] = Math.max(0, (doc.reactions[reactionId] || 0) - 1);
-        if (doc.reactions[reactionId] === 0) delete doc.reactions[reactionId];
-      } else {
-        voters.push(visitorId);
-        while (voters.length > MAX_VOTERS_PER_REACTION) voters.shift();
-        doc.reactions[reactionId] = (doc.reactions[reactionId] || 0) + 1;
+      const ip = clientIp(req);
+      const rlOk = await enforceRateLimit(supabase, `ip:${ip}`, MAX_POSTS_PER_MINUTE, 60);
+      if (!rlOk) {
+        return res.status(429).json({ error: 'Too many requests. Please slow down.' });
       }
-      doc.voters[reactionId] = voters;
-    } else if (body.action === 'addComment') {
-      const text =
-        typeof body.text === 'string' ? body.text.trim().slice(0, MAX_COMMENT_LEN) : '';
-      if (!text) {
-        return res.status(400).json({ error: 'Empty comment.' });
-      }
-      if (!isCommentAllowed(text)) {
-        return res.status(422).json({ error: 'Comment contains blocked content.' });
-      }
-      const commentLimitOk = await enforceRateLimit(
-        redis,
-        `memorial:rl:comment:${photo}:${visitorId}`,
-        MAX_COMMENTS_PER_15MIN,
-        15 * 60,
+      const rlVisitorOk = await enforceRateLimit(
+        supabase,
+        `visitor:${visitorId}`,
+        MAX_POSTS_PER_MINUTE,
+        60,
       );
-      if (!commentLimitOk) {
-        return res.status(429).json({ error: 'Comment rate limit reached. Please try later.' });
+      if (!rlVisitorOk) {
+        return res.status(429).json({ error: 'Too many actions from this device. Try again soon.' });
       }
-      const id = randomUUID();
-      doc.comments.push({ id, text, at: new Date().toISOString() });
-      if (doc.comments.length > MAX_COMMENTS) {
-        doc.comments = doc.comments.slice(-MAX_COMMENTS);
+
+      let doc = await readDoc(supabase, photo);
+
+      if (body.action === 'toggleReaction') {
+        const reactionId = body.reactionId;
+        if (!ALLOWED.has(reactionId)) {
+          return res.status(400).json({ error: 'Invalid reaction.' });
+        }
+        const voters = [...(doc.voters[reactionId] || [])];
+        const pos = voters.indexOf(visitorId);
+        if (pos >= 0) {
+          voters.splice(pos, 1);
+          doc.reactions[reactionId] = Math.max(0, (doc.reactions[reactionId] || 0) - 1);
+          if (doc.reactions[reactionId] === 0) delete doc.reactions[reactionId];
+        } else {
+          voters.push(visitorId);
+          while (voters.length > MAX_VOTERS_PER_REACTION) voters.shift();
+          doc.reactions[reactionId] = (doc.reactions[reactionId] || 0) + 1;
+        }
+        doc.voters[reactionId] = voters;
+      } else if (body.action === 'addComment') {
+        const text =
+          typeof body.text === 'string' ? body.text.trim().slice(0, MAX_COMMENT_LEN) : '';
+        if (!text) {
+          return res.status(400).json({ error: 'Empty comment.' });
+        }
+        if (!isCommentAllowed(text)) {
+          return res.status(422).json({ error: 'Comment contains blocked content.' });
+        }
+        const commentLimitOk = await enforceRateLimit(
+          supabase,
+          `comment:${photo}:${visitorId}`,
+          MAX_COMMENTS_PER_15MIN,
+          15 * 60,
+        );
+        if (!commentLimitOk) {
+          return res.status(429).json({ error: 'Comment rate limit reached. Please try later.' });
+        }
+        const id = randomUUID();
+        doc.comments.push({ id, text, at: new Date().toISOString() });
+        if (doc.comments.length > MAX_COMMENTS) {
+          doc.comments = doc.comments.slice(-MAX_COMMENTS);
+        }
+      } else {
+        return res.status(400).json({ error: 'Unknown action.' });
       }
-    } else {
-      return res.status(400).json({ error: 'Unknown action.' });
+
+      await writeDoc(supabase, photo, doc);
+      return res.status(200).json(buildResponse(doc, visitorId));
     }
 
-    await redis.set(redisKey(photo), JSON.stringify(doc));
-    return res.status(200).json(buildResponse(doc, visitorId));
+    res.setHeader('Allow', 'GET, POST, OPTIONS');
+    return res.status(405).json({ error: 'Method not allowed' });
+  } catch (err) {
+    console.error('[feedback] handler error', err);
+    return res.status(500).json({ error: 'Internal error.' });
   }
-
-  res.setHeader('Allow', 'GET, POST, OPTIONS');
-  return res.status(405).json({ error: 'Method not allowed' });
 }

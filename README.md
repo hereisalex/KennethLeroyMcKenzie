@@ -196,7 +196,7 @@ python -m http.server 8080
 
 ## 5. Shared reactions and comments (database-backed)
 
-Reactions and comments are **live and shared with everyone** who visits the memorial. They are persisted in Upstash Redis via the serverless function at `api/feedback.js`, which this project expects to be hosted same-origin on Vercel (see **Deploy to Vercel** below).
+Reactions and comments are **live and shared with everyone** who visits the memorial. They are persisted in Supabase (Postgres) via the serverless function at `api/feedback.js`, which this project expects to be hosted same-origin on Vercel (see **Deploy to Vercel** below).
 
 The `#app` element in `index.html` points at the endpoint via `data-feedback-api="/api/feedback"`. If you host the static site elsewhere (for example, GitHub Pages) and the API on a separate Vercel deployment, change that attribute to the absolute API URL (e.g. `https://your-api.vercel.app/api/feedback`) and set `FEEDBACK_ALLOWED_ORIGINS` on the Vercel project to your site's origin.
 
@@ -286,15 +286,18 @@ run-manifest.bat        # Windows: Python manifest with dependency check
 
 Vercel hosts both the static site and the serverless comments API in one place, same-origin. That means `data-feedback-api="/api/feedback"` works as-is with no CORS configuration.
 
-1. **Create an Upstash Redis database.** Free tier works. Copy the two REST credentials: `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`.
-2. **Import the repo on Vercel.** Framework preset: **Other**. Build command: leave blank. Output directory: leave blank. The included `vercel.json` handles caching headers; `api/feedback.js` is picked up automatically as a serverless function.
-3. **Add env vars** in **Settings → Environment Variables**:
-   - `UPSTASH_REDIS_REST_URL` — from Upstash.
-   - `UPSTASH_REDIS_REST_TOKEN` — from Upstash.
+1. **Create a Supabase project.** Free tier works. In the project's **SQL Editor**, paste and run `db/schema.sql` — this creates the `feedback` + `rate_limits` tables and the `fb_rate_limit` function.
+2. **Copy Supabase credentials** from **Project Settings → API**:
+   - Project URL → `SUPABASE_URL`
+   - `service_role` key → `SUPABASE_SERVICE_ROLE_KEY` (server-side only; never expose to the browser)
+3. **Import the repo on Vercel.** Framework preset: **Other**. Build command: leave blank. Output directory: leave blank. The included `vercel.json` handles caching headers; `api/feedback.js` is picked up automatically as a serverless function.
+4. **Add env vars** in **Settings → Environment Variables**:
+   - `SUPABASE_URL`
+   - `SUPABASE_SERVICE_ROLE_KEY`
    - *(Optional)* `FEEDBACK_ALLOWED_ORIGINS` — comma-separated list of origins allowed to POST (e.g. `https://mckenzie-memorial.vercel.app`). Leave empty to allow any origin.
    - *(Optional)* `FEEDBACK_MAX_POSTS_PER_MINUTE`, `FEEDBACK_MAX_COMMENTS_PER_15MIN`, `FEEDBACK_COMMENT_BLOCKLIST` for rate-limit / moderation tuning.
-4. **Deploy.** Visit the Vercel URL; reactions and comments will round-trip through `api/feedback` and appear for every visitor.
-5. **Update photos:** regenerate `public/manifest.json` locally (`npm run manifest` or the Python equivalent), commit, and push. Vercel redeploys automatically.
+5. **Deploy.** Visit the Vercel URL; reactions and comments will round-trip through `api/feedback` and appear for every visitor.
+6. **Update photos:** regenerate `public/manifest.json` locally (`npm run manifest` or the Python equivalent), commit, and push. Vercel redeploys automatically.
 
 ### Deploy static only to GitHub Pages (API elsewhere)
 
