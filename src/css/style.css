@@ -505,7 +505,7 @@ body.body--chrome-hidden {
   height: 3.25rem;
   padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 999px;
+  border-radius: 8px;
   cursor: pointer;
   touch-action: manipulation;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0.08);
@@ -555,7 +555,7 @@ body.body--chrome-hidden {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
-  border-radius: 999px;
+  border-radius: 14px;
   background: rgba(14, 14, 14, 0.38);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -580,7 +580,7 @@ body.body--chrome-hidden {
   min-height: 3.25rem;
   padding: 0;
   border: 2px solid transparent;
-  border-radius: 6px;
+  border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
   touch-action: manipulation;
@@ -638,7 +638,7 @@ body.body--chrome-hidden {
   max-width: calc(100vw - 1rem);
   padding: 0.5rem 0.85rem;
   margin: 0 0.5rem;
-  border-radius: 999px;
+  border-radius: 14px;
   background: rgba(18, 18, 18, 0.42);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -714,7 +714,7 @@ body.body--chrome-hidden {
     max-width: min(100vw - 0.62rem, 25rem);
     margin: 0 0.28rem;
     padding: 0.38rem 0.58rem;
-    border-radius: 999px;
+    border-radius: 14px;
     background: rgba(14, 15, 17, 0.42);
     border: 1px solid rgba(255, 255, 255, 0.07);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
@@ -936,7 +936,7 @@ body.body--chrome-hidden {
   align-items: center;
   padding: 0.12rem 0.5rem;
   margin-right: 0.15rem;
-  border-radius: 999px;
+  border-radius: 6px;
   font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 0.09em;
@@ -1207,7 +1207,7 @@ body.body--chrome-hidden {
   min-height: 2.75rem;
   padding: 0;
   border: none;
-  border-radius: 50%;
+  border-radius: 8px;
   cursor: pointer;
   touch-action: manipulation;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0.08);
