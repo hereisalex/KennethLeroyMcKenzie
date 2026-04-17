@@ -17,7 +17,10 @@ import { randomUUID } from 'node:crypto';
 import { createClient } from '@supabase/supabase-js';
 
 const ALLOWED = new Set(['heart', 'pray', 'smile', 'tear', 'flower']);
-const PHOTO_RE = /^images\/[A-Za-z0-9._\/-]+$/;
+// Allowed path chars mirror the character set actually used by manifest.json filenames:
+// letters, digits, space, `.`, `_`, `-`, `~`, and `/`. Any character outside this set
+// means the photo key was tampered with and should be rejected.
+const PHOTO_RE = /^images\/[A-Za-z0-9._~\/ -]+$/;
 const MAX_COMMENT_LEN = 2000;
 const MAX_COMMENTS = 400;
 const MAX_VOTERS_PER_REACTION = 600;
