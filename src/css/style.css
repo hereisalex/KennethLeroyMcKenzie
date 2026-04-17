@@ -9,8 +9,6 @@
   --controls-hide-duration: 520ms;
   /* Room above bottom chrome for captions (filmstrip + controls + gaps). Tuned per breakpoint. */
   --slide-meta-clearance: 5.85rem;
-  /* Approx chrome-dock height; pads the buffer so letterboxed photos stay visually centered above controls. */
-  --chrome-reserve: calc(8.5rem + env(safe-area-inset-bottom, 0px));
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -558,7 +556,9 @@ body.body--chrome-hidden {
 
 .controls {
   position: relative;
-  z-index: 1;
+  /* Sit above `.filmstrip` (z-index: 2) within the chrome-dock stacking context so the vertical
+     volume popover paints in front of the carousel when it expands upward. */
+  z-index: 3;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -596,7 +596,6 @@ body.body--chrome-hidden {
 @media (max-width: 900px) and (orientation: portrait) {
   :root {
     --slide-meta-clearance: 5.35rem;
-    --chrome-reserve: calc(7rem + env(safe-area-inset-bottom, 0px));
     --mobile-bar-height: calc(3.5rem + env(safe-area-inset-bottom, 0px));
   }
 
@@ -988,12 +987,9 @@ body.body--chrome-hidden {
   line-height: 1.3;
 }
 
-/* Entire image visible (letterboxed); no Ken Burns / grab-pan. Reserve space for the dock so the
-   letterboxed photo isn't overlapped by the chrome while controls are visible. */
-#app.slideshow-fit-contain .buffer {
-  padding-bottom: var(--chrome-reserve);
-}
-
+/* Entire image visible (letterboxed); no Ken Burns / grab-pan. The chrome-dock auto-hides and
+   overlays the photo — we deliberately don't reserve space for it, so the photo always sits
+   centered in the viewport rather than shifted upward. */
 #app.slideshow-fit-contain .slide-img {
   object-fit: contain;
   object-position: center center;
