@@ -17,3 +17,4 @@ npm-debug.log*
 
 # Cursor / IDE (optional — uncomment if you prefer not to commit)
 # .cursor/
+.vercel

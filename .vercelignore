@@ -1,0 +1,11 @@
+.git
+.github
+node_modules
+canvas
+scripts
+tools
+db
+__pycache__
+*.log
+*.tmp
+.DS_Store
